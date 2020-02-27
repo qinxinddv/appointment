@@ -56,6 +56,30 @@ export const SysDictDetail = (props: ISysDictDetailProps) => {
           </dt>
           <dd>{sysDictEntity.parentId}</dd>
           <dt>
+            <span id="desc">
+              <Translate contentKey="appointmentApp.sysDict.desc">Desc</Translate>
+            </span>
+          </dt>
+          <dd>{sysDictEntity.desc}</dd>
+          <dt>
+            <span id="extend1">
+              <Translate contentKey="appointmentApp.sysDict.extend1">Extend 1</Translate>
+            </span>
+          </dt>
+          <dd>{sysDictEntity.extend1}</dd>
+          <dt>
+            <span id="extend2">
+              <Translate contentKey="appointmentApp.sysDict.extend2">Extend 2</Translate>
+            </span>
+          </dt>
+          <dd>{sysDictEntity.extend2}</dd>
+          <dt>
+            <span id="extend3">
+              <Translate contentKey="appointmentApp.sysDict.extend3">Extend 3</Translate>
+            </span>
+          </dt>
+          <dd>{sysDictEntity.extend3}</dd>
+          <dt>
             <span id="createdDate">
               <Translate contentKey="appointmentApp.sysDict.createdDate">Created Date</Translate>
             </span>
