@@ -1,11 +1,16 @@
 id;period;num;busi_type
-1;Metal Direct Sleek;29885;LAW
-2;blue;31175;ORG
-3;enterprise Bahraini Dinar Concrete;92959;PERSON
-4;hacking Licensed Steel Gloves;52841;LAW
-5;back up;16545;LAW
-6;National;23250;ORG
-7;Engineer;20422;LAW
-8;Russian Ruble Legacy tangible;31452;PERSON
-9;Cambridgeshire;20954;PERSON
-10;application;93186;ORG
+1;1;10;PERSON
+2;2;10;PERSON
+3;3;10;PERSON
+4;4;10;PERSON
+5;5;10;PERSON
+6;1;10;ORG
+7;2;10;ORG
+8;3;10;ORG
+9;4;10;ORG
+10;5;10;ORG
+11;1;10;LAW
+12;2;10;LAW
+13;3;10;LAW
+14;4;10;LAW
+15;5;10;LAW

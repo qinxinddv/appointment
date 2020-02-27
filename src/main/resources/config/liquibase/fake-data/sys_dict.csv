@@ -1,11 +1,9 @@
-id;name;type;code;value;parent_id;jhi_desc;extend_1;extend_2;extend_3;created_date;last_modified_date
-1;extensible Palau bluetooth;engage primary;Internal Architect;Health even-keeled;51563;Consultant EXE;Public-key HTTP Estonia;compressing Response;tangible interface override;2020-02-27;2020-02-26
-2;West Virginia Avon Usability;AI Avon;Intelligent Fresh;Ergonomic Concrete Pizza Avon Savings Account;88073;syndicate;Soft hacking;motivating hard drive platforms;executive;2020-02-27;2020-02-26
-3;Borders;Home Loan Account;port;virtual Branch;73536;SMS Facilitator auxiliary;Health recontextualize access;India Gibraltar deposit;Rial Omani circuit;2020-02-26;2020-02-26
-4;Gloves Legacy Port;complexity Engineer Investor;Colombian Peso Unidad de Valor Real;Dam extend;12391;pink;Rustic navigate Kids;Tuna infomediaries;Movies;2020-02-27;2020-02-26
-5;Innovative;models;Wooden Lock architectures;Sierra Leone;49181;Intuitive Swedish Krona;Personal Loan Account;Global Investment Account moratorium;Sweden;2020-02-27;2020-02-26
-6;channels Designer India;Soft Games;Refined Steel Shirt;transmitting Unbranded Steel Ball Fresh;65403;synthesize enable withdrawal;Mouse Unbranded Cotton Chicken Networked;Generic Plastic Bacon Polarised networks;applications e-services;2020-02-26;2020-02-26
-7;Chief violet;bypass;proactive encompassing;metrics quantifying;24003;array Cambridgeshire;quantify;FTP orchestrate;web-enabled Grocery;2020-02-27;2020-02-27
-8;Pizza Associate;Facilitator Shoes Pine;Fantastic;ROI;65866;extranet;Regional;Virginia instruction set bricks-and-clicks;Ways Quality Corporate;2020-02-26;2020-02-26
-9;indigo Finland Innovative;infrastructure Research auxiliary;Usability;invoice Towels;43249;synthesizing;index;Generic Implementation;HTTP;2020-02-26;2020-02-27
-10;Fantastic Metal Bacon Fresh exploit;application hacking fuchsia;Generic Granite Salad Hong Kong Dollar;Money Market Account Principal;80300;Dale Manager;composite partnerships open-source;Tennessee Mobility;Forward Credit Card Account;2020-02-26;2020-02-26
+id;name;type;code;value;parent_id
+1;时间段;PERIOD;1;8点-10点;0
+2;时间段;PERIOD;2;10点-12点;0
+3;时间段;PERIOD;3;12点-14点;0
+4;时间段;PERIOD;4;14点-16点;0
+5;时间段;PERIOD;5;16点-18点;0
+6;业务类型;BUSI_TYPE;PERSON;个人;0
+7;业务类型;BUSI_TYPE;ORG;企业;0
+8;业务类型;BUSI_TYPE;LAW;司法查询;0
