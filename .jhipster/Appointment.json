@@ -1,0 +1,57 @@
+{
+    "name": "Appointment",
+    "fields": [
+        {
+            "fieldName": "idCard",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mobile",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "timePeriodCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "timePeriodValue",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "busiType",
+            "fieldType": "BusiTypeEnum",
+            "fieldValues": "PERSON,ORG,LAW"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "lastModifiedDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "community",
+            "otherEntityRelationshipName": "appointment",
+            "relationshipName": "community",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200227092100",
+    "entityTableName": "appointment",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,9 @@
+{
+  "appointmentApp": {
+    "CommunityStateEnum": {
+      "null": "",
+      "NORMAL": "NORMAL",
+      "FORBID": "FORBID"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+//字典表
+entity SysDict(SYS_DICT) {
+	name String //字典名称
+    type String //字典类型
+    code String //字典编码
+    value String //字典值
+    parentId Long //父节点ID
+    createdDate LocalDate
+    lastModifiedDate LocalDate
+}
+//预约申请表
+entity Appointment(APPOINTMENT) {
+	idCard String //身份证号
+    name String //姓名
+    mobile String //手机号
+    timePeriodCode String //时间段
+    timePeriodValue String //时间段值
+    busiType BusiTypeEnum //类型（个人、企业、司法查询）
+    createdDate LocalDate
+    lastModifiedDate LocalDate
+}
+
+//小区表
+entity Community(COMMUNITY) {
+	name String //小区名称
+    addr String //小区地址
+    state String //小区状态
+    communityStateEnum CommunityStateEnum //小区状态
+    createdDate LocalDate
+    lastModifiedDate LocalDate
+}
+//业务类型
+enum BusiTypeEnum {
+	PERSON,ORG,LAW
+}
+
+//小区状态
+enum CommunityStateEnum {
+	NORMAL,FORBID
+}
+//预约配置表
+entity AppointmentConfig {
+	period String //时间段
+    num Integer //数量
+    busiType BusiTypeEnum //类型（个人、企业、司法查询）
+}
+//预约池
+entity AppointmentPool {
+	date String //日期
+    period String //时间段
+    totalNum Integer //总数
+    leftNum Integer //剩余数量
+    type String //类型
+}
+
+//黑名单关键字
+entity BlackKey {
+	key String //关键字
+}
+
+relationship OneToMany {
+	Community to Appointment
+}
+
+
+
+dto * with mapstruct
+service * with serviceImpl
+
+
+
+
+

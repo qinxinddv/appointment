@@ -1,0 +1,20 @@
+{
+    "name": "BlackKey",
+    "fields": [
+        {
+            "fieldName": "key",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200227092500",
+    "entityTableName": "black_key",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

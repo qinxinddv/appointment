@@ -13,6 +13,30 @@ import password, { PasswordState } from 'app/modules/account/password/password.r
 import settings, { SettingsState } from 'app/modules/account/settings/settings.reducer';
 import passwordReset, { PasswordResetState } from 'app/modules/account/password-reset/password-reset.reducer';
 import sessions, { SessionsState } from 'app/modules/account/sessions/sessions.reducer';
+// prettier-ignore
+import sysDict, {
+  SysDictState
+} from 'app/entities/sys-dict/sys-dict.reducer';
+// prettier-ignore
+import appointment, {
+  AppointmentState
+} from 'app/entities/appointment/appointment.reducer';
+// prettier-ignore
+import community, {
+  CommunityState
+} from 'app/entities/community/community.reducer';
+// prettier-ignore
+import appointmentConfig, {
+  AppointmentConfigState
+} from 'app/entities/appointment-config/appointment-config.reducer';
+// prettier-ignore
+import appointmentPool, {
+  AppointmentPoolState
+} from 'app/entities/appointment-pool/appointment-pool.reducer';
+// prettier-ignore
+import blackKey, {
+  BlackKeyState
+} from 'app/entities/black-key/black-key.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {
@@ -27,6 +51,12 @@ export interface IRootState {
   readonly password: PasswordState;
   readonly settings: SettingsState;
   readonly sessions: SessionsState;
+  readonly sysDict: SysDictState;
+  readonly appointment: AppointmentState;
+  readonly community: CommunityState;
+  readonly appointmentConfig: AppointmentConfigState;
+  readonly appointmentPool: AppointmentPoolState;
+  readonly blackKey: BlackKeyState;
   /* jhipster-needle-add-reducer-type - JHipster will add reducer type here */
   readonly loadingBar: any;
 }
@@ -43,6 +73,12 @@ const rootReducer = combineReducers<IRootState>({
   password,
   settings,
   sessions,
+  sysDict,
+  appointment,
+  community,
+  appointmentConfig,
+  appointmentPool,
+  blackKey,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar
 });

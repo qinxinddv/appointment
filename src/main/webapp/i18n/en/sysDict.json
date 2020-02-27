@@ -1,0 +1,28 @@
+{
+  "appointmentApp": {
+    "sysDict": {
+      "home": {
+        "title": "Sys Dicts",
+        "createLabel": "Create a new Sys Dict",
+        "createOrEditLabel": "Create or edit a Sys Dict",
+        "notFound": "No Sys Dicts found"
+      },
+      "created": "A new Sys Dict is created with identifier {{ param }}",
+      "updated": "A Sys Dict is updated with identifier {{ param }}",
+      "deleted": "A Sys Dict is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Sys Dict {{ id }}?"
+      },
+      "detail": {
+        "title": "Sys Dict"
+      },
+      "name": "Name",
+      "type": "Type",
+      "code": "Code",
+      "value": "Value",
+      "parentId": "Parent Id",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date"
+    }
+  }
+}

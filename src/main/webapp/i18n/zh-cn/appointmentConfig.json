@@ -1,0 +1,24 @@
+{
+  "appointmentApp": {
+    "appointmentConfig": {
+      "home": {
+        "title": "Appointment Configs",
+        "createLabel": "创建新 Appointment Config",
+        "createOrEditLabel": "创建或编辑 Appointment Config",
+        "notFound": "No Appointment Configs found"
+      },
+      "created": "Appointment Config {{ param }} 创建成功",
+      "updated": "Appointment Config {{ param }} 更新成功",
+      "deleted": "Appointment Config {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Appointment Config {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Appointment Config"
+      },
+      "period": "Period",
+      "num": "Num",
+      "busiType": "Busi Type"
+    }
+  }
+}

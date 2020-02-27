@@ -1,0 +1,29 @@
+{
+    "name": "AppointmentConfig",
+    "fields": [
+        {
+            "fieldName": "period",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "num",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "busiType",
+            "fieldType": "BusiTypeEnum",
+            "fieldValues": "PERSON,ORG,LAW"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200227092300",
+    "entityTableName": "appointment_config",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

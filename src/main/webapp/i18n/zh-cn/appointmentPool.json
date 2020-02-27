@@ -1,0 +1,26 @@
+{
+  "appointmentApp": {
+    "appointmentPool": {
+      "home": {
+        "title": "Appointment Pools",
+        "createLabel": "创建新 Appointment Pool",
+        "createOrEditLabel": "创建或编辑 Appointment Pool",
+        "notFound": "No Appointment Pools found"
+      },
+      "created": "Appointment Pool {{ param }} 创建成功",
+      "updated": "Appointment Pool {{ param }} 更新成功",
+      "deleted": "Appointment Pool {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Appointment Pool {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Appointment Pool"
+      },
+      "date": "Date",
+      "period": "Period",
+      "totalNum": "Total Num",
+      "leftNum": "Left Num",
+      "type": "Type"
+    }
+  }
+}
