@@ -37,6 +37,18 @@ public class SysDict implements Serializable {
     @Column(name = "parent_id")
     private Long parentId;
 
+    @Column(name = "jhi_desc")
+    private String desc;
+
+    @Column(name = "extend_1")
+    private String extend1;
+
+    @Column(name = "extend_2")
+    private String extend2;
+
+    @Column(name = "extend_3")
+    private String extend3;
+
     @Column(name = "created_date")
     private LocalDate createdDate;
 
@@ -117,6 +129,58 @@ public class SysDict implements Serializable {
         this.parentId = parentId;
     }
 
+    public String getDesc() {
+        return desc;
+    }
+
+    public SysDict desc(String desc) {
+        this.desc = desc;
+        return this;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public String getExtend1() {
+        return extend1;
+    }
+
+    public SysDict extend1(String extend1) {
+        this.extend1 = extend1;
+        return this;
+    }
+
+    public void setExtend1(String extend1) {
+        this.extend1 = extend1;
+    }
+
+    public String getExtend2() {
+        return extend2;
+    }
+
+    public SysDict extend2(String extend2) {
+        this.extend2 = extend2;
+        return this;
+    }
+
+    public void setExtend2(String extend2) {
+        this.extend2 = extend2;
+    }
+
+    public String getExtend3() {
+        return extend3;
+    }
+
+    public SysDict extend3(String extend3) {
+        this.extend3 = extend3;
+        return this;
+    }
+
+    public void setExtend3(String extend3) {
+        this.extend3 = extend3;
+    }
+
     public LocalDate getCreatedDate() {
         return createdDate;
     }
@@ -169,6 +233,10 @@ public class SysDict implements Serializable {
             ", code='" + getCode() + "'" +
             ", value='" + getValue() + "'" +
             ", parentId=" + getParentId() +
+            ", desc='" + getDesc() + "'" +
+            ", extend1='" + getExtend1() + "'" +
+            ", extend2='" + getExtend2() + "'" +
+            ", extend3='" + getExtend3() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             "}";

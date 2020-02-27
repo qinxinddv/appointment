@@ -53,6 +53,18 @@ public class SysDictResourceIT {
     private static final Long DEFAULT_PARENT_ID = 1L;
     private static final Long UPDATED_PARENT_ID = 2L;
 
+    private static final String DEFAULT_DESC = "AAAAAAAAAA";
+    private static final String UPDATED_DESC = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTEND_1 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTEND_1 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTEND_2 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTEND_2 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTEND_3 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTEND_3 = "BBBBBBBBBB";
+
     private static final LocalDate DEFAULT_CREATED_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_CREATED_DATE = LocalDate.now(ZoneId.systemDefault());
 
@@ -112,6 +124,10 @@ public class SysDictResourceIT {
             .code(DEFAULT_CODE)
             .value(DEFAULT_VALUE)
             .parentId(DEFAULT_PARENT_ID)
+            .desc(DEFAULT_DESC)
+            .extend1(DEFAULT_EXTEND_1)
+            .extend2(DEFAULT_EXTEND_2)
+            .extend3(DEFAULT_EXTEND_3)
             .createdDate(DEFAULT_CREATED_DATE)
             .lastModifiedDate(DEFAULT_LAST_MODIFIED_DATE);
         return sysDict;
@@ -129,6 +145,10 @@ public class SysDictResourceIT {
             .code(UPDATED_CODE)
             .value(UPDATED_VALUE)
             .parentId(UPDATED_PARENT_ID)
+            .desc(UPDATED_DESC)
+            .extend1(UPDATED_EXTEND_1)
+            .extend2(UPDATED_EXTEND_2)
+            .extend3(UPDATED_EXTEND_3)
             .createdDate(UPDATED_CREATED_DATE)
             .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
         return sysDict;
@@ -160,6 +180,10 @@ public class SysDictResourceIT {
         assertThat(testSysDict.getCode()).isEqualTo(DEFAULT_CODE);
         assertThat(testSysDict.getValue()).isEqualTo(DEFAULT_VALUE);
         assertThat(testSysDict.getParentId()).isEqualTo(DEFAULT_PARENT_ID);
+        assertThat(testSysDict.getDesc()).isEqualTo(DEFAULT_DESC);
+        assertThat(testSysDict.getExtend1()).isEqualTo(DEFAULT_EXTEND_1);
+        assertThat(testSysDict.getExtend2()).isEqualTo(DEFAULT_EXTEND_2);
+        assertThat(testSysDict.getExtend3()).isEqualTo(DEFAULT_EXTEND_3);
         assertThat(testSysDict.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
         assertThat(testSysDict.getLastModifiedDate()).isEqualTo(DEFAULT_LAST_MODIFIED_DATE);
     }
@@ -201,6 +225,10 @@ public class SysDictResourceIT {
             .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE)))
             .andExpect(jsonPath("$.[*].value").value(hasItem(DEFAULT_VALUE)))
             .andExpect(jsonPath("$.[*].parentId").value(hasItem(DEFAULT_PARENT_ID.intValue())))
+            .andExpect(jsonPath("$.[*].desc").value(hasItem(DEFAULT_DESC)))
+            .andExpect(jsonPath("$.[*].extend1").value(hasItem(DEFAULT_EXTEND_1)))
+            .andExpect(jsonPath("$.[*].extend2").value(hasItem(DEFAULT_EXTEND_2)))
+            .andExpect(jsonPath("$.[*].extend3").value(hasItem(DEFAULT_EXTEND_3)))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())))
             .andExpect(jsonPath("$.[*].lastModifiedDate").value(hasItem(DEFAULT_LAST_MODIFIED_DATE.toString())));
     }
@@ -221,6 +249,10 @@ public class SysDictResourceIT {
             .andExpect(jsonPath("$.code").value(DEFAULT_CODE))
             .andExpect(jsonPath("$.value").value(DEFAULT_VALUE))
             .andExpect(jsonPath("$.parentId").value(DEFAULT_PARENT_ID.intValue()))
+            .andExpect(jsonPath("$.desc").value(DEFAULT_DESC))
+            .andExpect(jsonPath("$.extend1").value(DEFAULT_EXTEND_1))
+            .andExpect(jsonPath("$.extend2").value(DEFAULT_EXTEND_2))
+            .andExpect(jsonPath("$.extend3").value(DEFAULT_EXTEND_3))
             .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE.toString()))
             .andExpect(jsonPath("$.lastModifiedDate").value(DEFAULT_LAST_MODIFIED_DATE.toString()));
     }
@@ -251,6 +283,10 @@ public class SysDictResourceIT {
             .code(UPDATED_CODE)
             .value(UPDATED_VALUE)
             .parentId(UPDATED_PARENT_ID)
+            .desc(UPDATED_DESC)
+            .extend1(UPDATED_EXTEND_1)
+            .extend2(UPDATED_EXTEND_2)
+            .extend3(UPDATED_EXTEND_3)
             .createdDate(UPDATED_CREATED_DATE)
             .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
         SysDictDTO sysDictDTO = sysDictMapper.toDto(updatedSysDict);
@@ -269,6 +305,10 @@ public class SysDictResourceIT {
         assertThat(testSysDict.getCode()).isEqualTo(UPDATED_CODE);
         assertThat(testSysDict.getValue()).isEqualTo(UPDATED_VALUE);
         assertThat(testSysDict.getParentId()).isEqualTo(UPDATED_PARENT_ID);
+        assertThat(testSysDict.getDesc()).isEqualTo(UPDATED_DESC);
+        assertThat(testSysDict.getExtend1()).isEqualTo(UPDATED_EXTEND_1);
+        assertThat(testSysDict.getExtend2()).isEqualTo(UPDATED_EXTEND_2);
+        assertThat(testSysDict.getExtend3()).isEqualTo(UPDATED_EXTEND_3);
         assertThat(testSysDict.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
         assertThat(testSysDict.getLastModifiedDate()).isEqualTo(UPDATED_LAST_MODIFIED_DATE);
     }

@@ -5,6 +5,10 @@ entity SysDict(SYS_DICT) {
     code String //字典编码
     value String //字典值
     parentId Long //父节点ID
+    desc String //描述
+    extend1 String //扩展字段1
+    extend2 String //扩展字段1
+    extend3 String //扩展字段1
     createdDate LocalDate
     lastModifiedDate LocalDate
 }
@@ -38,6 +42,11 @@ enum BusiTypeEnum {
 enum CommunityStateEnum {
 	NORMAL,FORBID
 }
+//锁
+enum LockEnum {
+ 	APPOINTMENT,POOL_TASK
+}
+
 //预约配置表
 entity AppointmentConfig {
 	period String //时间段

@@ -106,6 +106,30 @@ export const SysDictUpdate = (props: ISysDictUpdateProps) => {
                 <AvField id="sys-dict-parentId" type="string" className="form-control" name="parentId" />
               </AvGroup>
               <AvGroup>
+                <Label id="descLabel" for="sys-dict-desc">
+                  <Translate contentKey="appointmentApp.sysDict.desc">Desc</Translate>
+                </Label>
+                <AvField id="sys-dict-desc" type="text" name="desc" />
+              </AvGroup>
+              <AvGroup>
+                <Label id="extend1Label" for="sys-dict-extend1">
+                  <Translate contentKey="appointmentApp.sysDict.extend1">Extend 1</Translate>
+                </Label>
+                <AvField id="sys-dict-extend1" type="text" name="extend1" />
+              </AvGroup>
+              <AvGroup>
+                <Label id="extend2Label" for="sys-dict-extend2">
+                  <Translate contentKey="appointmentApp.sysDict.extend2">Extend 2</Translate>
+                </Label>
+                <AvField id="sys-dict-extend2" type="text" name="extend2" />
+              </AvGroup>
+              <AvGroup>
+                <Label id="extend3Label" for="sys-dict-extend3">
+                  <Translate contentKey="appointmentApp.sysDict.extend3">Extend 3</Translate>
+                </Label>
+                <AvField id="sys-dict-extend3" type="text" name="extend3" />
+              </AvGroup>
+              <AvGroup>
                 <Label id="createdDateLabel" for="sys-dict-createdDate">
                   <Translate contentKey="appointmentApp.sysDict.createdDate">Created Date</Translate>
                 </Label>

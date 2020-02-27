@@ -21,6 +21,10 @@
       "code": "Code",
       "value": "Value",
       "parentId": "Parent Id",
+      "desc": "Desc",
+      "extend1": "Extend 1",
+      "extend2": "Extend 2",
+      "extend3": "Extend 3",
       "createdDate": "Created Date",
       "lastModifiedDate": "Last Modified Date"
     }
