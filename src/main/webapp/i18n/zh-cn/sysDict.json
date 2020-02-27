@@ -1,0 +1,28 @@
+{
+  "appointmentApp": {
+    "sysDict": {
+      "home": {
+        "title": "Sys Dicts",
+        "createLabel": "创建新 Sys Dict",
+        "createOrEditLabel": "创建或编辑 Sys Dict",
+        "notFound": "No Sys Dicts found"
+      },
+      "created": "Sys Dict {{ param }} 创建成功",
+      "updated": "Sys Dict {{ param }} 更新成功",
+      "deleted": "Sys Dict {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Sys Dict {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Sys Dict"
+      },
+      "name": "Name",
+      "type": "Type",
+      "code": "Code",
+      "value": "Value",
+      "parentId": "Parent Id",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "appointmentApp": {
+    "blackKey": {
+      "home": {
+        "title": "Black Keys",
+        "createLabel": "创建新 Black Key",
+        "createOrEditLabel": "创建或编辑 Black Key",
+        "notFound": "No Black Keys found"
+      },
+      "created": "Black Key {{ param }} 创建成功",
+      "updated": "Black Key {{ param }} 更新成功",
+      "deleted": "Black Key {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Black Key {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Black Key"
+      },
+      "key": "Key"
+    }
+  }
+}

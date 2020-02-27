@@ -1,0 +1,30 @@
+{
+  "appointmentApp": {
+    "appointment": {
+      "home": {
+        "title": "Appointments",
+        "createLabel": "创建新 Appointment",
+        "createOrEditLabel": "创建或编辑 Appointment",
+        "notFound": "No Appointments found"
+      },
+      "created": "Appointment {{ param }} 创建成功",
+      "updated": "Appointment {{ param }} 更新成功",
+      "deleted": "Appointment {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Appointment {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Appointment"
+      },
+      "idCard": "Id Card",
+      "name": "Name",
+      "mobile": "Mobile",
+      "timePeriodCode": "Time Period Code",
+      "timePeriodValue": "Time Period Value",
+      "busiType": "Busi Type",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date",
+      "community": "Community"
+    }
+  }
+}

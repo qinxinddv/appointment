@@ -1,0 +1,10 @@
+{
+  "appointmentApp": {
+    "BusiTypeEnum": {
+      "null": "",
+      "PERSON": "PERSON",
+      "ORG": "ORG",
+      "LAW": "LAW"
+    }
+  }
+}
