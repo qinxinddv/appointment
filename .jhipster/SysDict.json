@@ -22,6 +22,22 @@
             "fieldType": "Long"
         },
         {
+            "fieldName": "desc",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "extend1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "extend2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "extend3",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "createdDate",
             "fieldType": "LocalDate"
         },
