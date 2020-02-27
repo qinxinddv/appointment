@@ -7,6 +7,10 @@ export interface ISysDict {
   code?: string;
   value?: string;
   parentId?: number;
+  desc?: string;
+  extend1?: string;
+  extend2?: string;
+  extend3?: string;
   createdDate?: Moment;
   lastModifiedDate?: Moment;
 }

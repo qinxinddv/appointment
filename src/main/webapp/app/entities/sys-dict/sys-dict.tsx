@@ -52,6 +52,18 @@ export const SysDict = (props: ISysDictProps) => {
                   <Translate contentKey="appointmentApp.sysDict.parentId">Parent Id</Translate>
                 </th>
                 <th>
+                  <Translate contentKey="appointmentApp.sysDict.desc">Desc</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="appointmentApp.sysDict.extend1">Extend 1</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="appointmentApp.sysDict.extend2">Extend 2</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="appointmentApp.sysDict.extend3">Extend 3</Translate>
+                </th>
+                <th>
                   <Translate contentKey="appointmentApp.sysDict.createdDate">Created Date</Translate>
                 </th>
                 <th>
@@ -73,6 +85,10 @@ export const SysDict = (props: ISysDictProps) => {
                   <td>{sysDict.code}</td>
                   <td>{sysDict.value}</td>
                   <td>{sysDict.parentId}</td>
+                  <td>{sysDict.desc}</td>
+                  <td>{sysDict.extend1}</td>
+                  <td>{sysDict.extend2}</td>
+                  <td>{sysDict.extend3}</td>
                   <td>
                     <TextFormat type="date" value={sysDict.createdDate} format={APP_LOCAL_DATE_FORMAT} />
                   </td>
