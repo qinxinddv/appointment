@@ -43,6 +43,15 @@ export const OrgDetail = (props: IOrgDetailProps) => {
             </UncontrolledTooltip>
           </dt>
           <dd>{orgEntity.addr}</dd>
+          <dt>
+            <span id="coordinate">
+              <Translate contentKey="appointmentApp.org.coordinate">Coordinate</Translate>
+            </span>
+            <UncontrolledTooltip target="coordinate">
+              <Translate contentKey="appointmentApp.org.help.coordinate" />
+            </UncontrolledTooltip>
+          </dt>
+          <dd>{orgEntity.coordinate}</dd>
         </dl>
         <Button tag={Link} to="/org" replace color="info">
           <FontAwesomeIcon icon="arrow-left" />{' '}

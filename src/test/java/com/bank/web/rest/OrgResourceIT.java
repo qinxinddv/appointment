@@ -42,6 +42,9 @@ public class OrgResourceIT {
     private static final String DEFAULT_ADDR = "AAAAAAAAAA";
     private static final String UPDATED_ADDR = "BBBBBBBBBB";
 
+    private static final String DEFAULT_COORDINATE = "AAAAAAAAAA";
+    private static final String UPDATED_COORDINATE = "BBBBBBBBBB";
+
     @Autowired
     private OrgRepository orgRepository;
 
@@ -91,7 +94,8 @@ public class OrgResourceIT {
     public static Org createEntity(EntityManager em) {
         Org org = new Org()
             .name(DEFAULT_NAME)
-            .addr(DEFAULT_ADDR);
+            .addr(DEFAULT_ADDR)
+            .coordinate(DEFAULT_COORDINATE);
         return org;
     }
     /**
@@ -103,7 +107,8 @@ public class OrgResourceIT {
     public static Org createUpdatedEntity(EntityManager em) {
         Org org = new Org()
             .name(UPDATED_NAME)
-            .addr(UPDATED_ADDR);
+            .addr(UPDATED_ADDR)
+            .coordinate(UPDATED_COORDINATE);
         return org;
     }
 
@@ -130,6 +135,7 @@ public class OrgResourceIT {
         Org testOrg = orgList.get(orgList.size() - 1);
         assertThat(testOrg.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testOrg.getAddr()).isEqualTo(DEFAULT_ADDR);
+        assertThat(testOrg.getCoordinate()).isEqualTo(DEFAULT_COORDINATE);
     }
 
     @Test
@@ -165,7 +171,8 @@ public class OrgResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(org.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
-            .andExpect(jsonPath("$.[*].addr").value(hasItem(DEFAULT_ADDR)));
+            .andExpect(jsonPath("$.[*].addr").value(hasItem(DEFAULT_ADDR)))
+            .andExpect(jsonPath("$.[*].coordinate").value(hasItem(DEFAULT_COORDINATE)));
     }
     
     @Test
@@ -180,7 +187,8 @@ public class OrgResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(org.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
-            .andExpect(jsonPath("$.addr").value(DEFAULT_ADDR));
+            .andExpect(jsonPath("$.addr").value(DEFAULT_ADDR))
+            .andExpect(jsonPath("$.coordinate").value(DEFAULT_COORDINATE));
     }
 
     @Test
@@ -205,7 +213,8 @@ public class OrgResourceIT {
         em.detach(updatedOrg);
         updatedOrg
             .name(UPDATED_NAME)
-            .addr(UPDATED_ADDR);
+            .addr(UPDATED_ADDR)
+            .coordinate(UPDATED_COORDINATE);
         OrgDTO orgDTO = orgMapper.toDto(updatedOrg);
 
         restOrgMockMvc.perform(put("/api/orgs")
@@ -219,6 +228,7 @@ public class OrgResourceIT {
         Org testOrg = orgList.get(orgList.size() - 1);
         assertThat(testOrg.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testOrg.getAddr()).isEqualTo(UPDATED_ADDR);
+        assertThat(testOrg.getCoordinate()).isEqualTo(UPDATED_COORDINATE);
     }
 
     @Test

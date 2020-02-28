@@ -93,6 +93,15 @@ export const OrgUpdate = (props: IOrgUpdateProps) => {
                   <Translate contentKey="appointmentApp.org.help.addr" />
                 </UncontrolledTooltip>
               </AvGroup>
+              <AvGroup>
+                <Label id="coordinateLabel" for="org-coordinate">
+                  <Translate contentKey="appointmentApp.org.coordinate">Coordinate</Translate>
+                </Label>
+                <AvField id="org-coordinate" type="text" name="coordinate" />
+                <UncontrolledTooltip target="coordinateLabel">
+                  <Translate contentKey="appointmentApp.org.help.coordinate" />
+                </UncontrolledTooltip>
+              </AvGroup>
               <Button tag={Link} id="cancel-save" to="/org" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
