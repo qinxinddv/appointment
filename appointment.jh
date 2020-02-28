@@ -59,7 +59,7 @@ entity AppointmentPool {
     period String //时间段
     totalNum Integer //总数
     leftNum Integer //剩余数量
-    type String //类型
+    busiType BusiTypeEnum //类型（个人、企业、司法查询）
 }
 
 //黑名单关键字
@@ -75,6 +75,7 @@ relationship OneToMany {
 
 dto * with mapstruct
 service * with serviceImpl
+paginate * with pager
 
 
 
