@@ -76,6 +76,12 @@ export const Appointment = (props: IAppointmentProps) => {
                 <th className="hand" onClick={sort('addr')}>
                   <Translate contentKey="appointmentApp.appointment.addr">Addr</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('temperature')}>
+                  <Translate contentKey="appointmentApp.appointment.temperature">Temperature</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('symptom')}>
+                  <Translate contentKey="appointmentApp.appointment.symptom">Symptom</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
                 <th className="hand" onClick={sort('timePeriodCode')}>
                   <Translate contentKey="appointmentApp.appointment.timePeriodCode">Time Period Code</Translate>{' '}
                   <FontAwesomeIcon icon="sort" />
@@ -120,13 +126,17 @@ export const Appointment = (props: IAppointmentProps) => {
                   <td>{appointment.name}</td>
                   <td>{appointment.mobile}</td>
                   <td>{appointment.addr}</td>
+                  <td>{appointment.temperature}</td>
+                  <td>
+                    <Translate contentKey={`appointmentApp.SymptomEnum.${appointment.symptom}`} />
+                  </td>
                   <td>{appointment.timePeriodCode}</td>
                   <td>{appointment.timePeriodValue}</td>
                   <td>
                     <Translate contentKey={`appointmentApp.BusiTypeEnum.${appointment.busiType}`} />
                   </td>
                   <td>
-                    <Translate contentKey={`appointmentApp.YesNoEnum.${appointment.state}`} />
+                    <Translate contentKey={`appointmentApp.AppointStateEnum.${appointment.state}`} />
                   </td>
                   <td>{appointment.opnion}</td>
                   <td>

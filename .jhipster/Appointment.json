@@ -22,6 +22,16 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "temperature",
+            "javadoc": "体温",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "symptom",
+            "fieldType": "SymptomEnum",
+            "fieldValues": "FEVER,COUGH,WEAK"
+        },
+        {
             "fieldName": "timePeriodCode",
             "javadoc": "时间段",
             "fieldType": "String"
@@ -40,8 +50,8 @@
         {
             "fieldName": "state",
             "javadoc": "处理状态",
-            "fieldType": "YesNoEnum",
-            "fieldValues": "YES,NO"
+            "fieldType": "AppointStateEnum",
+            "fieldValues": "UNDO,DO,OUTTIME"
         },
         {
             "fieldName": "opnion",

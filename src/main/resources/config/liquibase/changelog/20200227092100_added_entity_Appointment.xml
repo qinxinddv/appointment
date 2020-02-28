@@ -28,6 +28,12 @@
             <column name="addr" type="varchar(255)" remarks="家庭地址">
                 <constraints nullable="true" />
             </column>
+            <column name="temperature" type="varchar(255)" remarks="体温">
+                <constraints nullable="true" />
+            </column>
+            <column name="symptom" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="time_period_code" type="varchar(255)" remarks="时间段">
                 <constraints nullable="true" />
             </column>
@@ -84,6 +90,8 @@
             <column name="name" type="string"/>
             <column name="mobile" type="string"/>
             <column name="addr" type="string"/>
+            <column name="temperature" type="string"/>
+            <column name="symptom" type="string"/>
             <column name="time_period_code" type="string"/>
             <column name="time_period_value" type="string"/>
             <column name="busi_type" type="string"/>

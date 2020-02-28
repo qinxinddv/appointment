@@ -1,0 +1,10 @@
+{
+  "appointmentApp": {
+    "AppointStateEnum": {
+      "null": "",
+      "UNDO": "UNDO",
+      "DO": "DO",
+      "OUTTIME": "OUTTIME"
+    }
+  }
+}
