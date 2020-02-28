@@ -18,11 +18,13 @@
       },
       "name": "Name",
       "addr": "Addr",
+      "coordinate": "Coordinate",
       "appointment": "Appointment",
       "appointmentPool": "Appointment Pool",
       "help": {
         "name": "机构名称",
-        "addr": "地址"
+        "addr": "地址",
+        "coordinate": "坐标"
       }
     }
   }

@@ -35,6 +35,12 @@ public class Org implements Serializable {
     @Column(name = "addr")
     private String addr;
 
+    /**
+     * 坐标
+     */
+    @Column(name = "coordinate")
+    private String coordinate;
+
     @OneToMany(mappedBy = "org")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Appointment> appointments = new HashSet<>();
@@ -76,6 +82,19 @@ public class Org implements Serializable {
 
     public void setAddr(String addr) {
         this.addr = addr;
+    }
+
+    public String getCoordinate() {
+        return coordinate;
+    }
+
+    public Org coordinate(String coordinate) {
+        this.coordinate = coordinate;
+        return this;
+    }
+
+    public void setCoordinate(String coordinate) {
+        this.coordinate = coordinate;
     }
 
     public Set<Appointment> getAppointments() {
@@ -151,6 +170,7 @@ public class Org implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", addr='" + getAddr() + "'" +
+            ", coordinate='" + getCoordinate() + "'" +
             "}";
     }
 }

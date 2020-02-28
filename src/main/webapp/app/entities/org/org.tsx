@@ -70,6 +70,9 @@ export const Org = (props: IOrgProps) => {
                 <th className="hand" onClick={sort('addr')}>
                   <Translate contentKey="appointmentApp.org.addr">Addr</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('coordinate')}>
+                  <Translate contentKey="appointmentApp.org.coordinate">Coordinate</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
                 <th />
               </tr>
             </thead>
@@ -83,6 +86,7 @@ export const Org = (props: IOrgProps) => {
                   </td>
                   <td>{org.name}</td>
                   <td>{org.addr}</td>
+                  <td>{org.coordinate}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${org.id}`} color="info" size="sm">
