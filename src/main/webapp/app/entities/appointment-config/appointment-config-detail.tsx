@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import { Button, Row, Col } from 'reactstrap';
+import { Button, UncontrolledTooltip, Row, Col } from 'reactstrap';
 import { Translate, ICrudGetAction } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -30,18 +30,27 @@ export const AppointmentConfigDetail = (props: IAppointmentConfigDetailProps) =>
             <span id="period">
               <Translate contentKey="appointmentApp.appointmentConfig.period">Period</Translate>
             </span>
+            <UncontrolledTooltip target="period">
+              <Translate contentKey="appointmentApp.appointmentConfig.help.period" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{appointmentConfigEntity.period}</dd>
           <dt>
             <span id="num">
               <Translate contentKey="appointmentApp.appointmentConfig.num">Num</Translate>
             </span>
+            <UncontrolledTooltip target="num">
+              <Translate contentKey="appointmentApp.appointmentConfig.help.num" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{appointmentConfigEntity.num}</dd>
           <dt>
             <span id="busiType">
               <Translate contentKey="appointmentApp.appointmentConfig.busiType">Busi Type</Translate>
             </span>
+            <UncontrolledTooltip target="busiType">
+              <Translate contentKey="appointmentApp.appointmentConfig.help.busiType" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{appointmentConfigEntity.busiType}</dd>
         </dl>

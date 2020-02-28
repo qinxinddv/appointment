@@ -6,14 +6,13 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
 import com.bank.domain.enumeration.CommunityStateEnum;
 
 /**
- * A Community.
+ * 小区表
  */
 @Entity
 @Table(name = "community")
@@ -26,24 +25,30 @@ public class Community implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * 小区名称
+     */
     @Column(name = "name")
     private String name;
 
+    /**
+     * 小区地址
+     */
     @Column(name = "addr")
     private String addr;
 
+    /**
+     * 小区状态
+     */
     @Column(name = "state")
     private String state;
 
+    /**
+     * 小区状态
+     */
     @Enumerated(EnumType.STRING)
     @Column(name = "community_state_enum")
     private CommunityStateEnum communityStateEnum;
-
-    @Column(name = "created_date")
-    private LocalDate createdDate;
-
-    @Column(name = "last_modified_date")
-    private LocalDate lastModifiedDate;
 
     @OneToMany(mappedBy = "community")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -110,32 +115,6 @@ public class Community implements Serializable {
         this.communityStateEnum = communityStateEnum;
     }
 
-    public LocalDate getCreatedDate() {
-        return createdDate;
-    }
-
-    public Community createdDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
-        return this;
-    }
-
-    public void setCreatedDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public LocalDate getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public Community lastModifiedDate(LocalDate lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-        return this;
-    }
-
-    public void setLastModifiedDate(LocalDate lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
-
     public Set<Appointment> getAppointments() {
         return appointments;
     }
@@ -186,8 +165,6 @@ public class Community implements Serializable {
             ", addr='" + getAddr() + "'" +
             ", state='" + getState() + "'" +
             ", communityStateEnum='" + getCommunityStateEnum() + "'" +
-            ", createdDate='" + getCreatedDate() + "'" +
-            ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             "}";
     }
 }

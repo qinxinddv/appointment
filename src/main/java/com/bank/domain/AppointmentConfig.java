@@ -10,7 +10,7 @@ import java.io.Serializable;
 import com.bank.domain.enumeration.BusiTypeEnum;
 
 /**
- * A AppointmentConfig.
+ * 预约配置表
  */
 @Entity
 @Table(name = "appointment_config")
@@ -23,12 +23,21 @@ public class AppointmentConfig implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * 时间段
+     */
     @Column(name = "period")
     private String period;
 
+    /**
+     * 数量
+     */
     @Column(name = "num")
     private Integer num;
 
+    /**
+     * 类型（个人、企业、司法查询）
+     */
     @Enumerated(EnumType.STRING)
     @Column(name = "busi_type")
     private BusiTypeEnum busiType;

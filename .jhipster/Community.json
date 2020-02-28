@@ -3,28 +3,24 @@
     "fields": [
         {
             "fieldName": "name",
+            "javadoc": "小区名称",
             "fieldType": "String"
         },
         {
             "fieldName": "addr",
+            "javadoc": "小区地址",
             "fieldType": "String"
         },
         {
             "fieldName": "state",
+            "javadoc": "小区状态",
             "fieldType": "String"
         },
         {
             "fieldName": "communityStateEnum",
+            "javadoc": "小区状态",
             "fieldType": "CommunityStateEnum",
             "fieldValues": "NORMAL,FORBID"
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
         }
     ],
     "relationships": [
@@ -44,5 +40,6 @@
     "fluentMethods": true,
     "readOnly": false,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "javadoc": "小区表"
 }

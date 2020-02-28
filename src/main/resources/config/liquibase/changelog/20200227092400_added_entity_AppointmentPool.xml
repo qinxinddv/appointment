@@ -12,23 +12,23 @@
         Added the entity AppointmentPool.
     -->
     <changeSet id="20200227092400-1" author="jhipster">
-        <createTable tableName="appointment_pool">
+        <createTable tableName="appointment_pool" remarks="预约池">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="date" type="varchar(255)">
+            <column name="date" type="varchar(255)" remarks="日期">
                 <constraints nullable="true" />
             </column>
-            <column name="period" type="varchar(255)">
+            <column name="period" type="varchar(255)" remarks="时间段">
                 <constraints nullable="true" />
             </column>
-            <column name="total_num" type="integer">
+            <column name="total_num" type="integer" remarks="总数">
                 <constraints nullable="true" />
             </column>
-            <column name="left_num" type="integer">
+            <column name="left_num" type="integer" remarks="剩余数量">
                 <constraints nullable="true" />
             </column>
-            <column name="busi_type" type="varchar(255)">
+            <column name="busi_type" type="varchar(255)" remarks="类型（个人、企业、司法查询）">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->

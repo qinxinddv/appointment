@@ -20,9 +20,13 @@
       "addr": "Addr",
       "state": "State",
       "communityStateEnum": "Community State Enum",
-      "createdDate": "Created Date",
-      "lastModifiedDate": "Last Modified Date",
-      "appointment": "Appointment"
+      "appointment": "Appointment",
+      "help": {
+        "name": "小区名称",
+        "addr": "小区地址",
+        "state": "小区状态",
+        "communityStateEnum": "小区状态"
+      }
     }
   }
 }

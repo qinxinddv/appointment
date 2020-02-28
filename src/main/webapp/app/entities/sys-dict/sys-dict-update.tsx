@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import { Button, Row, Col, Label } from 'reactstrap';
+import { Button, Row, Col, Label, UncontrolledTooltip } from 'reactstrap';
 import { AvFeedback, AvForm, AvGroup, AvInput, AvField } from 'availity-reactstrap-validation';
 import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -80,66 +80,81 @@ export const SysDictUpdate = (props: ISysDictUpdateProps) => {
                   <Translate contentKey="appointmentApp.sysDict.name">Name</Translate>
                 </Label>
                 <AvField id="sys-dict-name" type="text" name="name" />
+                <UncontrolledTooltip target="nameLabel">
+                  <Translate contentKey="appointmentApp.sysDict.help.name" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="typeLabel" for="sys-dict-type">
                   <Translate contentKey="appointmentApp.sysDict.type">Type</Translate>
                 </Label>
                 <AvField id="sys-dict-type" type="text" name="type" />
+                <UncontrolledTooltip target="typeLabel">
+                  <Translate contentKey="appointmentApp.sysDict.help.type" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="codeLabel" for="sys-dict-code">
                   <Translate contentKey="appointmentApp.sysDict.code">Code</Translate>
                 </Label>
                 <AvField id="sys-dict-code" type="text" name="code" />
+                <UncontrolledTooltip target="codeLabel">
+                  <Translate contentKey="appointmentApp.sysDict.help.code" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="valueLabel" for="sys-dict-value">
                   <Translate contentKey="appointmentApp.sysDict.value">Value</Translate>
                 </Label>
                 <AvField id="sys-dict-value" type="text" name="value" />
+                <UncontrolledTooltip target="valueLabel">
+                  <Translate contentKey="appointmentApp.sysDict.help.value" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="parentIdLabel" for="sys-dict-parentId">
                   <Translate contentKey="appointmentApp.sysDict.parentId">Parent Id</Translate>
                 </Label>
                 <AvField id="sys-dict-parentId" type="string" className="form-control" name="parentId" />
+                <UncontrolledTooltip target="parentIdLabel">
+                  <Translate contentKey="appointmentApp.sysDict.help.parentId" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="descLabel" for="sys-dict-desc">
                   <Translate contentKey="appointmentApp.sysDict.desc">Desc</Translate>
                 </Label>
                 <AvField id="sys-dict-desc" type="text" name="desc" />
+                <UncontrolledTooltip target="descLabel">
+                  <Translate contentKey="appointmentApp.sysDict.help.desc" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="extend1Label" for="sys-dict-extend1">
                   <Translate contentKey="appointmentApp.sysDict.extend1">Extend 1</Translate>
                 </Label>
                 <AvField id="sys-dict-extend1" type="text" name="extend1" />
+                <UncontrolledTooltip target="extend1Label">
+                  <Translate contentKey="appointmentApp.sysDict.help.extend1" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="extend2Label" for="sys-dict-extend2">
                   <Translate contentKey="appointmentApp.sysDict.extend2">Extend 2</Translate>
                 </Label>
                 <AvField id="sys-dict-extend2" type="text" name="extend2" />
+                <UncontrolledTooltip target="extend2Label">
+                  <Translate contentKey="appointmentApp.sysDict.help.extend2" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="extend3Label" for="sys-dict-extend3">
                   <Translate contentKey="appointmentApp.sysDict.extend3">Extend 3</Translate>
                 </Label>
                 <AvField id="sys-dict-extend3" type="text" name="extend3" />
-              </AvGroup>
-              <AvGroup>
-                <Label id="createdDateLabel" for="sys-dict-createdDate">
-                  <Translate contentKey="appointmentApp.sysDict.createdDate">Created Date</Translate>
-                </Label>
-                <AvField id="sys-dict-createdDate" type="date" className="form-control" name="createdDate" />
-              </AvGroup>
-              <AvGroup>
-                <Label id="lastModifiedDateLabel" for="sys-dict-lastModifiedDate">
-                  <Translate contentKey="appointmentApp.sysDict.lastModifiedDate">Last Modified Date</Translate>
-                </Label>
-                <AvField id="sys-dict-lastModifiedDate" type="date" className="form-control" name="lastModifiedDate" />
+                <UncontrolledTooltip target="extend3Label">
+                  <Translate contentKey="appointmentApp.sysDict.help.extend3" />
+                </UncontrolledTooltip>
               </AvGroup>
               <Button tag={Link} id="cancel-save" to="/sys-dict" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />

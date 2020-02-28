@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import { Button, Row, Col, Label } from 'reactstrap';
+import { Button, Row, Col, Label, UncontrolledTooltip } from 'reactstrap';
 import { AvFeedback, AvForm, AvGroup, AvInput, AvField } from 'availity-reactstrap-validation';
 import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -80,18 +80,27 @@ export const CommunityUpdate = (props: ICommunityUpdateProps) => {
                   <Translate contentKey="appointmentApp.community.name">Name</Translate>
                 </Label>
                 <AvField id="community-name" type="text" name="name" />
+                <UncontrolledTooltip target="nameLabel">
+                  <Translate contentKey="appointmentApp.community.help.name" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="addrLabel" for="community-addr">
                   <Translate contentKey="appointmentApp.community.addr">Addr</Translate>
                 </Label>
                 <AvField id="community-addr" type="text" name="addr" />
+                <UncontrolledTooltip target="addrLabel">
+                  <Translate contentKey="appointmentApp.community.help.addr" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="stateLabel" for="community-state">
                   <Translate contentKey="appointmentApp.community.state">State</Translate>
                 </Label>
                 <AvField id="community-state" type="text" name="state" />
+                <UncontrolledTooltip target="stateLabel">
+                  <Translate contentKey="appointmentApp.community.help.state" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="communityStateEnumLabel" for="community-communityStateEnum">
@@ -107,18 +116,9 @@ export const CommunityUpdate = (props: ICommunityUpdateProps) => {
                   <option value="NORMAL">{translate('appointmentApp.CommunityStateEnum.NORMAL')}</option>
                   <option value="FORBID">{translate('appointmentApp.CommunityStateEnum.FORBID')}</option>
                 </AvInput>
-              </AvGroup>
-              <AvGroup>
-                <Label id="createdDateLabel" for="community-createdDate">
-                  <Translate contentKey="appointmentApp.community.createdDate">Created Date</Translate>
-                </Label>
-                <AvField id="community-createdDate" type="date" className="form-control" name="createdDate" />
-              </AvGroup>
-              <AvGroup>
-                <Label id="lastModifiedDateLabel" for="community-lastModifiedDate">
-                  <Translate contentKey="appointmentApp.community.lastModifiedDate">Last Modified Date</Translate>
-                </Label>
-                <AvField id="community-lastModifiedDate" type="date" className="form-control" name="lastModifiedDate" />
+                <UncontrolledTooltip target="communityStateEnumLabel">
+                  <Translate contentKey="appointmentApp.community.help.communityStateEnum" />
+                </UncontrolledTooltip>
               </AvGroup>
               <Button tag={Link} id="cancel-save" to="/community" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />

@@ -20,7 +20,14 @@
       "period": "Period",
       "totalNum": "Total Num",
       "leftNum": "Left Num",
-      "busiType": "Busi Type"
+      "busiType": "Busi Type",
+      "help": {
+        "date": "日期",
+        "period": "时间段",
+        "totalNum": "总数",
+        "leftNum": "剩余数量",
+        "busiType": "类型（个人、企业、司法查询）"
+      }
     }
   }
 }

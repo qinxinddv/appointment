@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * A BlackKey.
+ * 黑名单关键字
  */
 @Entity
 @Table(name = "black_key")
@@ -21,6 +21,9 @@ public class BlackKey implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * 关键字
+     */
     @Column(name = "jhi_key")
     private String key;
 

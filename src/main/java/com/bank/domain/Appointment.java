@@ -7,14 +7,13 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 import com.bank.domain.enumeration.BusiTypeEnum;
 
 import com.bank.domain.enumeration.YesNoEnum;
 
 /**
- * A Appointment.
+ * 预约申请表
  */
 @Entity
 @Table(name = "appointment")
@@ -27,37 +26,55 @@ public class Appointment implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * 身份证号
+     */
     @Column(name = "id_card")
     private String idCard;
 
+    /**
+     * 姓名
+     */
     @Column(name = "name")
     private String name;
 
+    /**
+     * 手机号
+     */
     @Column(name = "mobile")
     private String mobile;
 
+    /**
+     * 时间段
+     */
     @Column(name = "time_period_code")
     private String timePeriodCode;
 
+    /**
+     * 时间段值
+     */
     @Column(name = "time_period_value")
     private String timePeriodValue;
 
+    /**
+     * 类型（个人、企业、司法查询）
+     */
     @Enumerated(EnumType.STRING)
     @Column(name = "busi_type")
     private BusiTypeEnum busiType;
 
+    /**
+     * 处理状态
+     */
     @Enumerated(EnumType.STRING)
     @Column(name = "state")
     private YesNoEnum state;
 
+    /**
+     * 处理意见
+     */
     @Column(name = "opnion")
     private String opnion;
-
-    @Column(name = "created_date")
-    private LocalDate createdDate;
-
-    @Column(name = "last_modified_date")
-    private LocalDate lastModifiedDate;
 
     @ManyToOne
     @JsonIgnoreProperties("appointments")
@@ -176,32 +193,6 @@ public class Appointment implements Serializable {
         this.opnion = opnion;
     }
 
-    public LocalDate getCreatedDate() {
-        return createdDate;
-    }
-
-    public Appointment createdDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
-        return this;
-    }
-
-    public void setCreatedDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public LocalDate getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public Appointment lastModifiedDate(LocalDate lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-        return this;
-    }
-
-    public void setLastModifiedDate(LocalDate lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
-
     public Community getCommunity() {
         return community;
     }
@@ -244,8 +235,6 @@ public class Appointment implements Serializable {
             ", busiType='" + getBusiType() + "'" +
             ", state='" + getState() + "'" +
             ", opnion='" + getOpnion() + "'" +
-            ", createdDate='" + getCreatedDate() + "'" +
-            ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             "}";
     }
 }

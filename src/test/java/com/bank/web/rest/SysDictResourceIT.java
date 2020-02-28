@@ -22,8 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.List;
 
 import static com.bank.web.rest.TestUtil.createFormattingConversionService;
@@ -64,12 +62,6 @@ public class SysDictResourceIT {
 
     private static final String DEFAULT_EXTEND_3 = "AAAAAAAAAA";
     private static final String UPDATED_EXTEND_3 = "BBBBBBBBBB";
-
-    private static final LocalDate DEFAULT_CREATED_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_CREATED_DATE = LocalDate.now(ZoneId.systemDefault());
-
-    private static final LocalDate DEFAULT_LAST_MODIFIED_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_LAST_MODIFIED_DATE = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private SysDictRepository sysDictRepository;
@@ -127,9 +119,7 @@ public class SysDictResourceIT {
             .desc(DEFAULT_DESC)
             .extend1(DEFAULT_EXTEND_1)
             .extend2(DEFAULT_EXTEND_2)
-            .extend3(DEFAULT_EXTEND_3)
-            .createdDate(DEFAULT_CREATED_DATE)
-            .lastModifiedDate(DEFAULT_LAST_MODIFIED_DATE);
+            .extend3(DEFAULT_EXTEND_3);
         return sysDict;
     }
     /**
@@ -148,9 +138,7 @@ public class SysDictResourceIT {
             .desc(UPDATED_DESC)
             .extend1(UPDATED_EXTEND_1)
             .extend2(UPDATED_EXTEND_2)
-            .extend3(UPDATED_EXTEND_3)
-            .createdDate(UPDATED_CREATED_DATE)
-            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
+            .extend3(UPDATED_EXTEND_3);
         return sysDict;
     }
 
@@ -184,8 +172,6 @@ public class SysDictResourceIT {
         assertThat(testSysDict.getExtend1()).isEqualTo(DEFAULT_EXTEND_1);
         assertThat(testSysDict.getExtend2()).isEqualTo(DEFAULT_EXTEND_2);
         assertThat(testSysDict.getExtend3()).isEqualTo(DEFAULT_EXTEND_3);
-        assertThat(testSysDict.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
-        assertThat(testSysDict.getLastModifiedDate()).isEqualTo(DEFAULT_LAST_MODIFIED_DATE);
     }
 
     @Test
@@ -228,9 +214,7 @@ public class SysDictResourceIT {
             .andExpect(jsonPath("$.[*].desc").value(hasItem(DEFAULT_DESC)))
             .andExpect(jsonPath("$.[*].extend1").value(hasItem(DEFAULT_EXTEND_1)))
             .andExpect(jsonPath("$.[*].extend2").value(hasItem(DEFAULT_EXTEND_2)))
-            .andExpect(jsonPath("$.[*].extend3").value(hasItem(DEFAULT_EXTEND_3)))
-            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())))
-            .andExpect(jsonPath("$.[*].lastModifiedDate").value(hasItem(DEFAULT_LAST_MODIFIED_DATE.toString())));
+            .andExpect(jsonPath("$.[*].extend3").value(hasItem(DEFAULT_EXTEND_3)));
     }
     
     @Test
@@ -252,9 +236,7 @@ public class SysDictResourceIT {
             .andExpect(jsonPath("$.desc").value(DEFAULT_DESC))
             .andExpect(jsonPath("$.extend1").value(DEFAULT_EXTEND_1))
             .andExpect(jsonPath("$.extend2").value(DEFAULT_EXTEND_2))
-            .andExpect(jsonPath("$.extend3").value(DEFAULT_EXTEND_3))
-            .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE.toString()))
-            .andExpect(jsonPath("$.lastModifiedDate").value(DEFAULT_LAST_MODIFIED_DATE.toString()));
+            .andExpect(jsonPath("$.extend3").value(DEFAULT_EXTEND_3));
     }
 
     @Test
@@ -286,9 +268,7 @@ public class SysDictResourceIT {
             .desc(UPDATED_DESC)
             .extend1(UPDATED_EXTEND_1)
             .extend2(UPDATED_EXTEND_2)
-            .extend3(UPDATED_EXTEND_3)
-            .createdDate(UPDATED_CREATED_DATE)
-            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
+            .extend3(UPDATED_EXTEND_3);
         SysDictDTO sysDictDTO = sysDictMapper.toDto(updatedSysDict);
 
         restSysDictMockMvc.perform(put("/api/sys-dicts")
@@ -309,8 +289,6 @@ public class SysDictResourceIT {
         assertThat(testSysDict.getExtend1()).isEqualTo(UPDATED_EXTEND_1);
         assertThat(testSysDict.getExtend2()).isEqualTo(UPDATED_EXTEND_2);
         assertThat(testSysDict.getExtend3()).isEqualTo(UPDATED_EXTEND_3);
-        assertThat(testSysDict.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
-        assertThat(testSysDict.getLastModifiedDate()).isEqualTo(UPDATED_LAST_MODIFIED_DATE);
     }
 
     @Test

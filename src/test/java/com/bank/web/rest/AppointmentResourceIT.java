@@ -22,8 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.List;
 
 import static com.bank.web.rest.TestUtil.createFormattingConversionService;
@@ -63,12 +61,6 @@ public class AppointmentResourceIT {
 
     private static final String DEFAULT_OPNION = "AAAAAAAAAA";
     private static final String UPDATED_OPNION = "BBBBBBBBBB";
-
-    private static final LocalDate DEFAULT_CREATED_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_CREATED_DATE = LocalDate.now(ZoneId.systemDefault());
-
-    private static final LocalDate DEFAULT_LAST_MODIFIED_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_LAST_MODIFIED_DATE = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private AppointmentRepository appointmentRepository;
@@ -125,9 +117,7 @@ public class AppointmentResourceIT {
             .timePeriodValue(DEFAULT_TIME_PERIOD_VALUE)
             .busiType(DEFAULT_BUSI_TYPE)
             .state(DEFAULT_STATE)
-            .opnion(DEFAULT_OPNION)
-            .createdDate(DEFAULT_CREATED_DATE)
-            .lastModifiedDate(DEFAULT_LAST_MODIFIED_DATE);
+            .opnion(DEFAULT_OPNION);
         return appointment;
     }
     /**
@@ -145,9 +135,7 @@ public class AppointmentResourceIT {
             .timePeriodValue(UPDATED_TIME_PERIOD_VALUE)
             .busiType(UPDATED_BUSI_TYPE)
             .state(UPDATED_STATE)
-            .opnion(UPDATED_OPNION)
-            .createdDate(UPDATED_CREATED_DATE)
-            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
+            .opnion(UPDATED_OPNION);
         return appointment;
     }
 
@@ -180,8 +168,6 @@ public class AppointmentResourceIT {
         assertThat(testAppointment.getBusiType()).isEqualTo(DEFAULT_BUSI_TYPE);
         assertThat(testAppointment.getState()).isEqualTo(DEFAULT_STATE);
         assertThat(testAppointment.getOpnion()).isEqualTo(DEFAULT_OPNION);
-        assertThat(testAppointment.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
-        assertThat(testAppointment.getLastModifiedDate()).isEqualTo(DEFAULT_LAST_MODIFIED_DATE);
     }
 
     @Test
@@ -223,9 +209,7 @@ public class AppointmentResourceIT {
             .andExpect(jsonPath("$.[*].timePeriodValue").value(hasItem(DEFAULT_TIME_PERIOD_VALUE)))
             .andExpect(jsonPath("$.[*].busiType").value(hasItem(DEFAULT_BUSI_TYPE.toString())))
             .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
-            .andExpect(jsonPath("$.[*].opnion").value(hasItem(DEFAULT_OPNION)))
-            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())))
-            .andExpect(jsonPath("$.[*].lastModifiedDate").value(hasItem(DEFAULT_LAST_MODIFIED_DATE.toString())));
+            .andExpect(jsonPath("$.[*].opnion").value(hasItem(DEFAULT_OPNION)));
     }
     
     @Test
@@ -246,9 +230,7 @@ public class AppointmentResourceIT {
             .andExpect(jsonPath("$.timePeriodValue").value(DEFAULT_TIME_PERIOD_VALUE))
             .andExpect(jsonPath("$.busiType").value(DEFAULT_BUSI_TYPE.toString()))
             .andExpect(jsonPath("$.state").value(DEFAULT_STATE.toString()))
-            .andExpect(jsonPath("$.opnion").value(DEFAULT_OPNION))
-            .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE.toString()))
-            .andExpect(jsonPath("$.lastModifiedDate").value(DEFAULT_LAST_MODIFIED_DATE.toString()));
+            .andExpect(jsonPath("$.opnion").value(DEFAULT_OPNION));
     }
 
     @Test
@@ -279,9 +261,7 @@ public class AppointmentResourceIT {
             .timePeriodValue(UPDATED_TIME_PERIOD_VALUE)
             .busiType(UPDATED_BUSI_TYPE)
             .state(UPDATED_STATE)
-            .opnion(UPDATED_OPNION)
-            .createdDate(UPDATED_CREATED_DATE)
-            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
+            .opnion(UPDATED_OPNION);
         AppointmentDTO appointmentDTO = appointmentMapper.toDto(updatedAppointment);
 
         restAppointmentMockMvc.perform(put("/api/appointments")
@@ -301,8 +281,6 @@ public class AppointmentResourceIT {
         assertThat(testAppointment.getBusiType()).isEqualTo(UPDATED_BUSI_TYPE);
         assertThat(testAppointment.getState()).isEqualTo(UPDATED_STATE);
         assertThat(testAppointment.getOpnion()).isEqualTo(UPDATED_OPNION);
-        assertThat(testAppointment.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
-        assertThat(testAppointment.getLastModifiedDate()).isEqualTo(UPDATED_LAST_MODIFIED_DATE);
     }
 
     @Test

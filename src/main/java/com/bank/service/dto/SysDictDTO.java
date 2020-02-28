@@ -1,37 +1,71 @@
 package com.bank.service.dto;
 
-import java.time.LocalDate;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * A DTO for the {@link com.bank.domain.SysDict} entity.
  */
+@ApiModel(description = "字典表")
 public class SysDictDTO implements Serializable {
 
     private Long id;
 
+    /**
+     * 字典名称
+     */
+    @ApiModelProperty(value = "字典名称")
     private String name;
 
+    /**
+     * 字典类型
+     */
+    @ApiModelProperty(value = "字典类型")
     private String type;
 
+    /**
+     * 字典编码
+     */
+    @ApiModelProperty(value = "字典编码")
     private String code;
 
+    /**
+     * 字典值
+     */
+    @ApiModelProperty(value = "字典值")
     private String value;
 
+    /**
+     * 父节点ID
+     */
+    @ApiModelProperty(value = "父节点ID")
     private Long parentId;
 
+    /**
+     * 描述
+     */
+    @ApiModelProperty(value = "描述")
     private String desc;
 
+    /**
+     * 扩展字段1
+     */
+    @ApiModelProperty(value = "扩展字段1")
     private String extend1;
 
+    /**
+     * 扩展字段1
+     */
+    @ApiModelProperty(value = "扩展字段1")
     private String extend2;
 
+    /**
+     * 扩展字段1
+     */
+    @ApiModelProperty(value = "扩展字段1")
     private String extend3;
-
-    private LocalDate createdDate;
-
-    private LocalDate lastModifiedDate;
 
 
     public Long getId() {
@@ -114,22 +148,6 @@ public class SysDictDTO implements Serializable {
         this.extend3 = extend3;
     }
 
-    public LocalDate getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public LocalDate getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(LocalDate lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -164,8 +182,6 @@ public class SysDictDTO implements Serializable {
             ", extend1='" + getExtend1() + "'" +
             ", extend2='" + getExtend2() + "'" +
             ", extend3='" + getExtend3() + "'" +
-            ", createdDate='" + getCreatedDate() + "'" +
-            ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             "}";
     }
 }

@@ -1,6 +1,7 @@
 package com.bank.service.dto;
 
-import java.time.LocalDate;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Objects;
 import com.bank.domain.enumeration.CommunityStateEnum;
@@ -8,21 +9,34 @@ import com.bank.domain.enumeration.CommunityStateEnum;
 /**
  * A DTO for the {@link com.bank.domain.Community} entity.
  */
+@ApiModel(description = "小区表")
 public class CommunityDTO implements Serializable {
 
     private Long id;
 
+    /**
+     * 小区名称
+     */
+    @ApiModelProperty(value = "小区名称")
     private String name;
 
+    /**
+     * 小区地址
+     */
+    @ApiModelProperty(value = "小区地址")
     private String addr;
 
+    /**
+     * 小区状态
+     */
+    @ApiModelProperty(value = "小区状态")
     private String state;
 
+    /**
+     * 小区状态
+     */
+    @ApiModelProperty(value = "小区状态")
     private CommunityStateEnum communityStateEnum;
-
-    private LocalDate createdDate;
-
-    private LocalDate lastModifiedDate;
 
 
     public Long getId() {
@@ -65,22 +79,6 @@ public class CommunityDTO implements Serializable {
         this.communityStateEnum = communityStateEnum;
     }
 
-    public LocalDate getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public LocalDate getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(LocalDate lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -110,8 +108,6 @@ public class CommunityDTO implements Serializable {
             ", addr='" + getAddr() + "'" +
             ", state='" + getState() + "'" +
             ", communityStateEnum='" + getCommunityStateEnum() + "'" +
-            ", createdDate='" + getCreatedDate() + "'" +
-            ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             "}";
     }
 }

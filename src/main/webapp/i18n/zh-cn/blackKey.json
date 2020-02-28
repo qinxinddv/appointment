@@ -16,7 +16,10 @@
       "detail": {
         "title": "Black Key"
       },
-      "key": "Key"
+      "key": "Key",
+      "help": {
+        "key": "关键字"
+      }
     }
   }
 }
