@@ -1,5 +1,3 @@
-import { Moment } from 'moment';
-
 export interface ISysDict {
   id?: number;
   name?: string;
@@ -11,8 +9,6 @@ export interface ISysDict {
   extend1?: string;
   extend2?: string;
   extend3?: string;
-  createdDate?: Moment;
-  lastModifiedDate?: Moment;
 }
 
 export const defaultValue: Readonly<ISysDict> = {};

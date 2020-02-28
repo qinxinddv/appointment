@@ -1,5 +1,7 @@
 package com.bank.service.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Objects;
 import com.bank.domain.enumeration.BusiTypeEnum;
@@ -7,14 +9,27 @@ import com.bank.domain.enumeration.BusiTypeEnum;
 /**
  * A DTO for the {@link com.bank.domain.AppointmentConfig} entity.
  */
+@ApiModel(description = "预约配置表")
 public class AppointmentConfigDTO implements Serializable {
 
     private Long id;
 
+    /**
+     * 时间段
+     */
+    @ApiModelProperty(value = "时间段")
     private String period;
 
+    /**
+     * 数量
+     */
+    @ApiModelProperty(value = "数量")
     private Integer num;
 
+    /**
+     * 类型（个人、企业、司法查询）
+     */
+    @ApiModelProperty(value = "类型（个人、企业、司法查询）")
     private BusiTypeEnum busiType;
 
 

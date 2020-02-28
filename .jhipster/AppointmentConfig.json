@@ -3,14 +3,17 @@
     "fields": [
         {
             "fieldName": "period",
+            "javadoc": "时间段",
             "fieldType": "String"
         },
         {
             "fieldName": "num",
+            "javadoc": "数量",
             "fieldType": "Integer"
         },
         {
             "fieldName": "busiType",
+            "javadoc": "类型（个人、企业、司法查询）",
             "fieldType": "BusiTypeEnum",
             "fieldValues": "PERSON,ORG,LAW"
         }
@@ -25,5 +28,6 @@
     "fluentMethods": true,
     "readOnly": false,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "javadoc": "预约配置表"
 }

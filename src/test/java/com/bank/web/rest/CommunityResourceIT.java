@@ -22,8 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.List;
 
 import static com.bank.web.rest.TestUtil.createFormattingConversionService;
@@ -50,12 +48,6 @@ public class CommunityResourceIT {
 
     private static final CommunityStateEnum DEFAULT_COMMUNITY_STATE_ENUM = CommunityStateEnum.NORMAL;
     private static final CommunityStateEnum UPDATED_COMMUNITY_STATE_ENUM = CommunityStateEnum.FORBID;
-
-    private static final LocalDate DEFAULT_CREATED_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_CREATED_DATE = LocalDate.now(ZoneId.systemDefault());
-
-    private static final LocalDate DEFAULT_LAST_MODIFIED_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_LAST_MODIFIED_DATE = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private CommunityRepository communityRepository;
@@ -108,9 +100,7 @@ public class CommunityResourceIT {
             .name(DEFAULT_NAME)
             .addr(DEFAULT_ADDR)
             .state(DEFAULT_STATE)
-            .communityStateEnum(DEFAULT_COMMUNITY_STATE_ENUM)
-            .createdDate(DEFAULT_CREATED_DATE)
-            .lastModifiedDate(DEFAULT_LAST_MODIFIED_DATE);
+            .communityStateEnum(DEFAULT_COMMUNITY_STATE_ENUM);
         return community;
     }
     /**
@@ -124,9 +114,7 @@ public class CommunityResourceIT {
             .name(UPDATED_NAME)
             .addr(UPDATED_ADDR)
             .state(UPDATED_STATE)
-            .communityStateEnum(UPDATED_COMMUNITY_STATE_ENUM)
-            .createdDate(UPDATED_CREATED_DATE)
-            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
+            .communityStateEnum(UPDATED_COMMUNITY_STATE_ENUM);
         return community;
     }
 
@@ -155,8 +143,6 @@ public class CommunityResourceIT {
         assertThat(testCommunity.getAddr()).isEqualTo(DEFAULT_ADDR);
         assertThat(testCommunity.getState()).isEqualTo(DEFAULT_STATE);
         assertThat(testCommunity.getCommunityStateEnum()).isEqualTo(DEFAULT_COMMUNITY_STATE_ENUM);
-        assertThat(testCommunity.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
-        assertThat(testCommunity.getLastModifiedDate()).isEqualTo(DEFAULT_LAST_MODIFIED_DATE);
     }
 
     @Test
@@ -194,9 +180,7 @@ public class CommunityResourceIT {
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
             .andExpect(jsonPath("$.[*].addr").value(hasItem(DEFAULT_ADDR)))
             .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE)))
-            .andExpect(jsonPath("$.[*].communityStateEnum").value(hasItem(DEFAULT_COMMUNITY_STATE_ENUM.toString())))
-            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())))
-            .andExpect(jsonPath("$.[*].lastModifiedDate").value(hasItem(DEFAULT_LAST_MODIFIED_DATE.toString())));
+            .andExpect(jsonPath("$.[*].communityStateEnum").value(hasItem(DEFAULT_COMMUNITY_STATE_ENUM.toString())));
     }
     
     @Test
@@ -213,9 +197,7 @@ public class CommunityResourceIT {
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
             .andExpect(jsonPath("$.addr").value(DEFAULT_ADDR))
             .andExpect(jsonPath("$.state").value(DEFAULT_STATE))
-            .andExpect(jsonPath("$.communityStateEnum").value(DEFAULT_COMMUNITY_STATE_ENUM.toString()))
-            .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE.toString()))
-            .andExpect(jsonPath("$.lastModifiedDate").value(DEFAULT_LAST_MODIFIED_DATE.toString()));
+            .andExpect(jsonPath("$.communityStateEnum").value(DEFAULT_COMMUNITY_STATE_ENUM.toString()));
     }
 
     @Test
@@ -242,9 +224,7 @@ public class CommunityResourceIT {
             .name(UPDATED_NAME)
             .addr(UPDATED_ADDR)
             .state(UPDATED_STATE)
-            .communityStateEnum(UPDATED_COMMUNITY_STATE_ENUM)
-            .createdDate(UPDATED_CREATED_DATE)
-            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
+            .communityStateEnum(UPDATED_COMMUNITY_STATE_ENUM);
         CommunityDTO communityDTO = communityMapper.toDto(updatedCommunity);
 
         restCommunityMockMvc.perform(put("/api/communities")
@@ -260,8 +240,6 @@ public class CommunityResourceIT {
         assertThat(testCommunity.getAddr()).isEqualTo(UPDATED_ADDR);
         assertThat(testCommunity.getState()).isEqualTo(UPDATED_STATE);
         assertThat(testCommunity.getCommunityStateEnum()).isEqualTo(UPDATED_COMMUNITY_STATE_ENUM);
-        assertThat(testCommunity.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
-        assertThat(testCommunity.getLastModifiedDate()).isEqualTo(UPDATED_LAST_MODIFIED_DATE);
     }
 
     @Test

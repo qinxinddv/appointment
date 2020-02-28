@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import { Button, Row, Col } from 'reactstrap';
-import { Translate, ICrudGetAction, TextFormat } from 'react-jhipster';
+import { Button, UncontrolledTooltip, Row, Col } from 'reactstrap';
+import { Translate, ICrudGetAction } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -29,42 +29,38 @@ export const CommunityDetail = (props: ICommunityDetailProps) => {
             <span id="name">
               <Translate contentKey="appointmentApp.community.name">Name</Translate>
             </span>
+            <UncontrolledTooltip target="name">
+              <Translate contentKey="appointmentApp.community.help.name" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{communityEntity.name}</dd>
           <dt>
             <span id="addr">
               <Translate contentKey="appointmentApp.community.addr">Addr</Translate>
             </span>
+            <UncontrolledTooltip target="addr">
+              <Translate contentKey="appointmentApp.community.help.addr" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{communityEntity.addr}</dd>
           <dt>
             <span id="state">
               <Translate contentKey="appointmentApp.community.state">State</Translate>
             </span>
+            <UncontrolledTooltip target="state">
+              <Translate contentKey="appointmentApp.community.help.state" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{communityEntity.state}</dd>
           <dt>
             <span id="communityStateEnum">
               <Translate contentKey="appointmentApp.community.communityStateEnum">Community State Enum</Translate>
             </span>
+            <UncontrolledTooltip target="communityStateEnum">
+              <Translate contentKey="appointmentApp.community.help.communityStateEnum" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{communityEntity.communityStateEnum}</dd>
-          <dt>
-            <span id="createdDate">
-              <Translate contentKey="appointmentApp.community.createdDate">Created Date</Translate>
-            </span>
-          </dt>
-          <dd>
-            <TextFormat value={communityEntity.createdDate} type="date" format={APP_LOCAL_DATE_FORMAT} />
-          </dd>
-          <dt>
-            <span id="lastModifiedDate">
-              <Translate contentKey="appointmentApp.community.lastModifiedDate">Last Modified Date</Translate>
-            </span>
-          </dt>
-          <dd>
-            <TextFormat value={communityEntity.lastModifiedDate} type="date" format={APP_LOCAL_DATE_FORMAT} />
-          </dd>
         </dl>
         <Button tag={Link} to="/community" replace color="info">
           <FontAwesomeIcon icon="arrow-left" />{' '}

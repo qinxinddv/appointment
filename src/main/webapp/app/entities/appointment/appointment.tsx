@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Col, Row, Table } from 'reactstrap';
-import { Translate, ICrudGetAllAction, TextFormat, getSortState, IPaginationBaseState, JhiPagination, JhiItemCount } from 'react-jhipster';
+import { Translate, ICrudGetAllAction, getSortState, IPaginationBaseState, JhiPagination, JhiItemCount } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -90,13 +90,6 @@ export const Appointment = (props: IAppointmentProps) => {
                 <th className="hand" onClick={sort('opnion')}>
                   <Translate contentKey="appointmentApp.appointment.opnion">Opnion</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th className="hand" onClick={sort('createdDate')}>
-                  <Translate contentKey="appointmentApp.appointment.createdDate">Created Date</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('lastModifiedDate')}>
-                  <Translate contentKey="appointmentApp.appointment.lastModifiedDate">Last Modified Date</Translate>{' '}
-                  <FontAwesomeIcon icon="sort" />
-                </th>
                 <th>
                   <Translate contentKey="appointmentApp.appointment.community">Community</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
@@ -123,12 +116,6 @@ export const Appointment = (props: IAppointmentProps) => {
                     <Translate contentKey={`appointmentApp.YesNoEnum.${appointment.state}`} />
                   </td>
                   <td>{appointment.opnion}</td>
-                  <td>
-                    <TextFormat type="date" value={appointment.createdDate} format={APP_LOCAL_DATE_FORMAT} />
-                  </td>
-                  <td>
-                    <TextFormat type="date" value={appointment.lastModifiedDate} format={APP_LOCAL_DATE_FORMAT} />
-                  </td>
                   <td>
                     {appointment.communityId ? <Link to={`community/${appointment.communityId}`}>{appointment.communityId}</Link> : ''}
                   </td>

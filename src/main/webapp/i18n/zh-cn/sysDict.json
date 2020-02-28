@@ -25,8 +25,17 @@
       "extend1": "Extend 1",
       "extend2": "Extend 2",
       "extend3": "Extend 3",
-      "createdDate": "Created Date",
-      "lastModifiedDate": "Last Modified Date"
+      "help": {
+        "name": "字典名称",
+        "type": "字典类型",
+        "code": "字典编码",
+        "value": "字典值",
+        "parentId": "父节点ID",
+        "desc": "描述",
+        "extend1": "扩展字段1",
+        "extend2": "扩展字段1",
+        "extend3": "扩展字段1"
+      }
     }
   }
 }

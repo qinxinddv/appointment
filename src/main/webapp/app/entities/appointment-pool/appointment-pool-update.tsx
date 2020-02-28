@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import { Button, Row, Col, Label } from 'reactstrap';
+import { Button, Row, Col, Label, UncontrolledTooltip } from 'reactstrap';
 import { AvFeedback, AvForm, AvGroup, AvInput, AvField } from 'availity-reactstrap-validation';
 import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -80,24 +80,36 @@ export const AppointmentPoolUpdate = (props: IAppointmentPoolUpdateProps) => {
                   <Translate contentKey="appointmentApp.appointmentPool.date">Date</Translate>
                 </Label>
                 <AvField id="appointment-pool-date" type="text" name="date" />
+                <UncontrolledTooltip target="dateLabel">
+                  <Translate contentKey="appointmentApp.appointmentPool.help.date" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="periodLabel" for="appointment-pool-period">
                   <Translate contentKey="appointmentApp.appointmentPool.period">Period</Translate>
                 </Label>
                 <AvField id="appointment-pool-period" type="text" name="period" />
+                <UncontrolledTooltip target="periodLabel">
+                  <Translate contentKey="appointmentApp.appointmentPool.help.period" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="totalNumLabel" for="appointment-pool-totalNum">
                   <Translate contentKey="appointmentApp.appointmentPool.totalNum">Total Num</Translate>
                 </Label>
                 <AvField id="appointment-pool-totalNum" type="string" className="form-control" name="totalNum" />
+                <UncontrolledTooltip target="totalNumLabel">
+                  <Translate contentKey="appointmentApp.appointmentPool.help.totalNum" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="leftNumLabel" for="appointment-pool-leftNum">
                   <Translate contentKey="appointmentApp.appointmentPool.leftNum">Left Num</Translate>
                 </Label>
                 <AvField id="appointment-pool-leftNum" type="string" className="form-control" name="leftNum" />
+                <UncontrolledTooltip target="leftNumLabel">
+                  <Translate contentKey="appointmentApp.appointmentPool.help.leftNum" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="busiTypeLabel" for="appointment-pool-busiType">
@@ -114,6 +126,9 @@ export const AppointmentPoolUpdate = (props: IAppointmentPoolUpdateProps) => {
                   <option value="ORG">{translate('appointmentApp.BusiTypeEnum.ORG')}</option>
                   <option value="LAW">{translate('appointmentApp.BusiTypeEnum.LAW')}</option>
                 </AvInput>
+                <UncontrolledTooltip target="busiTypeLabel">
+                  <Translate contentKey="appointmentApp.appointmentPool.help.busiType" />
+                </UncontrolledTooltip>
               </AvGroup>
               <Button tag={Link} id="cancel-save" to="/appointment-pool" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />

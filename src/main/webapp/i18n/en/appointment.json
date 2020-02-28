@@ -24,9 +24,17 @@
       "busiType": "Busi Type",
       "state": "State",
       "opnion": "Opnion",
-      "createdDate": "Created Date",
-      "lastModifiedDate": "Last Modified Date",
-      "community": "Community"
+      "community": "Community",
+      "help": {
+        "idCard": "身份证号",
+        "name": "姓名",
+        "mobile": "手机号",
+        "timePeriodCode": "时间段",
+        "timePeriodValue": "时间段值",
+        "busiType": "类型（个人、企业、司法查询）",
+        "state": "处理状态",
+        "opnion": "处理意见"
+      }
     }
   }
 }

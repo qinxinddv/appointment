@@ -1,15 +1,22 @@
 package com.bank.service.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * A DTO for the {@link com.bank.domain.BlackKey} entity.
  */
+@ApiModel(description = "黑名单关键字")
 public class BlackKeyDTO implements Serializable {
 
     private Long id;
 
+    /**
+     * 关键字
+     */
+    @ApiModelProperty(value = "关键字")
     private String key;
 
 

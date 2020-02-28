@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import { Button, Row, Col } from 'reactstrap';
-import { Translate, ICrudGetAction, TextFormat } from 'react-jhipster';
+import { Button, UncontrolledTooltip, Row, Col } from 'reactstrap';
+import { Translate, ICrudGetAction } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -29,72 +29,83 @@ export const SysDictDetail = (props: ISysDictDetailProps) => {
             <span id="name">
               <Translate contentKey="appointmentApp.sysDict.name">Name</Translate>
             </span>
+            <UncontrolledTooltip target="name">
+              <Translate contentKey="appointmentApp.sysDict.help.name" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{sysDictEntity.name}</dd>
           <dt>
             <span id="type">
               <Translate contentKey="appointmentApp.sysDict.type">Type</Translate>
             </span>
+            <UncontrolledTooltip target="type">
+              <Translate contentKey="appointmentApp.sysDict.help.type" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{sysDictEntity.type}</dd>
           <dt>
             <span id="code">
               <Translate contentKey="appointmentApp.sysDict.code">Code</Translate>
             </span>
+            <UncontrolledTooltip target="code">
+              <Translate contentKey="appointmentApp.sysDict.help.code" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{sysDictEntity.code}</dd>
           <dt>
             <span id="value">
               <Translate contentKey="appointmentApp.sysDict.value">Value</Translate>
             </span>
+            <UncontrolledTooltip target="value">
+              <Translate contentKey="appointmentApp.sysDict.help.value" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{sysDictEntity.value}</dd>
           <dt>
             <span id="parentId">
               <Translate contentKey="appointmentApp.sysDict.parentId">Parent Id</Translate>
             </span>
+            <UncontrolledTooltip target="parentId">
+              <Translate contentKey="appointmentApp.sysDict.help.parentId" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{sysDictEntity.parentId}</dd>
           <dt>
             <span id="desc">
               <Translate contentKey="appointmentApp.sysDict.desc">Desc</Translate>
             </span>
+            <UncontrolledTooltip target="desc">
+              <Translate contentKey="appointmentApp.sysDict.help.desc" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{sysDictEntity.desc}</dd>
           <dt>
             <span id="extend1">
               <Translate contentKey="appointmentApp.sysDict.extend1">Extend 1</Translate>
             </span>
+            <UncontrolledTooltip target="extend1">
+              <Translate contentKey="appointmentApp.sysDict.help.extend1" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{sysDictEntity.extend1}</dd>
           <dt>
             <span id="extend2">
               <Translate contentKey="appointmentApp.sysDict.extend2">Extend 2</Translate>
             </span>
+            <UncontrolledTooltip target="extend2">
+              <Translate contentKey="appointmentApp.sysDict.help.extend2" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{sysDictEntity.extend2}</dd>
           <dt>
             <span id="extend3">
               <Translate contentKey="appointmentApp.sysDict.extend3">Extend 3</Translate>
             </span>
+            <UncontrolledTooltip target="extend3">
+              <Translate contentKey="appointmentApp.sysDict.help.extend3" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{sysDictEntity.extend3}</dd>
-          <dt>
-            <span id="createdDate">
-              <Translate contentKey="appointmentApp.sysDict.createdDate">Created Date</Translate>
-            </span>
-          </dt>
-          <dd>
-            <TextFormat value={sysDictEntity.createdDate} type="date" format={APP_LOCAL_DATE_FORMAT} />
-          </dd>
-          <dt>
-            <span id="lastModifiedDate">
-              <Translate contentKey="appointmentApp.sysDict.lastModifiedDate">Last Modified Date</Translate>
-            </span>
-          </dt>
-          <dd>
-            <TextFormat value={sysDictEntity.lastModifiedDate} type="date" format={APP_LOCAL_DATE_FORMAT} />
-          </dd>
         </dl>
         <Button tag={Link} to="/sys-dict" replace color="info">
           <FontAwesomeIcon icon="arrow-left" />{' '}

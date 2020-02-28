@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import { Button, Row, Col, Label } from 'reactstrap';
+import { Button, Row, Col, Label, UncontrolledTooltip } from 'reactstrap';
 import { AvFeedback, AvForm, AvGroup, AvInput, AvField } from 'availity-reactstrap-validation';
 import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -80,6 +80,9 @@ export const BlackKeyUpdate = (props: IBlackKeyUpdateProps) => {
                   <Translate contentKey="appointmentApp.blackKey.key">Key</Translate>
                 </Label>
                 <AvField id="black-key-key" type="text" name="key" />
+                <UncontrolledTooltip target="keyLabel">
+                  <Translate contentKey="appointmentApp.blackKey.help.key" />
+                </UncontrolledTooltip>
               </AvGroup>
               <Button tag={Link} id="cancel-save" to="/black-key" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />

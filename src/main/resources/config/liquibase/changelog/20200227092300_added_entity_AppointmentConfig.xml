@@ -12,17 +12,17 @@
         Added the entity AppointmentConfig.
     -->
     <changeSet id="20200227092300-1" author="jhipster">
-        <createTable tableName="appointment_config">
+        <createTable tableName="appointment_config" remarks="预约配置表">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="period" type="varchar(255)">
+            <column name="period" type="varchar(255)" remarks="时间段">
                 <constraints nullable="true" />
             </column>
-            <column name="num" type="integer">
+            <column name="num" type="integer" remarks="数量">
                 <constraints nullable="true" />
             </column>
-            <column name="busi_type" type="varchar(255)">
+            <column name="busi_type" type="varchar(255)" remarks="类型（个人、企业、司法查询）">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
