@@ -16,11 +16,14 @@ entity Appointment(APPOINTMENT) {
 	idCard String /**身份证号*/
     name String /**姓名*/
     mobile String /**手机号*/
+    addr String /**家庭地址 */
     timePeriodCode String /**时间段*/
     timePeriodValue String /**时间段值*/
     busiType BusiTypeEnum /**类型（个人、企业、司法查询）*/
     state YesNoEnum /**处理状态*/
     opnion String /**处理意见*/
+    applyTime LocalDate /**申请时间 */
+    opnionTime LocalDate /**处理时间 */
 }
 /**是否通用枚举*/
 enum YesNoEnum {
