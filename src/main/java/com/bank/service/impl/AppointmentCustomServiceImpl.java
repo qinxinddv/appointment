@@ -9,12 +9,16 @@ import com.bank.repository.AppointmentRepository;
 import com.bank.repository.BlackKeyRepository;
 import com.bank.service.AppointmentCustomService;
 import com.bank.service.dto.custom.AppointmentApplyDto;
+import com.bank.service.dto.custom.AppointmentCustomDTO;
+import com.bank.service.mapper.custom.AppointmentCustomMapper;
 import com.bank.web.rest.errors.BusinessException;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.ILock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.locks.Lock;
@@ -30,6 +34,8 @@ public class AppointmentCustomServiceImpl implements AppointmentCustomService {
     private AppointmentRepository appointmentRepository;
     @Autowired
     private BlackKeyRepository blackKeyRepository;
+    @Autowired
+    private AppointmentCustomMapper appointmentCustomMapper;
 
     /**
      * 预约申请
@@ -59,10 +65,15 @@ public class AppointmentCustomServiceImpl implements AppointmentCustomService {
     public void check(AppointmentApplyDto applyDto) {
         //校验身份证号或手机号统一业务类型下，是否重复预约
         if (appointmentRepository.countByDateAndIdCardOrMobile(applyDto.getDate(), applyDto.getIdCard(), applyDto.getMobile()) > 0) {
-            throw new BusinessException("已约满");
+            throw new BusinessException("不能重复预约");
         }
         //黑名单验证
         checkBlack(applyDto.getAddr());
+    }
+
+    @Override
+    public Page<AppointmentCustomDTO> findByMobile(String mobile, Pageable pageable) {
+        return appointmentRepository.findByMobile(mobile,pageable).map(appointmentCustomMapper::toDto);
     }
 
     /**

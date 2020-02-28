@@ -3,13 +3,19 @@ package com.bank.web.rest.custom;
 import com.bank.domain.enumeration.LockEnum;
 import com.bank.service.AppointmentCustomService;
 import com.bank.service.dto.custom.AppointmentApplyDto;
+import com.bank.service.dto.custom.AppointmentCustomDTO;
 import com.hazelcast.core.HazelcastInstance;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -40,5 +46,10 @@ public class AppointmentCustomResource {
             lock.unlock();
         }
         log.info("预约申请结束，结果：{} 请求参数：{}","aaa",applyDto.toString());
+    }
+    @ApiOperation(value = "预约申请", notes = "预约申请", httpMethod = "GET")
+    @GetMapping("/find-by-mobile")
+    public ResponseEntity<Page<AppointmentCustomDTO>> findByMobile(String mobile, @PageableDefault(value = 10,page = 0,sort = {"applyTime"},direction = Sort.Direction.DESC) Pageable pageable){
+        return ResponseEntity.ok().body(appointmentCustomService.findByMobile(mobile,pageable));
     }
 }

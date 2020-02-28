@@ -20,7 +20,7 @@ public interface AppointmentPoolRepository extends JpaRepository<AppointmentPool
     public Optional<List<AppointmentPool>> findByDate(String date);
 
     //根据日期查询
-    public long countByDate(String date);
+    public long countByDateAndOrg_Id(String date,long orgId);
 
     public List<AppointmentPool> findByDateLessThan(String date);
 

@@ -49,10 +49,11 @@ public class CommonTask {
             LocalDate now = LocalDate.now();
             cleanPool(now);
             orgRepository.findAll().stream().forEach(org -> {
+                log.info("机构：{}",org);
                 for (int i = 0; i < DAYS; i++) {
                     String dateStr = now.plusDays(i).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                     log.info("日期：{}", dateStr);
-                    if (appointmentPoolRepository.countByDate(dateStr) > 0) {
+                    if (appointmentPoolRepository.countByDateAndOrg_Id(dateStr,org.getId()) > 0) {
                         continue;
                     }
                     appointmentConfigRepository.findAll().stream().forEach(appointmentConfig -> {

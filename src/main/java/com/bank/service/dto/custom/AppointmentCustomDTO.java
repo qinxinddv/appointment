@@ -1,129 +1,135 @@
-package com.bank.domain;
-
-import com.bank.service.dto.custom.AppointmentApplyDto;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
-import javax.persistence.*;
-
-import java.io.Serializable;
-import java.time.ZonedDateTime;
+package com.bank.service.dto.custom;
 
 import com.bank.domain.enumeration.BusiTypeEnum;
-
 import com.bank.domain.enumeration.YesNoEnum;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import java.util.Objects;
 
 /**
- * 预约申请表
+ * A DTO for the {@link com.bank.domain.Appointment} entity.
  */
-@Entity
-@Table(name = "appointment")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Appointment implements Serializable {
+@ApiModel(description = "预约申请表")
+public class AppointmentCustomDTO implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
-    public Appointment() {
-    }
-
-    public Appointment(AppointmentApplyDto applyDto, Org org) {
-        this.idCard = applyDto.getIdCard();
-        this.name = applyDto.getName();
-        this.mobile = applyDto.getMobile();
-        this.addr = applyDto.getAddr();
-        this.timePeriodCode = applyDto.getTimePeriodCode();
-        this.timePeriodValue = applyDto.getTimePeriodValue();
-        this.busiType = applyDto.getBusiType();
-        this.state = YesNoEnum.NO;
-        this.applyTime = ZonedDateTime.now();
-        this.date = applyDto.getDate();
-        this.org = org;
-    }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**
      * 身份证号
      */
-    @Column(name = "id_card")
+    @ApiModelProperty(value = "身份证号")
     private String idCard;
 
     /**
      * 姓名
      */
-    @Column(name = "name")
+    @ApiModelProperty(value = "姓名")
     private String name;
 
     /**
      * 手机号
      */
-    @Column(name = "mobile")
+    @ApiModelProperty(value = "手机号")
     private String mobile;
 
     /**
      * 家庭地址
      */
-    @Column(name = "addr")
+    @ApiModelProperty(value = "家庭地址")
     private String addr;
 
     /**
      * 时间段
      */
-    @Column(name = "time_period_code")
+    @ApiModelProperty(value = "时间段")
     private String timePeriodCode;
 
     /**
      * 时间段值
      */
-    @Column(name = "time_period_value")
+    @ApiModelProperty(value = "时间段值")
     private String timePeriodValue;
 
     /**
      * 类型（个人、企业、司法查询）
      */
-    @Enumerated(EnumType.STRING)
-    @Column(name = "busi_type")
+    @ApiModelProperty(value = "类型（个人、企业、司法查询）")
     private BusiTypeEnum busiType;
 
     /**
      * 处理状态
      */
-    @Enumerated(EnumType.STRING)
-    @Column(name = "state")
+    @ApiModelProperty(value = "处理状态")
     private YesNoEnum state;
 
     /**
      * 处理意见
      */
-    @Column(name = "opnion")
+    @ApiModelProperty(value = "处理意见")
     private String opnion;
 
     /**
      * 申请时间
      */
-    @Column(name = "apply_time")
+    @ApiModelProperty(value = "申请时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private ZonedDateTime applyTime;
 
     /**
      * 处理时间
      */
-    @Column(name = "opnion_time")
+    @ApiModelProperty(value = "处理时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private ZonedDateTime opnionTime;
 
     /**
      * 预约日期
      */
-    @Column(name = "date")
+    @ApiModelProperty(value = "预约日期")
     private String date;
 
-    @ManyToOne
-    @JsonIgnoreProperties("appointments")
-    private Org org;
+    @ApiModelProperty(value = "营业网点ID")
+    private Long orgId;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    @ApiModelProperty(value = "营业网点名称")
+    private String orgName;
+
+    @ApiModelProperty(value = "营业网点地址")
+    private String orgAddr;
+
+    @ApiModelProperty(value = "营业网点坐标")
+    private String orgCoordinate;
+
+    public String getOrgName() {
+        return orgName;
+    }
+
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
+    }
+
+    public String getOrgAddr() {
+        return orgAddr;
+    }
+
+    public void setOrgAddr(String orgAddr) {
+        this.orgAddr = orgAddr;
+    }
+
+    public String getOrgCoordinate() {
+        return orgCoordinate;
+    }
+
+    public void setOrgCoordinate(String orgCoordinate) {
+        this.orgCoordinate = orgCoordinate;
+    }
+
     public Long getId() {
         return id;
     }
@@ -136,22 +142,12 @@ public class Appointment implements Serializable {
         return idCard;
     }
 
-    public Appointment idCard(String idCard) {
-        this.idCard = idCard;
-        return this;
-    }
-
     public void setIdCard(String idCard) {
         this.idCard = idCard;
     }
 
     public String getName() {
         return name;
-    }
-
-    public Appointment name(String name) {
-        this.name = name;
-        return this;
     }
 
     public void setName(String name) {
@@ -162,22 +158,12 @@ public class Appointment implements Serializable {
         return mobile;
     }
 
-    public Appointment mobile(String mobile) {
-        this.mobile = mobile;
-        return this;
-    }
-
     public void setMobile(String mobile) {
         this.mobile = mobile;
     }
 
     public String getAddr() {
         return addr;
-    }
-
-    public Appointment addr(String addr) {
-        this.addr = addr;
-        return this;
     }
 
     public void setAddr(String addr) {
@@ -188,22 +174,12 @@ public class Appointment implements Serializable {
         return timePeriodCode;
     }
 
-    public Appointment timePeriodCode(String timePeriodCode) {
-        this.timePeriodCode = timePeriodCode;
-        return this;
-    }
-
     public void setTimePeriodCode(String timePeriodCode) {
         this.timePeriodCode = timePeriodCode;
     }
 
     public String getTimePeriodValue() {
         return timePeriodValue;
-    }
-
-    public Appointment timePeriodValue(String timePeriodValue) {
-        this.timePeriodValue = timePeriodValue;
-        return this;
     }
 
     public void setTimePeriodValue(String timePeriodValue) {
@@ -214,22 +190,12 @@ public class Appointment implements Serializable {
         return busiType;
     }
 
-    public Appointment busiType(BusiTypeEnum busiType) {
-        this.busiType = busiType;
-        return this;
-    }
-
     public void setBusiType(BusiTypeEnum busiType) {
         this.busiType = busiType;
     }
 
     public YesNoEnum getState() {
         return state;
-    }
-
-    public Appointment state(YesNoEnum state) {
-        this.state = state;
-        return this;
     }
 
     public void setState(YesNoEnum state) {
@@ -240,22 +206,12 @@ public class Appointment implements Serializable {
         return opnion;
     }
 
-    public Appointment opnion(String opnion) {
-        this.opnion = opnion;
-        return this;
-    }
-
     public void setOpnion(String opnion) {
         this.opnion = opnion;
     }
 
     public ZonedDateTime getApplyTime() {
         return applyTime;
-    }
-
-    public Appointment applyTime(ZonedDateTime applyTime) {
-        this.applyTime = applyTime;
-        return this;
     }
 
     public void setApplyTime(ZonedDateTime applyTime) {
@@ -266,11 +222,6 @@ public class Appointment implements Serializable {
         return opnionTime;
     }
 
-    public Appointment opnionTime(ZonedDateTime opnionTime) {
-        this.opnionTime = opnionTime;
-        return this;
-    }
-
     public void setOpnionTime(ZonedDateTime opnionTime) {
         this.opnionTime = opnionTime;
     }
@@ -279,48 +230,42 @@ public class Appointment implements Serializable {
         return date;
     }
 
-    public Appointment date(String date) {
-        this.date = date;
-        return this;
-    }
-
     public void setDate(String date) {
         this.date = date;
     }
 
-    public Org getOrg() {
-        return org;
+    public Long getOrgId() {
+        return orgId;
     }
 
-    public Appointment org(Org org) {
-        this.org = org;
-        return this;
+    public void setOrgId(Long orgId) {
+        this.orgId = orgId;
     }
-
-    public void setOrg(Org org) {
-        this.org = org;
-    }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Appointment)) {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        return id != null && id.equals(((Appointment) o).id);
+
+        AppointmentCustomDTO appointmentDTO = (AppointmentCustomDTO) o;
+        if (appointmentDTO.getId() == null || getId() == null) {
+            return false;
+        }
+        return Objects.equals(getId(), appointmentDTO.getId());
     }
 
     @Override
     public int hashCode() {
-        return 31;
+        return Objects.hashCode(getId());
     }
 
     @Override
     public String toString() {
-        return "Appointment{" +
+        return "AppointmentDTO{" +
             "id=" + getId() +
             ", idCard='" + getIdCard() + "'" +
             ", name='" + getName() + "'" +
@@ -334,6 +279,7 @@ public class Appointment implements Serializable {
             ", applyTime='" + getApplyTime() + "'" +
             ", opnionTime='" + getOpnionTime() + "'" +
             ", date='" + getDate() + "'" +
+            ", orgId=" + getOrgId() +
             "}";
     }
 }
