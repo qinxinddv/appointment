@@ -62,6 +62,18 @@ export const AppointmentDetail = (props: IAppointmentDetailProps) => {
           </dt>
           <dd>{appointmentEntity.busiType}</dd>
           <dt>
+            <span id="state">
+              <Translate contentKey="appointmentApp.appointment.state">State</Translate>
+            </span>
+          </dt>
+          <dd>{appointmentEntity.state}</dd>
+          <dt>
+            <span id="opnion">
+              <Translate contentKey="appointmentApp.appointment.opnion">Opnion</Translate>
+            </span>
+          </dt>
+          <dd>{appointmentEntity.opnion}</dd>
+          <dt>
             <span id="createdDate">
               <Translate contentKey="appointmentApp.appointment.createdDate">Created Date</Translate>
             </span>

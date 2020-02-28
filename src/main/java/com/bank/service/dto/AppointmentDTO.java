@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.Objects;
 import com.bank.domain.enumeration.BusiTypeEnum;
+import com.bank.domain.enumeration.YesNoEnum;
 
 /**
  * A DTO for the {@link com.bank.domain.Appointment} entity.
@@ -23,6 +24,10 @@ public class AppointmentDTO implements Serializable {
     private String timePeriodValue;
 
     private BusiTypeEnum busiType;
+
+    private YesNoEnum state;
+
+    private String opnion;
 
     private LocalDate createdDate;
 
@@ -87,6 +92,22 @@ public class AppointmentDTO implements Serializable {
         this.busiType = busiType;
     }
 
+    public YesNoEnum getState() {
+        return state;
+    }
+
+    public void setState(YesNoEnum state) {
+        this.state = state;
+    }
+
+    public String getOpnion() {
+        return opnion;
+    }
+
+    public void setOpnion(String opnion) {
+        this.opnion = opnion;
+    }
+
     public LocalDate getCreatedDate() {
         return createdDate;
     }
@@ -142,6 +163,8 @@ public class AppointmentDTO implements Serializable {
             ", timePeriodCode='" + getTimePeriodCode() + "'" +
             ", timePeriodValue='" + getTimePeriodValue() + "'" +
             ", busiType='" + getBusiType() + "'" +
+            ", state='" + getState() + "'" +
+            ", opnion='" + getOpnion() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             ", communityId=" + getCommunityId() +

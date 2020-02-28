@@ -84,6 +84,12 @@ export const Appointment = (props: IAppointmentProps) => {
                 <th className="hand" onClick={sort('busiType')}>
                   <Translate contentKey="appointmentApp.appointment.busiType">Busi Type</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('state')}>
+                  <Translate contentKey="appointmentApp.appointment.state">State</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('opnion')}>
+                  <Translate contentKey="appointmentApp.appointment.opnion">Opnion</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
                 <th className="hand" onClick={sort('createdDate')}>
                   <Translate contentKey="appointmentApp.appointment.createdDate">Created Date</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
@@ -113,6 +119,10 @@ export const Appointment = (props: IAppointmentProps) => {
                   <td>
                     <Translate contentKey={`appointmentApp.BusiTypeEnum.${appointment.busiType}`} />
                   </td>
+                  <td>
+                    <Translate contentKey={`appointmentApp.YesNoEnum.${appointment.state}`} />
+                  </td>
+                  <td>{appointment.opnion}</td>
                   <td>
                     <TextFormat type="date" value={appointment.createdDate} format={APP_LOCAL_DATE_FORMAT} />
                   </td>

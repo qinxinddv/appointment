@@ -11,6 +11,8 @@ import java.time.LocalDate;
 
 import com.bank.domain.enumeration.BusiTypeEnum;
 
+import com.bank.domain.enumeration.YesNoEnum;
+
 /**
  * A Appointment.
  */
@@ -43,6 +45,13 @@ public class Appointment implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "busi_type")
     private BusiTypeEnum busiType;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "state")
+    private YesNoEnum state;
+
+    @Column(name = "opnion")
+    private String opnion;
 
     @Column(name = "created_date")
     private LocalDate createdDate;
@@ -141,6 +150,32 @@ public class Appointment implements Serializable {
         this.busiType = busiType;
     }
 
+    public YesNoEnum getState() {
+        return state;
+    }
+
+    public Appointment state(YesNoEnum state) {
+        this.state = state;
+        return this;
+    }
+
+    public void setState(YesNoEnum state) {
+        this.state = state;
+    }
+
+    public String getOpnion() {
+        return opnion;
+    }
+
+    public Appointment opnion(String opnion) {
+        this.opnion = opnion;
+        return this;
+    }
+
+    public void setOpnion(String opnion) {
+        this.opnion = opnion;
+    }
+
     public LocalDate getCreatedDate() {
         return createdDate;
     }
@@ -207,6 +242,8 @@ public class Appointment implements Serializable {
             ", timePeriodCode='" + getTimePeriodCode() + "'" +
             ", timePeriodValue='" + getTimePeriodValue() + "'" +
             ", busiType='" + getBusiType() + "'" +
+            ", state='" + getState() + "'" +
+            ", opnion='" + getOpnion() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +
             ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             "}";
