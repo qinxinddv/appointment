@@ -108,6 +108,15 @@ export const AppointmentUpdate = (props: IAppointmentUpdateProps) => {
                 </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
+                <Label id="addrLabel" for="appointment-addr">
+                  <Translate contentKey="appointmentApp.appointment.addr">Addr</Translate>
+                </Label>
+                <AvField id="appointment-addr" type="text" name="addr" />
+                <UncontrolledTooltip target="addrLabel">
+                  <Translate contentKey="appointmentApp.appointment.help.addr" />
+                </UncontrolledTooltip>
+              </AvGroup>
+              <AvGroup>
                 <Label id="timePeriodCodeLabel" for="appointment-timePeriodCode">
                   <Translate contentKey="appointmentApp.appointment.timePeriodCode">Time Period Code</Translate>
                 </Label>
@@ -169,6 +178,24 @@ export const AppointmentUpdate = (props: IAppointmentUpdateProps) => {
                 <AvField id="appointment-opnion" type="text" name="opnion" />
                 <UncontrolledTooltip target="opnionLabel">
                   <Translate contentKey="appointmentApp.appointment.help.opnion" />
+                </UncontrolledTooltip>
+              </AvGroup>
+              <AvGroup>
+                <Label id="applyTimeLabel" for="appointment-applyTime">
+                  <Translate contentKey="appointmentApp.appointment.applyTime">Apply Time</Translate>
+                </Label>
+                <AvField id="appointment-applyTime" type="date" className="form-control" name="applyTime" />
+                <UncontrolledTooltip target="applyTimeLabel">
+                  <Translate contentKey="appointmentApp.appointment.help.applyTime" />
+                </UncontrolledTooltip>
+              </AvGroup>
+              <AvGroup>
+                <Label id="opnionTimeLabel" for="appointment-opnionTime">
+                  <Translate contentKey="appointmentApp.appointment.opnionTime">Opnion Time</Translate>
+                </Label>
+                <AvField id="appointment-opnionTime" type="date" className="form-control" name="opnionTime" />
+                <UncontrolledTooltip target="opnionTimeLabel">
+                  <Translate contentKey="appointmentApp.appointment.help.opnionTime" />
                 </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>

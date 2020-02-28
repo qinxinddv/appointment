@@ -17,6 +17,11 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "addr",
+            "javadoc": "家庭地址",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "timePeriodCode",
             "javadoc": "时间段",
             "fieldType": "String"
@@ -42,6 +47,16 @@
             "fieldName": "opnion",
             "javadoc": "处理意见",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "applyTime",
+            "javadoc": "申请时间",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "opnionTime",
+            "javadoc": "处理时间",
+            "fieldType": "LocalDate"
         }
     ],
     "relationships": [
