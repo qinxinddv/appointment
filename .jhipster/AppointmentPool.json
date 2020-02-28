@@ -28,7 +28,15 @@
             "fieldValues": "PERSON,ORG,LAW"
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "org",
+            "otherEntityRelationshipName": "appointmentPool",
+            "relationshipName": "org",
+            "otherEntityField": "id"
+        }
+    ],
     "changelogDate": "20200227092400",
     "entityTableName": "appointment_pool",
     "dto": "mapstruct",

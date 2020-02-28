@@ -1,0 +1,40 @@
+{
+    "name": "Org",
+    "fields": [
+        {
+            "fieldName": "name",
+            "javadoc": "机构名称",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "addr",
+            "javadoc": "地址",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "appointment",
+            "otherEntityRelationshipName": "org",
+            "relationshipName": "appointment"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "appointmentPool",
+            "otherEntityRelationshipName": "org",
+            "relationshipName": "appointmentPool"
+        }
+    ],
+    "changelogDate": "20200228065200",
+    "javadoc": "机构表",
+    "entityTableName": "org",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

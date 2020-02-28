@@ -9,13 +9,13 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Appointment} and its DTO {@link AppointmentDTO}.
  */
-@Mapper(componentModel = "spring", uses = {CommunityMapper.class})
+@Mapper(componentModel = "spring", uses = {OrgMapper.class})
 public interface AppointmentMapper extends EntityMapper<AppointmentDTO, Appointment> {
 
-    @Mapping(source = "community.id", target = "communityId")
+    @Mapping(source = "org.id", target = "orgId")
     AppointmentDTO toDto(Appointment appointment);
 
-    @Mapping(source = "communityId", target = "community")
+    @Mapping(source = "orgId", target = "org")
     Appointment toEntity(AppointmentDTO appointmentDTO);
 
     default Appointment fromId(Long id) {

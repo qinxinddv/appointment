@@ -45,6 +45,8 @@ public class AppointmentPoolDTO implements Serializable {
     private BusiTypeEnum busiType;
 
 
+    private Long orgId;
+
     public Long getId() {
         return id;
     }
@@ -93,6 +95,14 @@ public class AppointmentPoolDTO implements Serializable {
         this.busiType = busiType;
     }
 
+    public Long getOrgId() {
+        return orgId;
+    }
+
+    public void setOrgId(Long orgId) {
+        this.orgId = orgId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -123,6 +133,7 @@ public class AppointmentPoolDTO implements Serializable {
             ", totalNum=" + getTotalNum() +
             ", leftNum=" + getLeftNum() +
             ", busiType='" + getBusiType() + "'" +
+            ", orgId=" + getOrgId() +
             "}";
     }
 }

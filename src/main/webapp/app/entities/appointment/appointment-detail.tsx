@@ -129,9 +129,9 @@ export const AppointmentDetail = (props: IAppointmentDetailProps) => {
             <TextFormat value={appointmentEntity.opnionTime} type="date" format={APP_LOCAL_DATE_FORMAT} />
           </dd>
           <dt>
-            <Translate contentKey="appointmentApp.appointment.community">Community</Translate>
+            <Translate contentKey="appointmentApp.appointment.org">Org</Translate>
           </dt>
-          <dd>{appointmentEntity.communityId ? appointmentEntity.communityId : ''}</dd>
+          <dd>{appointmentEntity.orgId ? appointmentEntity.orgId : ''}</dd>
         </dl>
         <Button tag={Link} to="/appointment" replace color="info">
           <FontAwesomeIcon icon="arrow-left" />{' '}

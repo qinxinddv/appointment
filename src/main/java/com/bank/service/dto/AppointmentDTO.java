@@ -83,7 +83,7 @@ public class AppointmentDTO implements Serializable {
     private LocalDate opnionTime;
 
 
-    private Long communityId;
+    private Long orgId;
 
     public Long getId() {
         return id;
@@ -181,12 +181,12 @@ public class AppointmentDTO implements Serializable {
         this.opnionTime = opnionTime;
     }
 
-    public Long getCommunityId() {
-        return communityId;
+    public Long getOrgId() {
+        return orgId;
     }
 
-    public void setCommunityId(Long communityId) {
-        this.communityId = communityId;
+    public void setOrgId(Long orgId) {
+        this.orgId = orgId;
     }
 
     @Override
@@ -225,7 +225,7 @@ public class AppointmentDTO implements Serializable {
             ", opnion='" + getOpnion() + "'" +
             ", applyTime='" + getApplyTime() + "'" +
             ", opnionTime='" + getOpnionTime() + "'" +
-            ", communityId=" + getCommunityId() +
+            ", orgId=" + getOrgId() +
             "}";
     }
 }
