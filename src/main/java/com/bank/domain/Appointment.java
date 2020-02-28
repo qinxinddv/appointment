@@ -10,9 +10,11 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 
+import com.bank.domain.enumeration.SymptomEnum;
+
 import com.bank.domain.enumeration.BusiTypeEnum;
 
-import com.bank.domain.enumeration.YesNoEnum;
+import com.bank.domain.enumeration.AppointStateEnum;
 
 /**
  * 预约申请表
@@ -70,6 +72,16 @@ public class Appointment implements Serializable {
     private String addr;
 
     /**
+     * 体温
+     */
+    @Column(name = "temperature")
+    private String temperature;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "symptom")
+    private SymptomEnum symptom;
+
+    /**
      * 时间段
      */
     @Column(name = "time_period_code")
@@ -93,7 +105,7 @@ public class Appointment implements Serializable {
      */
     @Enumerated(EnumType.STRING)
     @Column(name = "state")
-    private YesNoEnum state;
+    private AppointStateEnum state;
 
     /**
      * 处理意见
@@ -184,6 +196,32 @@ public class Appointment implements Serializable {
         this.addr = addr;
     }
 
+    public String getTemperature() {
+        return temperature;
+    }
+
+    public Appointment temperature(String temperature) {
+        this.temperature = temperature;
+        return this;
+    }
+
+    public void setTemperature(String temperature) {
+        this.temperature = temperature;
+    }
+
+    public SymptomEnum getSymptom() {
+        return symptom;
+    }
+
+    public Appointment symptom(SymptomEnum symptom) {
+        this.symptom = symptom;
+        return this;
+    }
+
+    public void setSymptom(SymptomEnum symptom) {
+        this.symptom = symptom;
+    }
+
     public String getTimePeriodCode() {
         return timePeriodCode;
     }
@@ -223,16 +261,16 @@ public class Appointment implements Serializable {
         this.busiType = busiType;
     }
 
-    public YesNoEnum getState() {
+    public AppointStateEnum getState() {
         return state;
     }
 
-    public Appointment state(YesNoEnum state) {
+    public Appointment state(AppointStateEnum state) {
         this.state = state;
         return this;
     }
 
-    public void setState(YesNoEnum state) {
+    public void setState(AppointStateEnum state) {
         this.state = state;
     }
 
@@ -326,6 +364,8 @@ public class Appointment implements Serializable {
             ", name='" + getName() + "'" +
             ", mobile='" + getMobile() + "'" +
             ", addr='" + getAddr() + "'" +
+            ", temperature='" + getTemperature() + "'" +
+            ", symptom='" + getSymptom() + "'" +
             ", timePeriodCode='" + getTimePeriodCode() + "'" +
             ", timePeriodValue='" + getTimePeriodValue() + "'" +
             ", busiType='" + getBusiType() + "'" +

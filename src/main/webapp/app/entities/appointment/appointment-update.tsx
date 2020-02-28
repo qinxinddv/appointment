@@ -120,6 +120,31 @@ export const AppointmentUpdate = (props: IAppointmentUpdateProps) => {
                 </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
+                <Label id="temperatureLabel" for="appointment-temperature">
+                  <Translate contentKey="appointmentApp.appointment.temperature">Temperature</Translate>
+                </Label>
+                <AvField id="appointment-temperature" type="text" name="temperature" />
+                <UncontrolledTooltip target="temperatureLabel">
+                  <Translate contentKey="appointmentApp.appointment.help.temperature" />
+                </UncontrolledTooltip>
+              </AvGroup>
+              <AvGroup>
+                <Label id="symptomLabel" for="appointment-symptom">
+                  <Translate contentKey="appointmentApp.appointment.symptom">Symptom</Translate>
+                </Label>
+                <AvInput
+                  id="appointment-symptom"
+                  type="select"
+                  className="form-control"
+                  name="symptom"
+                  value={(!isNew && appointmentEntity.symptom) || 'FEVER'}
+                >
+                  <option value="FEVER">{translate('appointmentApp.SymptomEnum.FEVER')}</option>
+                  <option value="COUGH">{translate('appointmentApp.SymptomEnum.COUGH')}</option>
+                  <option value="WEAK">{translate('appointmentApp.SymptomEnum.WEAK')}</option>
+                </AvInput>
+              </AvGroup>
+              <AvGroup>
                 <Label id="timePeriodCodeLabel" for="appointment-timePeriodCode">
                   <Translate contentKey="appointmentApp.appointment.timePeriodCode">Time Period Code</Translate>
                 </Label>
@@ -165,10 +190,11 @@ export const AppointmentUpdate = (props: IAppointmentUpdateProps) => {
                   type="select"
                   className="form-control"
                   name="state"
-                  value={(!isNew && appointmentEntity.state) || 'YES'}
+                  value={(!isNew && appointmentEntity.state) || 'UNDO'}
                 >
-                  <option value="YES">{translate('appointmentApp.YesNoEnum.YES')}</option>
-                  <option value="NO">{translate('appointmentApp.YesNoEnum.NO')}</option>
+                  <option value="UNDO">{translate('appointmentApp.AppointStateEnum.UNDO')}</option>
+                  <option value="DO">{translate('appointmentApp.AppointStateEnum.DO')}</option>
+                  <option value="OUTTIME">{translate('appointmentApp.AppointStateEnum.OUTTIME')}</option>
                 </AvInput>
                 <UncontrolledTooltip target="stateLabel">
                   <Translate contentKey="appointmentApp.appointment.help.state" />

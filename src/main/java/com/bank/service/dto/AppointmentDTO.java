@@ -5,8 +5,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.time.ZonedDateTime;
 import java.io.Serializable;
 import java.util.Objects;
+import com.bank.domain.enumeration.SymptomEnum;
 import com.bank.domain.enumeration.BusiTypeEnum;
-import com.bank.domain.enumeration.YesNoEnum;
+import com.bank.domain.enumeration.AppointStateEnum;
 
 /**
  * A DTO for the {@link com.bank.domain.Appointment} entity.
@@ -41,6 +42,14 @@ public class AppointmentDTO implements Serializable {
     private String addr;
 
     /**
+     * 体温
+     */
+    @ApiModelProperty(value = "体温")
+    private String temperature;
+
+    private SymptomEnum symptom;
+
+    /**
      * 时间段
      */
     @ApiModelProperty(value = "时间段")
@@ -62,7 +71,7 @@ public class AppointmentDTO implements Serializable {
      * 处理状态
      */
     @ApiModelProperty(value = "处理状态")
-    private YesNoEnum state;
+    private AppointStateEnum state;
 
     /**
      * 处理意见
@@ -131,6 +140,22 @@ public class AppointmentDTO implements Serializable {
         this.addr = addr;
     }
 
+    public String getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(String temperature) {
+        this.temperature = temperature;
+    }
+
+    public SymptomEnum getSymptom() {
+        return symptom;
+    }
+
+    public void setSymptom(SymptomEnum symptom) {
+        this.symptom = symptom;
+    }
+
     public String getTimePeriodCode() {
         return timePeriodCode;
     }
@@ -155,11 +180,11 @@ public class AppointmentDTO implements Serializable {
         this.busiType = busiType;
     }
 
-    public YesNoEnum getState() {
+    public AppointStateEnum getState() {
         return state;
     }
 
-    public void setState(YesNoEnum state) {
+    public void setState(AppointStateEnum state) {
         this.state = state;
     }
 
@@ -232,6 +257,8 @@ public class AppointmentDTO implements Serializable {
             ", name='" + getName() + "'" +
             ", mobile='" + getMobile() + "'" +
             ", addr='" + getAddr() + "'" +
+            ", temperature='" + getTemperature() + "'" +
+            ", symptom='" + getSymptom() + "'" +
             ", timePeriodCode='" + getTimePeriodCode() + "'" +
             ", timePeriodValue='" + getTimePeriodValue() + "'" +
             ", busiType='" + getBusiType() + "'" +
