@@ -30,22 +30,16 @@ enum YesNoEnum {
 	YES,NO
 }
 
-/**小区表*/
-entity Community(COMMUNITY) {
-	name String /**小区名称*/
-    addr String /**小区地址*/
-    state String /**小区状态*/
-    communityStateEnum CommunityStateEnum /**小区状态*/
+/**机构表 */
+entity Org(ORG) {
+	name String /**机构名称 */
+    addr String /**地址 */
 }
 /**业务类型*/
 enum BusiTypeEnum {
 	PERSON,ORG,LAW
 }
 
-/**小区状态*/
-enum CommunityStateEnum {
-	NORMAL,FORBID
-}
 /**锁*/
 enum LockEnum {
  	APPOINTMENT,POOL_TASK
@@ -72,7 +66,10 @@ entity BlackKey {
 }
 
 relationship OneToMany {
-	Community to Appointment
+	Org to Appintment
+}
+relationship OneToMany {
+	Org to AppointmentPool
 }
 
 
