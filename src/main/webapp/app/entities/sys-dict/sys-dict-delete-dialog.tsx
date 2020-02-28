@@ -17,7 +17,7 @@ export const SysDictDeleteDialog = (props: ISysDictDeleteDialogProps) => {
   }, []);
 
   const handleClose = () => {
-    props.history.push('/sys-dict');
+    props.history.push('/sys-dict' + props.location.search);
   };
 
   useEffect(() => {

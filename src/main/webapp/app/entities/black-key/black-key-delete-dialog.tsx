@@ -17,7 +17,7 @@ export const BlackKeyDeleteDialog = (props: IBlackKeyDeleteDialogProps) => {
   }, []);
 
   const handleClose = () => {
-    props.history.push('/black-key');
+    props.history.push('/black-key' + props.location.search);
   };
 
   useEffect(() => {

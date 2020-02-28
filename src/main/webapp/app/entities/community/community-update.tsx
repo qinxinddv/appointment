@@ -20,7 +20,7 @@ export const CommunityUpdate = (props: ICommunityUpdateProps) => {
   const { communityEntity, loading, updating } = props;
 
   const handleClose = () => {
-    props.history.push('/community');
+    props.history.push('/community' + props.location.search);
   };
 
   useEffect(() => {

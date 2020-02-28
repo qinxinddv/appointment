@@ -2,7 +2,9 @@ package com.bank.service;
 
 import com.bank.service.dto.AppointmentDTO;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.util.Optional;
 
 /**
@@ -21,9 +23,10 @@ public interface AppointmentService {
     /**
      * Get all the appointments.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
-    List<AppointmentDTO> findAll();
+    Page<AppointmentDTO> findAll(Pageable pageable);
 
     /**
      * Get the "id" appointment.
