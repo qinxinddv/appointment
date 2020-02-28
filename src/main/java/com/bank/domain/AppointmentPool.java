@@ -39,6 +39,17 @@ public class AppointmentPool implements Serializable {
     @Column(name = "busi_type")
     private BusiTypeEnum busiType;
 
+    public AppointmentPool(String date, String period, Integer totalNum, BusiTypeEnum type) {
+        this.date = date;
+        this.period = period;
+        this.totalNum = totalNum;
+        this.busiType = type;
+        this.leftNum = totalNum;
+    }
+
+    public AppointmentPool(){}
+
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
