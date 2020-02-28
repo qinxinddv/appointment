@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import { Button, Row, Col, Label } from 'reactstrap';
+import { Button, Row, Col, Label, UncontrolledTooltip } from 'reactstrap';
 import { AvFeedback, AvForm, AvGroup, AvInput, AvField } from 'availity-reactstrap-validation';
 import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -85,30 +85,45 @@ export const AppointmentUpdate = (props: IAppointmentUpdateProps) => {
                   <Translate contentKey="appointmentApp.appointment.idCard">Id Card</Translate>
                 </Label>
                 <AvField id="appointment-idCard" type="text" name="idCard" />
+                <UncontrolledTooltip target="idCardLabel">
+                  <Translate contentKey="appointmentApp.appointment.help.idCard" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="nameLabel" for="appointment-name">
                   <Translate contentKey="appointmentApp.appointment.name">Name</Translate>
                 </Label>
                 <AvField id="appointment-name" type="text" name="name" />
+                <UncontrolledTooltip target="nameLabel">
+                  <Translate contentKey="appointmentApp.appointment.help.name" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="mobileLabel" for="appointment-mobile">
                   <Translate contentKey="appointmentApp.appointment.mobile">Mobile</Translate>
                 </Label>
                 <AvField id="appointment-mobile" type="text" name="mobile" />
+                <UncontrolledTooltip target="mobileLabel">
+                  <Translate contentKey="appointmentApp.appointment.help.mobile" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="timePeriodCodeLabel" for="appointment-timePeriodCode">
                   <Translate contentKey="appointmentApp.appointment.timePeriodCode">Time Period Code</Translate>
                 </Label>
                 <AvField id="appointment-timePeriodCode" type="text" name="timePeriodCode" />
+                <UncontrolledTooltip target="timePeriodCodeLabel">
+                  <Translate contentKey="appointmentApp.appointment.help.timePeriodCode" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="timePeriodValueLabel" for="appointment-timePeriodValue">
                   <Translate contentKey="appointmentApp.appointment.timePeriodValue">Time Period Value</Translate>
                 </Label>
                 <AvField id="appointment-timePeriodValue" type="text" name="timePeriodValue" />
+                <UncontrolledTooltip target="timePeriodValueLabel">
+                  <Translate contentKey="appointmentApp.appointment.help.timePeriodValue" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="busiTypeLabel" for="appointment-busiType">
@@ -125,6 +140,9 @@ export const AppointmentUpdate = (props: IAppointmentUpdateProps) => {
                   <option value="ORG">{translate('appointmentApp.BusiTypeEnum.ORG')}</option>
                   <option value="LAW">{translate('appointmentApp.BusiTypeEnum.LAW')}</option>
                 </AvInput>
+                <UncontrolledTooltip target="busiTypeLabel">
+                  <Translate contentKey="appointmentApp.appointment.help.busiType" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="stateLabel" for="appointment-state">
@@ -140,24 +158,18 @@ export const AppointmentUpdate = (props: IAppointmentUpdateProps) => {
                   <option value="YES">{translate('appointmentApp.YesNoEnum.YES')}</option>
                   <option value="NO">{translate('appointmentApp.YesNoEnum.NO')}</option>
                 </AvInput>
+                <UncontrolledTooltip target="stateLabel">
+                  <Translate contentKey="appointmentApp.appointment.help.state" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="opnionLabel" for="appointment-opnion">
                   <Translate contentKey="appointmentApp.appointment.opnion">Opnion</Translate>
                 </Label>
                 <AvField id="appointment-opnion" type="text" name="opnion" />
-              </AvGroup>
-              <AvGroup>
-                <Label id="createdDateLabel" for="appointment-createdDate">
-                  <Translate contentKey="appointmentApp.appointment.createdDate">Created Date</Translate>
-                </Label>
-                <AvField id="appointment-createdDate" type="date" className="form-control" name="createdDate" />
-              </AvGroup>
-              <AvGroup>
-                <Label id="lastModifiedDateLabel" for="appointment-lastModifiedDate">
-                  <Translate contentKey="appointmentApp.appointment.lastModifiedDate">Last Modified Date</Translate>
-                </Label>
-                <AvField id="appointment-lastModifiedDate" type="date" className="form-control" name="lastModifiedDate" />
+                <UncontrolledTooltip target="opnionLabel">
+                  <Translate contentKey="appointmentApp.appointment.help.opnion" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label for="appointment-community">

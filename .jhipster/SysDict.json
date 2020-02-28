@@ -3,47 +3,48 @@
     "fields": [
         {
             "fieldName": "name",
+            "javadoc": "字典名称",
             "fieldType": "String"
         },
         {
             "fieldName": "type",
+            "javadoc": "字典类型",
             "fieldType": "String"
         },
         {
             "fieldName": "code",
+            "javadoc": "字典编码",
             "fieldType": "String"
         },
         {
             "fieldName": "value",
+            "javadoc": "字典值",
             "fieldType": "String"
         },
         {
             "fieldName": "parentId",
+            "javadoc": "父节点ID",
             "fieldType": "Long"
         },
         {
             "fieldName": "desc",
+            "javadoc": "描述",
             "fieldType": "String"
         },
         {
             "fieldName": "extend1",
+            "javadoc": "扩展字段1",
             "fieldType": "String"
         },
         {
             "fieldName": "extend2",
+            "javadoc": "扩展字段1",
             "fieldType": "String"
         },
         {
             "fieldName": "extend3",
+            "javadoc": "扩展字段1",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
         }
     ],
     "relationships": [],
@@ -56,5 +57,6 @@
     "fluentMethods": true,
     "readOnly": false,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "javadoc": "字典表"
 }

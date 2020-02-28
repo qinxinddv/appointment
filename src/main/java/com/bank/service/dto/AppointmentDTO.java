@@ -1,6 +1,7 @@
 package com.bank.service.dto;
 
-import java.time.LocalDate;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.util.Objects;
 import com.bank.domain.enumeration.BusiTypeEnum;
@@ -9,29 +10,58 @@ import com.bank.domain.enumeration.YesNoEnum;
 /**
  * A DTO for the {@link com.bank.domain.Appointment} entity.
  */
+@ApiModel(description = "预约申请表")
 public class AppointmentDTO implements Serializable {
 
     private Long id;
 
+    /**
+     * 身份证号
+     */
+    @ApiModelProperty(value = "身份证号")
     private String idCard;
 
+    /**
+     * 姓名
+     */
+    @ApiModelProperty(value = "姓名")
     private String name;
 
+    /**
+     * 手机号
+     */
+    @ApiModelProperty(value = "手机号")
     private String mobile;
 
+    /**
+     * 时间段
+     */
+    @ApiModelProperty(value = "时间段")
     private String timePeriodCode;
 
+    /**
+     * 时间段值
+     */
+    @ApiModelProperty(value = "时间段值")
     private String timePeriodValue;
 
+    /**
+     * 类型（个人、企业、司法查询）
+     */
+    @ApiModelProperty(value = "类型（个人、企业、司法查询）")
     private BusiTypeEnum busiType;
 
+    /**
+     * 处理状态
+     */
+    @ApiModelProperty(value = "处理状态")
     private YesNoEnum state;
 
+    /**
+     * 处理意见
+     */
+    @ApiModelProperty(value = "处理意见")
     private String opnion;
-
-    private LocalDate createdDate;
-
-    private LocalDate lastModifiedDate;
 
 
     private Long communityId;
@@ -108,22 +138,6 @@ public class AppointmentDTO implements Serializable {
         this.opnion = opnion;
     }
 
-    public LocalDate getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public LocalDate getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(LocalDate lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
-
     public Long getCommunityId() {
         return communityId;
     }
@@ -165,8 +179,6 @@ public class AppointmentDTO implements Serializable {
             ", busiType='" + getBusiType() + "'" +
             ", state='" + getState() + "'" +
             ", opnion='" + getOpnion() + "'" +
-            ", createdDate='" + getCreatedDate() + "'" +
-            ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             ", communityId=" + getCommunityId() +
             "}";
     }

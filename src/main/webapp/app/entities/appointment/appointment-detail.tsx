@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import { Button, Row, Col } from 'reactstrap';
-import { Translate, ICrudGetAction, TextFormat } from 'react-jhipster';
+import { Button, UncontrolledTooltip, Row, Col } from 'reactstrap';
+import { Translate, ICrudGetAction } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -29,66 +29,74 @@ export const AppointmentDetail = (props: IAppointmentDetailProps) => {
             <span id="idCard">
               <Translate contentKey="appointmentApp.appointment.idCard">Id Card</Translate>
             </span>
+            <UncontrolledTooltip target="idCard">
+              <Translate contentKey="appointmentApp.appointment.help.idCard" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{appointmentEntity.idCard}</dd>
           <dt>
             <span id="name">
               <Translate contentKey="appointmentApp.appointment.name">Name</Translate>
             </span>
+            <UncontrolledTooltip target="name">
+              <Translate contentKey="appointmentApp.appointment.help.name" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{appointmentEntity.name}</dd>
           <dt>
             <span id="mobile">
               <Translate contentKey="appointmentApp.appointment.mobile">Mobile</Translate>
             </span>
+            <UncontrolledTooltip target="mobile">
+              <Translate contentKey="appointmentApp.appointment.help.mobile" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{appointmentEntity.mobile}</dd>
           <dt>
             <span id="timePeriodCode">
               <Translate contentKey="appointmentApp.appointment.timePeriodCode">Time Period Code</Translate>
             </span>
+            <UncontrolledTooltip target="timePeriodCode">
+              <Translate contentKey="appointmentApp.appointment.help.timePeriodCode" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{appointmentEntity.timePeriodCode}</dd>
           <dt>
             <span id="timePeriodValue">
               <Translate contentKey="appointmentApp.appointment.timePeriodValue">Time Period Value</Translate>
             </span>
+            <UncontrolledTooltip target="timePeriodValue">
+              <Translate contentKey="appointmentApp.appointment.help.timePeriodValue" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{appointmentEntity.timePeriodValue}</dd>
           <dt>
             <span id="busiType">
               <Translate contentKey="appointmentApp.appointment.busiType">Busi Type</Translate>
             </span>
+            <UncontrolledTooltip target="busiType">
+              <Translate contentKey="appointmentApp.appointment.help.busiType" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{appointmentEntity.busiType}</dd>
           <dt>
             <span id="state">
               <Translate contentKey="appointmentApp.appointment.state">State</Translate>
             </span>
+            <UncontrolledTooltip target="state">
+              <Translate contentKey="appointmentApp.appointment.help.state" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{appointmentEntity.state}</dd>
           <dt>
             <span id="opnion">
               <Translate contentKey="appointmentApp.appointment.opnion">Opnion</Translate>
             </span>
+            <UncontrolledTooltip target="opnion">
+              <Translate contentKey="appointmentApp.appointment.help.opnion" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{appointmentEntity.opnion}</dd>
-          <dt>
-            <span id="createdDate">
-              <Translate contentKey="appointmentApp.appointment.createdDate">Created Date</Translate>
-            </span>
-          </dt>
-          <dd>
-            <TextFormat value={appointmentEntity.createdDate} type="date" format={APP_LOCAL_DATE_FORMAT} />
-          </dd>
-          <dt>
-            <span id="lastModifiedDate">
-              <Translate contentKey="appointmentApp.appointment.lastModifiedDate">Last Modified Date</Translate>
-            </span>
-          </dt>
-          <dd>
-            <TextFormat value={appointmentEntity.lastModifiedDate} type="date" format={APP_LOCAL_DATE_FORMAT} />
-          </dd>
           <dt>
             <Translate contentKey="appointmentApp.appointment.community">Community</Translate>
           </dt>

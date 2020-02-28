@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import { Button, Row, Col } from 'reactstrap';
+import { Button, UncontrolledTooltip, Row, Col } from 'reactstrap';
 import { Translate, ICrudGetAction } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -30,30 +30,45 @@ export const AppointmentPoolDetail = (props: IAppointmentPoolDetailProps) => {
             <span id="date">
               <Translate contentKey="appointmentApp.appointmentPool.date">Date</Translate>
             </span>
+            <UncontrolledTooltip target="date">
+              <Translate contentKey="appointmentApp.appointmentPool.help.date" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{appointmentPoolEntity.date}</dd>
           <dt>
             <span id="period">
               <Translate contentKey="appointmentApp.appointmentPool.period">Period</Translate>
             </span>
+            <UncontrolledTooltip target="period">
+              <Translate contentKey="appointmentApp.appointmentPool.help.period" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{appointmentPoolEntity.period}</dd>
           <dt>
             <span id="totalNum">
               <Translate contentKey="appointmentApp.appointmentPool.totalNum">Total Num</Translate>
             </span>
+            <UncontrolledTooltip target="totalNum">
+              <Translate contentKey="appointmentApp.appointmentPool.help.totalNum" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{appointmentPoolEntity.totalNum}</dd>
           <dt>
             <span id="leftNum">
               <Translate contentKey="appointmentApp.appointmentPool.leftNum">Left Num</Translate>
             </span>
+            <UncontrolledTooltip target="leftNum">
+              <Translate contentKey="appointmentApp.appointmentPool.help.leftNum" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{appointmentPoolEntity.leftNum}</dd>
           <dt>
             <span id="busiType">
               <Translate contentKey="appointmentApp.appointmentPool.busiType">Busi Type</Translate>
             </span>
+            <UncontrolledTooltip target="busiType">
+              <Translate contentKey="appointmentApp.appointmentPool.help.busiType" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{appointmentPoolEntity.busiType}</dd>
         </dl>

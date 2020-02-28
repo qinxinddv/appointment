@@ -18,7 +18,12 @@
       },
       "period": "Period",
       "num": "Num",
-      "busiType": "Busi Type"
+      "busiType": "Busi Type",
+      "help": {
+        "period": "时间段",
+        "num": "数量",
+        "busiType": "类型（个人、企业、司法查询）"
+      }
     }
   }
 }

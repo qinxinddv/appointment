@@ -12,11 +12,11 @@
         Added the entity BlackKey.
     -->
     <changeSet id="20200227092500-1" author="jhipster">
-        <createTable tableName="black_key">
+        <createTable tableName="black_key" remarks="黑名单关键字">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="jhi_key" type="varchar(255)">
+            <column name="jhi_key" type="varchar(255)" remarks="关键字">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->

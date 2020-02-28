@@ -6,10 +6,9 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 /**
- * A SysDict.
+ * 字典表
  */
 @Entity
 @Table(name = "sys_dict")
@@ -22,38 +21,59 @@ public class SysDict implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * 字典名称
+     */
     @Column(name = "name")
     private String name;
 
+    /**
+     * 字典类型
+     */
     @Column(name = "type")
     private String type;
 
+    /**
+     * 字典编码
+     */
     @Column(name = "code")
     private String code;
 
+    /**
+     * 字典值
+     */
     @Column(name = "value")
     private String value;
 
+    /**
+     * 父节点ID
+     */
     @Column(name = "parent_id")
     private Long parentId;
 
+    /**
+     * 描述
+     */
     @Column(name = "jhi_desc")
     private String desc;
 
+    /**
+     * 扩展字段1
+     */
     @Column(name = "extend_1")
     private String extend1;
 
+    /**
+     * 扩展字段1
+     */
     @Column(name = "extend_2")
     private String extend2;
 
+    /**
+     * 扩展字段1
+     */
     @Column(name = "extend_3")
     private String extend3;
-
-    @Column(name = "created_date")
-    private LocalDate createdDate;
-
-    @Column(name = "last_modified_date")
-    private LocalDate lastModifiedDate;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -180,32 +200,6 @@ public class SysDict implements Serializable {
     public void setExtend3(String extend3) {
         this.extend3 = extend3;
     }
-
-    public LocalDate getCreatedDate() {
-        return createdDate;
-    }
-
-    public SysDict createdDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
-        return this;
-    }
-
-    public void setCreatedDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public LocalDate getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public SysDict lastModifiedDate(LocalDate lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-        return this;
-    }
-
-    public void setLastModifiedDate(LocalDate lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -237,8 +231,6 @@ public class SysDict implements Serializable {
             ", extend1='" + getExtend1() + "'" +
             ", extend2='" + getExtend2() + "'" +
             ", extend3='" + getExtend3() + "'" +
-            ", createdDate='" + getCreatedDate() + "'" +
-            ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             "}";
     }
 }

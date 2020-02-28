@@ -3,6 +3,7 @@
     "fields": [
         {
             "fieldName": "key",
+            "javadoc": "关键字",
             "fieldType": "String"
         }
     ],
@@ -16,5 +17,6 @@
     "fluentMethods": true,
     "readOnly": false,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "javadoc": "黑名单关键字"
 }

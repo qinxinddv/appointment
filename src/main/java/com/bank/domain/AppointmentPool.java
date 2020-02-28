@@ -10,7 +10,7 @@ import java.io.Serializable;
 import com.bank.domain.enumeration.BusiTypeEnum;
 
 /**
- * A AppointmentPool.
+ * 预约池
  */
 @Entity
 @Table(name = "appointment_pool")
@@ -23,18 +23,33 @@ public class AppointmentPool implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * 日期
+     */
     @Column(name = "date")
     private String date;
 
+    /**
+     * 时间段
+     */
     @Column(name = "period")
     private String period;
 
+    /**
+     * 总数
+     */
     @Column(name = "total_num")
     private Integer totalNum;
 
+    /**
+     * 剩余数量
+     */
     @Column(name = "left_num")
     private Integer leftNum;
 
+    /**
+     * 类型（个人、企业、司法查询）
+     */
     @Enumerated(EnumType.STRING)
     @Column(name = "busi_type")
     private BusiTypeEnum busiType;

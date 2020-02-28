@@ -3,45 +3,45 @@
     "fields": [
         {
             "fieldName": "idCard",
+            "javadoc": "身份证号",
             "fieldType": "String"
         },
         {
             "fieldName": "name",
+            "javadoc": "姓名",
             "fieldType": "String"
         },
         {
             "fieldName": "mobile",
+            "javadoc": "手机号",
             "fieldType": "String"
         },
         {
             "fieldName": "timePeriodCode",
+            "javadoc": "时间段",
             "fieldType": "String"
         },
         {
             "fieldName": "timePeriodValue",
+            "javadoc": "时间段值",
             "fieldType": "String"
         },
         {
             "fieldName": "busiType",
+            "javadoc": "类型（个人、企业、司法查询）",
             "fieldType": "BusiTypeEnum",
             "fieldValues": "PERSON,ORG,LAW"
         },
         {
             "fieldName": "state",
+            "javadoc": "处理状态",
             "fieldType": "YesNoEnum",
             "fieldValues": "YES,NO"
         },
         {
             "fieldName": "opnion",
+            "javadoc": "处理意见",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
         }
     ],
     "relationships": [
@@ -62,5 +62,6 @@
     "fluentMethods": true,
     "readOnly": false,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "javadoc": "预约申请表"
 }

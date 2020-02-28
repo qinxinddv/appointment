@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import { Button, Row, Col } from 'reactstrap';
+import { Button, UncontrolledTooltip, Row, Col } from 'reactstrap';
 import { Translate, ICrudGetAction } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -29,6 +29,9 @@ export const BlackKeyDetail = (props: IBlackKeyDetailProps) => {
             <span id="key">
               <Translate contentKey="appointmentApp.blackKey.key">Key</Translate>
             </span>
+            <UncontrolledTooltip target="key">
+              <Translate contentKey="appointmentApp.blackKey.help.key" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{blackKeyEntity.key}</dd>
         </dl>

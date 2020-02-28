@@ -1,4 +1,3 @@
-import { Moment } from 'moment';
 import { BusiTypeEnum } from 'app/shared/model/enumerations/busi-type-enum.model';
 import { YesNoEnum } from 'app/shared/model/enumerations/yes-no-enum.model';
 
@@ -12,8 +11,6 @@ export interface IAppointment {
   busiType?: BusiTypeEnum;
   state?: YesNoEnum;
   opnion?: string;
-  createdDate?: Moment;
-  lastModifiedDate?: Moment;
   communityId?: number;
 }
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
-import { Button, Row, Col, Label } from 'reactstrap';
+import { Button, Row, Col, Label, UncontrolledTooltip } from 'reactstrap';
 import { AvFeedback, AvForm, AvGroup, AvInput, AvField } from 'availity-reactstrap-validation';
 import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -80,12 +80,18 @@ export const AppointmentConfigUpdate = (props: IAppointmentConfigUpdateProps) =>
                   <Translate contentKey="appointmentApp.appointmentConfig.period">Period</Translate>
                 </Label>
                 <AvField id="appointment-config-period" type="text" name="period" />
+                <UncontrolledTooltip target="periodLabel">
+                  <Translate contentKey="appointmentApp.appointmentConfig.help.period" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="numLabel" for="appointment-config-num">
                   <Translate contentKey="appointmentApp.appointmentConfig.num">Num</Translate>
                 </Label>
                 <AvField id="appointment-config-num" type="string" className="form-control" name="num" />
+                <UncontrolledTooltip target="numLabel">
+                  <Translate contentKey="appointmentApp.appointmentConfig.help.num" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="busiTypeLabel" for="appointment-config-busiType">
@@ -102,6 +108,9 @@ export const AppointmentConfigUpdate = (props: IAppointmentConfigUpdateProps) =>
                   <option value="ORG">{translate('appointmentApp.BusiTypeEnum.ORG')}</option>
                   <option value="LAW">{translate('appointmentApp.BusiTypeEnum.LAW')}</option>
                 </AvInput>
+                <UncontrolledTooltip target="busiTypeLabel">
+                  <Translate contentKey="appointmentApp.appointmentConfig.help.busiType" />
+                </UncontrolledTooltip>
               </AvGroup>
               <Button tag={Link} id="cancel-save" to="/appointment-config" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />

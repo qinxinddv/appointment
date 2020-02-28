@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Col, Row, Table } from 'reactstrap';
-import { Translate, ICrudGetAllAction, TextFormat, getSortState, IPaginationBaseState, JhiPagination, JhiItemCount } from 'react-jhipster';
+import { Translate, ICrudGetAllAction, getSortState, IPaginationBaseState, JhiPagination, JhiItemCount } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -91,13 +91,6 @@ export const SysDict = (props: ISysDictProps) => {
                 <th className="hand" onClick={sort('extend3')}>
                   <Translate contentKey="appointmentApp.sysDict.extend3">Extend 3</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th className="hand" onClick={sort('createdDate')}>
-                  <Translate contentKey="appointmentApp.sysDict.createdDate">Created Date</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('lastModifiedDate')}>
-                  <Translate contentKey="appointmentApp.sysDict.lastModifiedDate">Last Modified Date</Translate>{' '}
-                  <FontAwesomeIcon icon="sort" />
-                </th>
                 <th />
               </tr>
             </thead>
@@ -118,12 +111,6 @@ export const SysDict = (props: ISysDictProps) => {
                   <td>{sysDict.extend1}</td>
                   <td>{sysDict.extend2}</td>
                   <td>{sysDict.extend3}</td>
-                  <td>
-                    <TextFormat type="date" value={sysDict.createdDate} format={APP_LOCAL_DATE_FORMAT} />
-                  </td>
-                  <td>
-                    <TextFormat type="date" value={sysDict.lastModifiedDate} format={APP_LOCAL_DATE_FORMAT} />
-                  </td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${sysDict.id}`} color="info" size="sm">
