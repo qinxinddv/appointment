@@ -20,7 +20,7 @@ export const BlackKeyUpdate = (props: IBlackKeyUpdateProps) => {
   const { blackKeyEntity, loading, updating } = props;
 
   const handleClose = () => {
-    props.history.push('/black-key');
+    props.history.push('/black-key' + props.location.search);
   };
 
   useEffect(() => {

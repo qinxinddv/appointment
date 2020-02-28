@@ -23,7 +23,7 @@ export const AppointmentUpdate = (props: IAppointmentUpdateProps) => {
   const { appointmentEntity, communities, loading, updating } = props;
 
   const handleClose = () => {
-    props.history.push('/appointment');
+    props.history.push('/appointment' + props.location.search);
   };
 
   useEffect(() => {

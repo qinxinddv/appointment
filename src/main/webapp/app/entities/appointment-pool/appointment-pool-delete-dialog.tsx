@@ -17,7 +17,7 @@ export const AppointmentPoolDeleteDialog = (props: IAppointmentPoolDeleteDialogP
   }, []);
 
   const handleClose = () => {
-    props.history.push('/appointment-pool');
+    props.history.push('/appointment-pool' + props.location.search);
   };
 
   useEffect(() => {

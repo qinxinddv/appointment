@@ -21,6 +21,7 @@ const initialState = {
   entities: [] as ReadonlyArray<ISysDict>,
   entity: defaultValue,
   updating: false,
+  totalItems: 0,
   updateSuccess: false
 };
 
@@ -63,7 +64,8 @@ export default (state: SysDictState = initialState, action): SysDictState => {
       return {
         ...state,
         loading: false,
-        entities: action.payload.data
+        entities: action.payload.data,
+        totalItems: parseInt(action.payload.headers['x-total-count'], 10)
       };
     case SUCCESS(ACTION_TYPES.FETCH_SYSDICT):
       return {
@@ -99,10 +101,13 @@ const apiUrl = 'api/sys-dicts';
 
 // Actions
 
-export const getEntities: ICrudGetAllAction<ISysDict> = (page, size, sort) => ({
-  type: ACTION_TYPES.FETCH_SYSDICT_LIST,
-  payload: axios.get<ISysDict>(`${apiUrl}?cacheBuster=${new Date().getTime()}`)
-});
+export const getEntities: ICrudGetAllAction<ISysDict> = (page, size, sort) => {
+  const requestUrl = `${apiUrl}${sort ? `?page=${page}&size=${size}&sort=${sort}` : ''}`;
+  return {
+    type: ACTION_TYPES.FETCH_SYSDICT_LIST,
+    payload: axios.get<ISysDict>(`${requestUrl}${sort ? '&' : '?'}cacheBuster=${new Date().getTime()}`)
+  };
+};
 
 export const getEntity: ICrudGetAction<ISysDict> = id => {
   const requestUrl = `${apiUrl}/${id}`;

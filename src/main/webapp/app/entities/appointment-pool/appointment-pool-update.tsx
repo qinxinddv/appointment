@@ -20,7 +20,7 @@ export const AppointmentPoolUpdate = (props: IAppointmentPoolUpdateProps) => {
   const { appointmentPoolEntity, loading, updating } = props;
 
   const handleClose = () => {
-    props.history.push('/appointment-pool');
+    props.history.push('/appointment-pool' + props.location.search);
   };
 
   useEffect(() => {
@@ -100,10 +100,20 @@ export const AppointmentPoolUpdate = (props: IAppointmentPoolUpdateProps) => {
                 <AvField id="appointment-pool-leftNum" type="string" className="form-control" name="leftNum" />
               </AvGroup>
               <AvGroup>
-                <Label id="typeLabel" for="appointment-pool-type">
-                  <Translate contentKey="appointmentApp.appointmentPool.type">Type</Translate>
+                <Label id="busiTypeLabel" for="appointment-pool-busiType">
+                  <Translate contentKey="appointmentApp.appointmentPool.busiType">Busi Type</Translate>
                 </Label>
-                <AvField id="appointment-pool-type" type="text" name="type" />
+                <AvInput
+                  id="appointment-pool-busiType"
+                  type="select"
+                  className="form-control"
+                  name="busiType"
+                  value={(!isNew && appointmentPoolEntity.busiType) || 'PERSON'}
+                >
+                  <option value="PERSON">{translate('appointmentApp.BusiTypeEnum.PERSON')}</option>
+                  <option value="ORG">{translate('appointmentApp.BusiTypeEnum.ORG')}</option>
+                  <option value="LAW">{translate('appointmentApp.BusiTypeEnum.LAW')}</option>
+                </AvInput>
               </AvGroup>
               <Button tag={Link} id="cancel-save" to="/appointment-pool" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />

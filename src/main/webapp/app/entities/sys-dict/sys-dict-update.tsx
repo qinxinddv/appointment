@@ -20,7 +20,7 @@ export const SysDictUpdate = (props: ISysDictUpdateProps) => {
   const { sysDictEntity, loading, updating } = props;
 
   const handleClose = () => {
-    props.history.push('/sys-dict');
+    props.history.push('/sys-dict' + props.location.search);
   };
 
   useEffect(() => {

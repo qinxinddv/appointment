@@ -2,22 +2,50 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Col, Row, Table } from 'reactstrap';
-import { Translate, ICrudGetAllAction, TextFormat } from 'react-jhipster';
+import { Translate, ICrudGetAllAction, TextFormat, getSortState, IPaginationBaseState, JhiPagination, JhiItemCount } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
 import { getEntities } from './community.reducer';
 import { ICommunity } from 'app/shared/model/community.model';
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
+import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
 
 export interface ICommunityProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
 export const Community = (props: ICommunityProps) => {
-  useEffect(() => {
-    props.getEntities();
-  }, []);
+  const [paginationState, setPaginationState] = useState(getSortState(props.location, ITEMS_PER_PAGE));
 
-  const { communityList, match, loading } = props;
+  const getAllEntities = () => {
+    props.getEntities(paginationState.activePage - 1, paginationState.itemsPerPage, `${paginationState.sort},${paginationState.order}`);
+  };
+
+  const sortEntities = () => {
+    getAllEntities();
+    props.history.push(
+      `${props.location.pathname}?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`
+    );
+  };
+
+  useEffect(() => {
+    sortEntities();
+  }, [paginationState.activePage, paginationState.order, paginationState.sort]);
+
+  const sort = p => () => {
+    setPaginationState({
+      ...paginationState,
+      order: paginationState.order === 'asc' ? 'desc' : 'asc',
+      sort: p
+    });
+  };
+
+  const handlePagination = currentPage =>
+    setPaginationState({
+      ...paginationState,
+      activePage: currentPage
+    });
+
+  const { communityList, match, loading, totalItems } = props;
   return (
     <div>
       <h2 id="community-heading">
@@ -33,26 +61,28 @@ export const Community = (props: ICommunityProps) => {
           <Table responsive>
             <thead>
               <tr>
-                <th>
-                  <Translate contentKey="global.field.id">ID</Translate>
+                <th className="hand" onClick={sort('id')}>
+                  <Translate contentKey="global.field.id">ID</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
-                  <Translate contentKey="appointmentApp.community.name">Name</Translate>
+                <th className="hand" onClick={sort('name')}>
+                  <Translate contentKey="appointmentApp.community.name">Name</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
-                  <Translate contentKey="appointmentApp.community.addr">Addr</Translate>
+                <th className="hand" onClick={sort('addr')}>
+                  <Translate contentKey="appointmentApp.community.addr">Addr</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
-                  <Translate contentKey="appointmentApp.community.state">State</Translate>
+                <th className="hand" onClick={sort('state')}>
+                  <Translate contentKey="appointmentApp.community.state">State</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
-                  <Translate contentKey="appointmentApp.community.communityStateEnum">Community State Enum</Translate>
+                <th className="hand" onClick={sort('communityStateEnum')}>
+                  <Translate contentKey="appointmentApp.community.communityStateEnum">Community State Enum</Translate>{' '}
+                  <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
-                  <Translate contentKey="appointmentApp.community.createdDate">Created Date</Translate>
+                <th className="hand" onClick={sort('createdDate')}>
+                  <Translate contentKey="appointmentApp.community.createdDate">Created Date</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
-                  <Translate contentKey="appointmentApp.community.lastModifiedDate">Last Modified Date</Translate>
+                <th className="hand" onClick={sort('lastModifiedDate')}>
+                  <Translate contentKey="appointmentApp.community.lastModifiedDate">Last Modified Date</Translate>{' '}
+                  <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
               </tr>
@@ -85,13 +115,23 @@ export const Community = (props: ICommunityProps) => {
                           <Translate contentKey="entity.action.view">View</Translate>
                         </span>
                       </Button>
-                      <Button tag={Link} to={`${match.url}/${community.id}/edit`} color="primary" size="sm">
+                      <Button
+                        tag={Link}
+                        to={`${match.url}/${community.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
+                        color="primary"
+                        size="sm"
+                      >
                         <FontAwesomeIcon icon="pencil-alt" />{' '}
                         <span className="d-none d-md-inline">
                           <Translate contentKey="entity.action.edit">Edit</Translate>
                         </span>
                       </Button>
-                      <Button tag={Link} to={`${match.url}/${community.id}/delete`} color="danger" size="sm">
+                      <Button
+                        tag={Link}
+                        to={`${match.url}/${community.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
+                        color="danger"
+                        size="sm"
+                      >
                         <FontAwesomeIcon icon="trash" />{' '}
                         <span className="d-none d-md-inline">
                           <Translate contentKey="entity.action.delete">Delete</Translate>
@@ -111,13 +151,28 @@ export const Community = (props: ICommunityProps) => {
           )
         )}
       </div>
+      <div className={communityList && communityList.length > 0 ? '' : 'd-none'}>
+        <Row className="justify-content-center">
+          <JhiItemCount page={paginationState.activePage} total={totalItems} itemsPerPage={paginationState.itemsPerPage} i18nEnabled />
+        </Row>
+        <Row className="justify-content-center">
+          <JhiPagination
+            activePage={paginationState.activePage}
+            onSelect={handlePagination}
+            maxButtons={5}
+            itemsPerPage={paginationState.itemsPerPage}
+            totalItems={props.totalItems}
+          />
+        </Row>
+      </div>
     </div>
   );
 };
 
 const mapStateToProps = ({ community }: IRootState) => ({
   communityList: community.entities,
-  loading: community.loading
+  loading: community.loading,
+  totalItems: community.totalItems
 });
 
 const mapDispatchToProps = {

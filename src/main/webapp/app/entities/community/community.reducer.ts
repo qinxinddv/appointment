@@ -21,6 +21,7 @@ const initialState = {
   entities: [] as ReadonlyArray<ICommunity>,
   entity: defaultValue,
   updating: false,
+  totalItems: 0,
   updateSuccess: false
 };
 
@@ -63,7 +64,8 @@ export default (state: CommunityState = initialState, action): CommunityState =>
       return {
         ...state,
         loading: false,
-        entities: action.payload.data
+        entities: action.payload.data,
+        totalItems: parseInt(action.payload.headers['x-total-count'], 10)
       };
     case SUCCESS(ACTION_TYPES.FETCH_COMMUNITY):
       return {
@@ -99,10 +101,13 @@ const apiUrl = 'api/communities';
 
 // Actions
 
-export const getEntities: ICrudGetAllAction<ICommunity> = (page, size, sort) => ({
-  type: ACTION_TYPES.FETCH_COMMUNITY_LIST,
-  payload: axios.get<ICommunity>(`${apiUrl}?cacheBuster=${new Date().getTime()}`)
-});
+export const getEntities: ICrudGetAllAction<ICommunity> = (page, size, sort) => {
+  const requestUrl = `${apiUrl}${sort ? `?page=${page}&size=${size}&sort=${sort}` : ''}`;
+  return {
+    type: ACTION_TYPES.FETCH_COMMUNITY_LIST,
+    payload: axios.get<ICommunity>(`${requestUrl}${sort ? '&' : '?'}cacheBuster=${new Date().getTime()}`)
+  };
+};
 
 export const getEntity: ICrudGetAction<ICommunity> = id => {
   const requestUrl = `${apiUrl}/${id}`;

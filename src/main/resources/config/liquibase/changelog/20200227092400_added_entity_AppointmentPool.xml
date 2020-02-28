@@ -28,7 +28,7 @@
             <column name="left_num" type="integer">
                 <constraints nullable="true" />
             </column>
-            <column name="type" type="varchar(255)">
+            <column name="busi_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
@@ -58,7 +58,7 @@
             <column name="period" type="string"/>
             <column name="total_num" type="numeric"/>
             <column name="left_num" type="numeric"/>
-            <column name="type" type="string"/>
+            <column name="busi_type" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

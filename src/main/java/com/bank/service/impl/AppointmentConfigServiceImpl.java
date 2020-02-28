@@ -8,13 +8,12 @@ import com.bank.service.mapper.AppointmentConfigMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing {@link AppointmentConfig}.
@@ -51,15 +50,15 @@ public class AppointmentConfigServiceImpl implements AppointmentConfigService {
     /**
      * Get all the appointmentConfigs.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
     @Override
     @Transactional(readOnly = true)
-    public List<AppointmentConfigDTO> findAll() {
+    public Page<AppointmentConfigDTO> findAll(Pageable pageable) {
         log.debug("Request to get all AppointmentConfigs");
-        return appointmentConfigRepository.findAll().stream()
-            .map(appointmentConfigMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
+        return appointmentConfigRepository.findAll(pageable)
+            .map(appointmentConfigMapper::toDto);
     }
 
     /**

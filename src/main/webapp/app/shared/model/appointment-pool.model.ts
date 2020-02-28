@@ -1,10 +1,12 @@
+import { BusiTypeEnum } from 'app/shared/model/enumerations/busi-type-enum.model';
+
 export interface IAppointmentPool {
   id?: number;
   date?: string;
   period?: string;
   totalNum?: number;
   leftNum?: number;
-  type?: string;
+  busiType?: BusiTypeEnum;
 }
 
 export const defaultValue: Readonly<IAppointmentPool> = {};

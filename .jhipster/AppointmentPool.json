@@ -18,15 +18,16 @@
             "fieldType": "Integer"
         },
         {
-            "fieldName": "type",
-            "fieldType": "String"
+            "fieldName": "busiType",
+            "fieldType": "BusiTypeEnum",
+            "fieldValues": "PERSON,ORG,LAW"
         }
     ],
     "relationships": [],
     "changelogDate": "20200227092400",
     "entityTableName": "appointment_pool",
     "dto": "mapstruct",
-    "pagination": "no",
+    "pagination": "pagination",
     "service": "serviceImpl",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,

@@ -17,7 +17,7 @@ export const AppointmentConfigDeleteDialog = (props: IAppointmentConfigDeleteDia
   }, []);
 
   const handleClose = () => {
-    props.history.push('/appointment-config');
+    props.history.push('/appointment-config' + props.location.search);
   };
 
   useEffect(() => {
