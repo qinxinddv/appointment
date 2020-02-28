@@ -43,6 +43,9 @@ export const AppointmentUpdate = (props: IAppointmentUpdateProps) => {
   }, [props.updateSuccess]);
 
   const saveEntity = (event, errors, values) => {
+    values.applyTime = convertDateTimeToServer(values.applyTime);
+    values.opnionTime = convertDateTimeToServer(values.opnionTime);
+
     if (errors.length === 0) {
       const entity = {
         ...appointmentEntity,
@@ -184,7 +187,14 @@ export const AppointmentUpdate = (props: IAppointmentUpdateProps) => {
                 <Label id="applyTimeLabel" for="appointment-applyTime">
                   <Translate contentKey="appointmentApp.appointment.applyTime">Apply Time</Translate>
                 </Label>
-                <AvField id="appointment-applyTime" type="date" className="form-control" name="applyTime" />
+                <AvInput
+                  id="appointment-applyTime"
+                  type="datetime-local"
+                  className="form-control"
+                  name="applyTime"
+                  placeholder={'YYYY-MM-DD HH:mm'}
+                  value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.appointmentEntity.applyTime)}
+                />
                 <UncontrolledTooltip target="applyTimeLabel">
                   <Translate contentKey="appointmentApp.appointment.help.applyTime" />
                 </UncontrolledTooltip>
@@ -193,7 +203,14 @@ export const AppointmentUpdate = (props: IAppointmentUpdateProps) => {
                 <Label id="opnionTimeLabel" for="appointment-opnionTime">
                   <Translate contentKey="appointmentApp.appointment.opnionTime">Opnion Time</Translate>
                 </Label>
-                <AvField id="appointment-opnionTime" type="date" className="form-control" name="opnionTime" />
+                <AvInput
+                  id="appointment-opnionTime"
+                  type="datetime-local"
+                  className="form-control"
+                  name="opnionTime"
+                  placeholder={'YYYY-MM-DD HH:mm'}
+                  value={isNew ? displayDefaultDateTime() : convertDateTimeFromServer(props.appointmentEntity.opnionTime)}
+                />
                 <UncontrolledTooltip target="opnionTimeLabel">
                   <Translate contentKey="appointmentApp.appointment.help.opnionTime" />
                 </UncontrolledTooltip>

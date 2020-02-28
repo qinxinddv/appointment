@@ -2,7 +2,7 @@ package com.bank.service.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.io.Serializable;
 import java.util.Objects;
 import com.bank.domain.enumeration.BusiTypeEnum;
@@ -74,13 +74,13 @@ public class AppointmentDTO implements Serializable {
      * 申请时间
      */
     @ApiModelProperty(value = "申请时间")
-    private LocalDate applyTime;
+    private ZonedDateTime applyTime;
 
     /**
      * 处理时间
      */
     @ApiModelProperty(value = "处理时间")
-    private LocalDate opnionTime;
+    private ZonedDateTime opnionTime;
 
     /**
      * 预约日期
@@ -171,19 +171,19 @@ public class AppointmentDTO implements Serializable {
         this.opnion = opnion;
     }
 
-    public LocalDate getApplyTime() {
+    public ZonedDateTime getApplyTime() {
         return applyTime;
     }
 
-    public void setApplyTime(LocalDate applyTime) {
+    public void setApplyTime(ZonedDateTime applyTime) {
         this.applyTime = applyTime;
     }
 
-    public LocalDate getOpnionTime() {
+    public ZonedDateTime getOpnionTime() {
         return opnionTime;
     }
 
-    public void setOpnionTime(LocalDate opnionTime) {
+    public void setOpnionTime(ZonedDateTime opnionTime) {
         this.opnionTime = opnionTime;
     }
 

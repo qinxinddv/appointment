@@ -115,7 +115,7 @@ export const AppointmentDetail = (props: IAppointmentDetailProps) => {
             </UncontrolledTooltip>
           </dt>
           <dd>
-            <TextFormat value={appointmentEntity.applyTime} type="date" format={APP_LOCAL_DATE_FORMAT} />
+            <TextFormat value={appointmentEntity.applyTime} type="date" format={APP_DATE_FORMAT} />
           </dd>
           <dt>
             <span id="opnionTime">
@@ -126,7 +126,7 @@ export const AppointmentDetail = (props: IAppointmentDetailProps) => {
             </UncontrolledTooltip>
           </dt>
           <dd>
-            <TextFormat value={appointmentEntity.opnionTime} type="date" format={APP_LOCAL_DATE_FORMAT} />
+            <TextFormat value={appointmentEntity.opnionTime} type="date" format={APP_DATE_FORMAT} />
           </dd>
           <dt>
             <span id="date">

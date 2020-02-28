@@ -22,10 +22,13 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
-import java.time.LocalDate;
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.ZoneOffset;
 import java.time.ZoneId;
 import java.util.List;
 
+import static com.bank.web.rest.TestUtil.sameInstant;
 import static com.bank.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
@@ -67,11 +70,11 @@ public class AppointmentResourceIT {
     private static final String DEFAULT_OPNION = "AAAAAAAAAA";
     private static final String UPDATED_OPNION = "BBBBBBBBBB";
 
-    private static final LocalDate DEFAULT_APPLY_TIME = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_APPLY_TIME = LocalDate.now(ZoneId.systemDefault());
+    private static final ZonedDateTime DEFAULT_APPLY_TIME = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_APPLY_TIME = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final LocalDate DEFAULT_OPNION_TIME = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_OPNION_TIME = LocalDate.now(ZoneId.systemDefault());
+    private static final ZonedDateTime DEFAULT_OPNION_TIME = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_OPNION_TIME = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     private static final String DEFAULT_DATE = "AAAAAAAAAA";
     private static final String UPDATED_DATE = "BBBBBBBBBB";
@@ -237,8 +240,8 @@ public class AppointmentResourceIT {
             .andExpect(jsonPath("$.[*].busiType").value(hasItem(DEFAULT_BUSI_TYPE.toString())))
             .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
             .andExpect(jsonPath("$.[*].opnion").value(hasItem(DEFAULT_OPNION)))
-            .andExpect(jsonPath("$.[*].applyTime").value(hasItem(DEFAULT_APPLY_TIME.toString())))
-            .andExpect(jsonPath("$.[*].opnionTime").value(hasItem(DEFAULT_OPNION_TIME.toString())))
+            .andExpect(jsonPath("$.[*].applyTime").value(hasItem(sameInstant(DEFAULT_APPLY_TIME))))
+            .andExpect(jsonPath("$.[*].opnionTime").value(hasItem(sameInstant(DEFAULT_OPNION_TIME))))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE)));
     }
     
@@ -262,8 +265,8 @@ public class AppointmentResourceIT {
             .andExpect(jsonPath("$.busiType").value(DEFAULT_BUSI_TYPE.toString()))
             .andExpect(jsonPath("$.state").value(DEFAULT_STATE.toString()))
             .andExpect(jsonPath("$.opnion").value(DEFAULT_OPNION))
-            .andExpect(jsonPath("$.applyTime").value(DEFAULT_APPLY_TIME.toString()))
-            .andExpect(jsonPath("$.opnionTime").value(DEFAULT_OPNION_TIME.toString()))
+            .andExpect(jsonPath("$.applyTime").value(sameInstant(DEFAULT_APPLY_TIME)))
+            .andExpect(jsonPath("$.opnionTime").value(sameInstant(DEFAULT_OPNION_TIME)))
             .andExpect(jsonPath("$.date").value(DEFAULT_DATE));
     }
 
