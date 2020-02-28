@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Col, Row, Table } from 'reactstrap';
-import { Translate, ICrudGetAllAction, getSortState, IPaginationBaseState, JhiPagination, JhiItemCount } from 'react-jhipster';
+import { Translate, ICrudGetAllAction, TextFormat, getSortState, IPaginationBaseState, JhiPagination, JhiItemCount } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -73,6 +73,9 @@ export const Appointment = (props: IAppointmentProps) => {
                 <th className="hand" onClick={sort('mobile')}>
                   <Translate contentKey="appointmentApp.appointment.mobile">Mobile</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('addr')}>
+                  <Translate contentKey="appointmentApp.appointment.addr">Addr</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
                 <th className="hand" onClick={sort('timePeriodCode')}>
                   <Translate contentKey="appointmentApp.appointment.timePeriodCode">Time Period Code</Translate>{' '}
                   <FontAwesomeIcon icon="sort" />
@@ -89,6 +92,12 @@ export const Appointment = (props: IAppointmentProps) => {
                 </th>
                 <th className="hand" onClick={sort('opnion')}>
                   <Translate contentKey="appointmentApp.appointment.opnion">Opnion</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('applyTime')}>
+                  <Translate contentKey="appointmentApp.appointment.applyTime">Apply Time</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('opnionTime')}>
+                  <Translate contentKey="appointmentApp.appointment.opnionTime">Opnion Time</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th>
                   <Translate contentKey="appointmentApp.appointment.community">Community</Translate> <FontAwesomeIcon icon="sort" />
@@ -107,6 +116,7 @@ export const Appointment = (props: IAppointmentProps) => {
                   <td>{appointment.idCard}</td>
                   <td>{appointment.name}</td>
                   <td>{appointment.mobile}</td>
+                  <td>{appointment.addr}</td>
                   <td>{appointment.timePeriodCode}</td>
                   <td>{appointment.timePeriodValue}</td>
                   <td>
@@ -116,6 +126,12 @@ export const Appointment = (props: IAppointmentProps) => {
                     <Translate contentKey={`appointmentApp.YesNoEnum.${appointment.state}`} />
                   </td>
                   <td>{appointment.opnion}</td>
+                  <td>
+                    <TextFormat type="date" value={appointment.applyTime} format={APP_LOCAL_DATE_FORMAT} />
+                  </td>
+                  <td>
+                    <TextFormat type="date" value={appointment.opnionTime} format={APP_LOCAL_DATE_FORMAT} />
+                  </td>
                   <td>
                     {appointment.communityId ? <Link to={`community/${appointment.communityId}`}>{appointment.communityId}</Link> : ''}
                   </td>

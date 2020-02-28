@@ -1,3 +1,4 @@
+import { Moment } from 'moment';
 import { BusiTypeEnum } from 'app/shared/model/enumerations/busi-type-enum.model';
 import { YesNoEnum } from 'app/shared/model/enumerations/yes-no-enum.model';
 
@@ -6,11 +7,14 @@ export interface IAppointment {
   idCard?: string;
   name?: string;
   mobile?: string;
+  addr?: string;
   timePeriodCode?: string;
   timePeriodValue?: string;
   busiType?: BusiTypeEnum;
   state?: YesNoEnum;
   opnion?: string;
+  applyTime?: Moment;
+  opnionTime?: Moment;
   communityId?: number;
 }
 
