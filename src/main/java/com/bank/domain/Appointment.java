@@ -7,6 +7,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import com.bank.domain.enumeration.BusiTypeEnum;
 
@@ -45,6 +46,12 @@ public class Appointment implements Serializable {
     private String mobile;
 
     /**
+     * 家庭地址
+     */
+    @Column(name = "addr")
+    private String addr;
+
+    /**
      * 时间段
      */
     @Column(name = "time_period_code")
@@ -75,6 +82,18 @@ public class Appointment implements Serializable {
      */
     @Column(name = "opnion")
     private String opnion;
+
+    /**
+     * 申请时间
+     */
+    @Column(name = "apply_time")
+    private LocalDate applyTime;
+
+    /**
+     * 处理时间
+     */
+    @Column(name = "opnion_time")
+    private LocalDate opnionTime;
 
     @ManyToOne
     @JsonIgnoreProperties("appointments")
@@ -126,6 +145,19 @@ public class Appointment implements Serializable {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+    public String getAddr() {
+        return addr;
+    }
+
+    public Appointment addr(String addr) {
+        this.addr = addr;
+        return this;
+    }
+
+    public void setAddr(String addr) {
+        this.addr = addr;
     }
 
     public String getTimePeriodCode() {
@@ -193,6 +225,32 @@ public class Appointment implements Serializable {
         this.opnion = opnion;
     }
 
+    public LocalDate getApplyTime() {
+        return applyTime;
+    }
+
+    public Appointment applyTime(LocalDate applyTime) {
+        this.applyTime = applyTime;
+        return this;
+    }
+
+    public void setApplyTime(LocalDate applyTime) {
+        this.applyTime = applyTime;
+    }
+
+    public LocalDate getOpnionTime() {
+        return opnionTime;
+    }
+
+    public Appointment opnionTime(LocalDate opnionTime) {
+        this.opnionTime = opnionTime;
+        return this;
+    }
+
+    public void setOpnionTime(LocalDate opnionTime) {
+        this.opnionTime = opnionTime;
+    }
+
     public Community getCommunity() {
         return community;
     }
@@ -230,11 +288,14 @@ public class Appointment implements Serializable {
             ", idCard='" + getIdCard() + "'" +
             ", name='" + getName() + "'" +
             ", mobile='" + getMobile() + "'" +
+            ", addr='" + getAddr() + "'" +
             ", timePeriodCode='" + getTimePeriodCode() + "'" +
             ", timePeriodValue='" + getTimePeriodValue() + "'" +
             ", busiType='" + getBusiType() + "'" +
             ", state='" + getState() + "'" +
             ", opnion='" + getOpnion() + "'" +
+            ", applyTime='" + getApplyTime() + "'" +
+            ", opnionTime='" + getOpnionTime() + "'" +
             "}";
     }
 }

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, UncontrolledTooltip, Row, Col } from 'reactstrap';
-import { Translate, ICrudGetAction } from 'react-jhipster';
+import { Translate, ICrudGetAction, TextFormat } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
@@ -53,6 +53,15 @@ export const AppointmentDetail = (props: IAppointmentDetailProps) => {
           </dt>
           <dd>{appointmentEntity.mobile}</dd>
           <dt>
+            <span id="addr">
+              <Translate contentKey="appointmentApp.appointment.addr">Addr</Translate>
+            </span>
+            <UncontrolledTooltip target="addr">
+              <Translate contentKey="appointmentApp.appointment.help.addr" />
+            </UncontrolledTooltip>
+          </dt>
+          <dd>{appointmentEntity.addr}</dd>
+          <dt>
             <span id="timePeriodCode">
               <Translate contentKey="appointmentApp.appointment.timePeriodCode">Time Period Code</Translate>
             </span>
@@ -97,6 +106,28 @@ export const AppointmentDetail = (props: IAppointmentDetailProps) => {
             </UncontrolledTooltip>
           </dt>
           <dd>{appointmentEntity.opnion}</dd>
+          <dt>
+            <span id="applyTime">
+              <Translate contentKey="appointmentApp.appointment.applyTime">Apply Time</Translate>
+            </span>
+            <UncontrolledTooltip target="applyTime">
+              <Translate contentKey="appointmentApp.appointment.help.applyTime" />
+            </UncontrolledTooltip>
+          </dt>
+          <dd>
+            <TextFormat value={appointmentEntity.applyTime} type="date" format={APP_LOCAL_DATE_FORMAT} />
+          </dd>
+          <dt>
+            <span id="opnionTime">
+              <Translate contentKey="appointmentApp.appointment.opnionTime">Opnion Time</Translate>
+            </span>
+            <UncontrolledTooltip target="opnionTime">
+              <Translate contentKey="appointmentApp.appointment.help.opnionTime" />
+            </UncontrolledTooltip>
+          </dt>
+          <dd>
+            <TextFormat value={appointmentEntity.opnionTime} type="date" format={APP_LOCAL_DATE_FORMAT} />
+          </dd>
           <dt>
             <Translate contentKey="appointmentApp.appointment.community">Community</Translate>
           </dt>

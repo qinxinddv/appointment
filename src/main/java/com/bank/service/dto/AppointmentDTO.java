@@ -2,6 +2,7 @@ package com.bank.service.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.Objects;
 import com.bank.domain.enumeration.BusiTypeEnum;
@@ -34,6 +35,12 @@ public class AppointmentDTO implements Serializable {
     private String mobile;
 
     /**
+     * 家庭地址
+     */
+    @ApiModelProperty(value = "家庭地址")
+    private String addr;
+
+    /**
      * 时间段
      */
     @ApiModelProperty(value = "时间段")
@@ -62,6 +69,18 @@ public class AppointmentDTO implements Serializable {
      */
     @ApiModelProperty(value = "处理意见")
     private String opnion;
+
+    /**
+     * 申请时间
+     */
+    @ApiModelProperty(value = "申请时间")
+    private LocalDate applyTime;
+
+    /**
+     * 处理时间
+     */
+    @ApiModelProperty(value = "处理时间")
+    private LocalDate opnionTime;
 
 
     private Long communityId;
@@ -96,6 +115,14 @@ public class AppointmentDTO implements Serializable {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+    public String getAddr() {
+        return addr;
+    }
+
+    public void setAddr(String addr) {
+        this.addr = addr;
     }
 
     public String getTimePeriodCode() {
@@ -138,6 +165,22 @@ public class AppointmentDTO implements Serializable {
         this.opnion = opnion;
     }
 
+    public LocalDate getApplyTime() {
+        return applyTime;
+    }
+
+    public void setApplyTime(LocalDate applyTime) {
+        this.applyTime = applyTime;
+    }
+
+    public LocalDate getOpnionTime() {
+        return opnionTime;
+    }
+
+    public void setOpnionTime(LocalDate opnionTime) {
+        this.opnionTime = opnionTime;
+    }
+
     public Long getCommunityId() {
         return communityId;
     }
@@ -174,11 +217,14 @@ public class AppointmentDTO implements Serializable {
             ", idCard='" + getIdCard() + "'" +
             ", name='" + getName() + "'" +
             ", mobile='" + getMobile() + "'" +
+            ", addr='" + getAddr() + "'" +
             ", timePeriodCode='" + getTimePeriodCode() + "'" +
             ", timePeriodValue='" + getTimePeriodValue() + "'" +
             ", busiType='" + getBusiType() + "'" +
             ", state='" + getState() + "'" +
             ", opnion='" + getOpnion() + "'" +
+            ", applyTime='" + getApplyTime() + "'" +
+            ", opnionTime='" + getOpnionTime() + "'" +
             ", communityId=" + getCommunityId() +
             "}";
     }

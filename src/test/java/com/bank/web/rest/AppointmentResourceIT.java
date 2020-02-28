@@ -22,6 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static com.bank.web.rest.TestUtil.createFormattingConversionService;
@@ -47,6 +49,9 @@ public class AppointmentResourceIT {
     private static final String DEFAULT_MOBILE = "AAAAAAAAAA";
     private static final String UPDATED_MOBILE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_ADDR = "AAAAAAAAAA";
+    private static final String UPDATED_ADDR = "BBBBBBBBBB";
+
     private static final String DEFAULT_TIME_PERIOD_CODE = "AAAAAAAAAA";
     private static final String UPDATED_TIME_PERIOD_CODE = "BBBBBBBBBB";
 
@@ -61,6 +66,12 @@ public class AppointmentResourceIT {
 
     private static final String DEFAULT_OPNION = "AAAAAAAAAA";
     private static final String UPDATED_OPNION = "BBBBBBBBBB";
+
+    private static final LocalDate DEFAULT_APPLY_TIME = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_APPLY_TIME = LocalDate.now(ZoneId.systemDefault());
+
+    private static final LocalDate DEFAULT_OPNION_TIME = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_OPNION_TIME = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private AppointmentRepository appointmentRepository;
@@ -113,11 +124,14 @@ public class AppointmentResourceIT {
             .idCard(DEFAULT_ID_CARD)
             .name(DEFAULT_NAME)
             .mobile(DEFAULT_MOBILE)
+            .addr(DEFAULT_ADDR)
             .timePeriodCode(DEFAULT_TIME_PERIOD_CODE)
             .timePeriodValue(DEFAULT_TIME_PERIOD_VALUE)
             .busiType(DEFAULT_BUSI_TYPE)
             .state(DEFAULT_STATE)
-            .opnion(DEFAULT_OPNION);
+            .opnion(DEFAULT_OPNION)
+            .applyTime(DEFAULT_APPLY_TIME)
+            .opnionTime(DEFAULT_OPNION_TIME);
         return appointment;
     }
     /**
@@ -131,11 +145,14 @@ public class AppointmentResourceIT {
             .idCard(UPDATED_ID_CARD)
             .name(UPDATED_NAME)
             .mobile(UPDATED_MOBILE)
+            .addr(UPDATED_ADDR)
             .timePeriodCode(UPDATED_TIME_PERIOD_CODE)
             .timePeriodValue(UPDATED_TIME_PERIOD_VALUE)
             .busiType(UPDATED_BUSI_TYPE)
             .state(UPDATED_STATE)
-            .opnion(UPDATED_OPNION);
+            .opnion(UPDATED_OPNION)
+            .applyTime(UPDATED_APPLY_TIME)
+            .opnionTime(UPDATED_OPNION_TIME);
         return appointment;
     }
 
@@ -163,11 +180,14 @@ public class AppointmentResourceIT {
         assertThat(testAppointment.getIdCard()).isEqualTo(DEFAULT_ID_CARD);
         assertThat(testAppointment.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testAppointment.getMobile()).isEqualTo(DEFAULT_MOBILE);
+        assertThat(testAppointment.getAddr()).isEqualTo(DEFAULT_ADDR);
         assertThat(testAppointment.getTimePeriodCode()).isEqualTo(DEFAULT_TIME_PERIOD_CODE);
         assertThat(testAppointment.getTimePeriodValue()).isEqualTo(DEFAULT_TIME_PERIOD_VALUE);
         assertThat(testAppointment.getBusiType()).isEqualTo(DEFAULT_BUSI_TYPE);
         assertThat(testAppointment.getState()).isEqualTo(DEFAULT_STATE);
         assertThat(testAppointment.getOpnion()).isEqualTo(DEFAULT_OPNION);
+        assertThat(testAppointment.getApplyTime()).isEqualTo(DEFAULT_APPLY_TIME);
+        assertThat(testAppointment.getOpnionTime()).isEqualTo(DEFAULT_OPNION_TIME);
     }
 
     @Test
@@ -205,11 +225,14 @@ public class AppointmentResourceIT {
             .andExpect(jsonPath("$.[*].idCard").value(hasItem(DEFAULT_ID_CARD)))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
             .andExpect(jsonPath("$.[*].mobile").value(hasItem(DEFAULT_MOBILE)))
+            .andExpect(jsonPath("$.[*].addr").value(hasItem(DEFAULT_ADDR)))
             .andExpect(jsonPath("$.[*].timePeriodCode").value(hasItem(DEFAULT_TIME_PERIOD_CODE)))
             .andExpect(jsonPath("$.[*].timePeriodValue").value(hasItem(DEFAULT_TIME_PERIOD_VALUE)))
             .andExpect(jsonPath("$.[*].busiType").value(hasItem(DEFAULT_BUSI_TYPE.toString())))
             .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
-            .andExpect(jsonPath("$.[*].opnion").value(hasItem(DEFAULT_OPNION)));
+            .andExpect(jsonPath("$.[*].opnion").value(hasItem(DEFAULT_OPNION)))
+            .andExpect(jsonPath("$.[*].applyTime").value(hasItem(DEFAULT_APPLY_TIME.toString())))
+            .andExpect(jsonPath("$.[*].opnionTime").value(hasItem(DEFAULT_OPNION_TIME.toString())));
     }
     
     @Test
@@ -226,11 +249,14 @@ public class AppointmentResourceIT {
             .andExpect(jsonPath("$.idCard").value(DEFAULT_ID_CARD))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
             .andExpect(jsonPath("$.mobile").value(DEFAULT_MOBILE))
+            .andExpect(jsonPath("$.addr").value(DEFAULT_ADDR))
             .andExpect(jsonPath("$.timePeriodCode").value(DEFAULT_TIME_PERIOD_CODE))
             .andExpect(jsonPath("$.timePeriodValue").value(DEFAULT_TIME_PERIOD_VALUE))
             .andExpect(jsonPath("$.busiType").value(DEFAULT_BUSI_TYPE.toString()))
             .andExpect(jsonPath("$.state").value(DEFAULT_STATE.toString()))
-            .andExpect(jsonPath("$.opnion").value(DEFAULT_OPNION));
+            .andExpect(jsonPath("$.opnion").value(DEFAULT_OPNION))
+            .andExpect(jsonPath("$.applyTime").value(DEFAULT_APPLY_TIME.toString()))
+            .andExpect(jsonPath("$.opnionTime").value(DEFAULT_OPNION_TIME.toString()));
     }
 
     @Test
@@ -257,11 +283,14 @@ public class AppointmentResourceIT {
             .idCard(UPDATED_ID_CARD)
             .name(UPDATED_NAME)
             .mobile(UPDATED_MOBILE)
+            .addr(UPDATED_ADDR)
             .timePeriodCode(UPDATED_TIME_PERIOD_CODE)
             .timePeriodValue(UPDATED_TIME_PERIOD_VALUE)
             .busiType(UPDATED_BUSI_TYPE)
             .state(UPDATED_STATE)
-            .opnion(UPDATED_OPNION);
+            .opnion(UPDATED_OPNION)
+            .applyTime(UPDATED_APPLY_TIME)
+            .opnionTime(UPDATED_OPNION_TIME);
         AppointmentDTO appointmentDTO = appointmentMapper.toDto(updatedAppointment);
 
         restAppointmentMockMvc.perform(put("/api/appointments")
@@ -276,11 +305,14 @@ public class AppointmentResourceIT {
         assertThat(testAppointment.getIdCard()).isEqualTo(UPDATED_ID_CARD);
         assertThat(testAppointment.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testAppointment.getMobile()).isEqualTo(UPDATED_MOBILE);
+        assertThat(testAppointment.getAddr()).isEqualTo(UPDATED_ADDR);
         assertThat(testAppointment.getTimePeriodCode()).isEqualTo(UPDATED_TIME_PERIOD_CODE);
         assertThat(testAppointment.getTimePeriodValue()).isEqualTo(UPDATED_TIME_PERIOD_VALUE);
         assertThat(testAppointment.getBusiType()).isEqualTo(UPDATED_BUSI_TYPE);
         assertThat(testAppointment.getState()).isEqualTo(UPDATED_STATE);
         assertThat(testAppointment.getOpnion()).isEqualTo(UPDATED_OPNION);
+        assertThat(testAppointment.getApplyTime()).isEqualTo(UPDATED_APPLY_TIME);
+        assertThat(testAppointment.getOpnionTime()).isEqualTo(UPDATED_OPNION_TIME);
     }
 
     @Test
