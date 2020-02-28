@@ -129,6 +129,15 @@ export const AppointmentDetail = (props: IAppointmentDetailProps) => {
             <TextFormat value={appointmentEntity.opnionTime} type="date" format={APP_LOCAL_DATE_FORMAT} />
           </dd>
           <dt>
+            <span id="date">
+              <Translate contentKey="appointmentApp.appointment.date">Date</Translate>
+            </span>
+            <UncontrolledTooltip target="date">
+              <Translate contentKey="appointmentApp.appointment.help.date" />
+            </UncontrolledTooltip>
+          </dt>
+          <dd>{appointmentEntity.date}</dd>
+          <dt>
             <Translate contentKey="appointmentApp.appointment.org">Org</Translate>
           </dt>
           <dd>{appointmentEntity.orgId ? appointmentEntity.orgId : ''}</dd>

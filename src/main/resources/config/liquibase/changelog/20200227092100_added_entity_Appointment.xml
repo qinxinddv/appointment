@@ -49,6 +49,9 @@
             <column name="opnion_time" type="date" remarks="处理时间">
                 <constraints nullable="true" />
             </column>
+            <column name="date" type="varchar(255)" remarks="预约日期">
+                <constraints nullable="true" />
+            </column>
             <column name="org_id" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -86,6 +89,7 @@
             <column name="opnion" type="string"/>
             <column name="apply_time" type="date"/>
             <column name="opnion_time" type="date"/>
+            <column name="date" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

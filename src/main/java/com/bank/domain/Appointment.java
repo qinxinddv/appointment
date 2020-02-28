@@ -95,6 +95,12 @@ public class Appointment implements Serializable {
     @Column(name = "opnion_time")
     private LocalDate opnionTime;
 
+    /**
+     * 预约日期
+     */
+    @Column(name = "date")
+    private String date;
+
     @ManyToOne
     @JsonIgnoreProperties("appointments")
     private Org org;
@@ -251,6 +257,19 @@ public class Appointment implements Serializable {
         this.opnionTime = opnionTime;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public Appointment date(String date) {
+        this.date = date;
+        return this;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public Org getOrg() {
         return org;
     }
@@ -296,6 +315,7 @@ public class Appointment implements Serializable {
             ", opnion='" + getOpnion() + "'" +
             ", applyTime='" + getApplyTime() + "'" +
             ", opnionTime='" + getOpnionTime() + "'" +
+            ", date='" + getDate() + "'" +
             "}";
     }
 }

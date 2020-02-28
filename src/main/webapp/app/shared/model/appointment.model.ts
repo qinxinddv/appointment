@@ -15,6 +15,7 @@ export interface IAppointment {
   opnion?: string;
   applyTime?: Moment;
   opnionTime?: Moment;
+  date?: string;
   orgId?: number;
 }
 
