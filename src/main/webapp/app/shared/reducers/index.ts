@@ -37,6 +37,10 @@ import appointmentPool, {
 import blackKey, {
   BlackKeyState
 } from 'app/entities/black-key/black-key.reducer';
+// prettier-ignore
+import org, {
+  OrgState
+} from 'app/entities/org/org.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {
@@ -57,6 +61,7 @@ export interface IRootState {
   readonly appointmentConfig: AppointmentConfigState;
   readonly appointmentPool: AppointmentPoolState;
   readonly blackKey: BlackKeyState;
+  readonly org: OrgState;
   /* jhipster-needle-add-reducer-type - JHipster will add reducer type here */
   readonly loadingBar: any;
 }
@@ -79,6 +84,7 @@ const rootReducer = combineReducers<IRootState>({
   appointmentConfig,
   appointmentPool,
   blackKey,
+  org,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar
 });

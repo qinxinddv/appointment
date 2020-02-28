@@ -15,7 +15,7 @@ export interface IAppointment {
   opnion?: string;
   applyTime?: Moment;
   opnionTime?: Moment;
-  communityId?: number;
+  orgId?: number;
 }
 
 export const defaultValue: Readonly<IAppointment> = {};

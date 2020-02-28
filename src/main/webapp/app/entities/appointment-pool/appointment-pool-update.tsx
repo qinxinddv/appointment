@@ -7,6 +7,8 @@ import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
+import { IOrg } from 'app/shared/model/org.model';
+import { getEntities as getOrgs } from 'app/entities/org/org.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './appointment-pool.reducer';
 import { IAppointmentPool } from 'app/shared/model/appointment-pool.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
@@ -15,9 +17,10 @@ import { mapIdList } from 'app/shared/util/entity-utils';
 export interface IAppointmentPoolUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export const AppointmentPoolUpdate = (props: IAppointmentPoolUpdateProps) => {
+  const [orgId, setOrgId] = useState('0');
   const [isNew, setIsNew] = useState(!props.match.params || !props.match.params.id);
 
-  const { appointmentPoolEntity, loading, updating } = props;
+  const { appointmentPoolEntity, orgs, loading, updating } = props;
 
   const handleClose = () => {
     props.history.push('/appointment-pool' + props.location.search);
@@ -29,6 +32,8 @@ export const AppointmentPoolUpdate = (props: IAppointmentPoolUpdateProps) => {
     } else {
       props.getEntity(props.match.params.id);
     }
+
+    props.getOrgs();
   }, []);
 
   useEffect(() => {
@@ -130,6 +135,21 @@ export const AppointmentPoolUpdate = (props: IAppointmentPoolUpdateProps) => {
                   <Translate contentKey="appointmentApp.appointmentPool.help.busiType" />
                 </UncontrolledTooltip>
               </AvGroup>
+              <AvGroup>
+                <Label for="appointment-pool-org">
+                  <Translate contentKey="appointmentApp.appointmentPool.org">Org</Translate>
+                </Label>
+                <AvInput id="appointment-pool-org" type="select" className="form-control" name="orgId">
+                  <option value="" key="0" />
+                  {orgs
+                    ? orgs.map(otherEntity => (
+                        <option value={otherEntity.id} key={otherEntity.id}>
+                          {otherEntity.id}
+                        </option>
+                      ))
+                    : null}
+                </AvInput>
+              </AvGroup>
               <Button tag={Link} id="cancel-save" to="/appointment-pool" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
@@ -152,6 +172,7 @@ export const AppointmentPoolUpdate = (props: IAppointmentPoolUpdateProps) => {
 };
 
 const mapStateToProps = (storeState: IRootState) => ({
+  orgs: storeState.org.entities,
   appointmentPoolEntity: storeState.appointmentPool.entity,
   loading: storeState.appointmentPool.loading,
   updating: storeState.appointmentPool.updating,
@@ -159,6 +180,7 @@ const mapStateToProps = (storeState: IRootState) => ({
 });
 
 const mapDispatchToProps = {
+  getOrgs,
   getEntity,
   updateEntity,
   createEntity,

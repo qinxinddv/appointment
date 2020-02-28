@@ -20,7 +20,9 @@
     <include file="config/liquibase/changelog/20200227092300_added_entity_AppointmentConfig.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200227092400_added_entity_AppointmentPool.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200227092500_added_entity_BlackKey.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200228065200_added_entity_Org.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20200227092100_added_entity_constraints_Appointment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200227092400_added_entity_constraints_AppointmentPool.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

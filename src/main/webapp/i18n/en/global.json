@@ -13,6 +13,7 @@
         "appointmentConfig": "Appointment Config",
         "appointmentPool": "Appointment Pool",
         "blackKey": "Black Key",
+        "org": "Org",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
