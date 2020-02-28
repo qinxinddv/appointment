@@ -99,6 +99,9 @@ export const Appointment = (props: IAppointmentProps) => {
                 <th className="hand" onClick={sort('opnionTime')}>
                   <Translate contentKey="appointmentApp.appointment.opnionTime">Opnion Time</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('date')}>
+                  <Translate contentKey="appointmentApp.appointment.date">Date</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
                 <th>
                   <Translate contentKey="appointmentApp.appointment.org">Org</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
@@ -132,6 +135,7 @@ export const Appointment = (props: IAppointmentProps) => {
                   <td>
                     <TextFormat type="date" value={appointment.opnionTime} format={APP_LOCAL_DATE_FORMAT} />
                   </td>
+                  <td>{appointment.date}</td>
                   <td>{appointment.orgId ? <Link to={`org/${appointment.orgId}`}>{appointment.orgId}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">

@@ -27,6 +27,7 @@
       "opnion": "Opnion",
       "applyTime": "Apply Time",
       "opnionTime": "Opnion Time",
+      "date": "Date",
       "org": "Org",
       "help": {
         "idCard": "身份证号",
@@ -39,7 +40,8 @@
         "state": "处理状态",
         "opnion": "处理意见",
         "applyTime": "申请时间",
-        "opnionTime": "处理时间"
+        "opnionTime": "处理时间",
+        "date": "预约日期"
       }
     }
   }

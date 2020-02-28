@@ -73,6 +73,9 @@ public class AppointmentResourceIT {
     private static final LocalDate DEFAULT_OPNION_TIME = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_OPNION_TIME = LocalDate.now(ZoneId.systemDefault());
 
+    private static final String DEFAULT_DATE = "AAAAAAAAAA";
+    private static final String UPDATED_DATE = "BBBBBBBBBB";
+
     @Autowired
     private AppointmentRepository appointmentRepository;
 
@@ -131,7 +134,8 @@ public class AppointmentResourceIT {
             .state(DEFAULT_STATE)
             .opnion(DEFAULT_OPNION)
             .applyTime(DEFAULT_APPLY_TIME)
-            .opnionTime(DEFAULT_OPNION_TIME);
+            .opnionTime(DEFAULT_OPNION_TIME)
+            .date(DEFAULT_DATE);
         return appointment;
     }
     /**
@@ -152,7 +156,8 @@ public class AppointmentResourceIT {
             .state(UPDATED_STATE)
             .opnion(UPDATED_OPNION)
             .applyTime(UPDATED_APPLY_TIME)
-            .opnionTime(UPDATED_OPNION_TIME);
+            .opnionTime(UPDATED_OPNION_TIME)
+            .date(UPDATED_DATE);
         return appointment;
     }
 
@@ -188,6 +193,7 @@ public class AppointmentResourceIT {
         assertThat(testAppointment.getOpnion()).isEqualTo(DEFAULT_OPNION);
         assertThat(testAppointment.getApplyTime()).isEqualTo(DEFAULT_APPLY_TIME);
         assertThat(testAppointment.getOpnionTime()).isEqualTo(DEFAULT_OPNION_TIME);
+        assertThat(testAppointment.getDate()).isEqualTo(DEFAULT_DATE);
     }
 
     @Test
@@ -232,7 +238,8 @@ public class AppointmentResourceIT {
             .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
             .andExpect(jsonPath("$.[*].opnion").value(hasItem(DEFAULT_OPNION)))
             .andExpect(jsonPath("$.[*].applyTime").value(hasItem(DEFAULT_APPLY_TIME.toString())))
-            .andExpect(jsonPath("$.[*].opnionTime").value(hasItem(DEFAULT_OPNION_TIME.toString())));
+            .andExpect(jsonPath("$.[*].opnionTime").value(hasItem(DEFAULT_OPNION_TIME.toString())))
+            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE)));
     }
     
     @Test
@@ -256,7 +263,8 @@ public class AppointmentResourceIT {
             .andExpect(jsonPath("$.state").value(DEFAULT_STATE.toString()))
             .andExpect(jsonPath("$.opnion").value(DEFAULT_OPNION))
             .andExpect(jsonPath("$.applyTime").value(DEFAULT_APPLY_TIME.toString()))
-            .andExpect(jsonPath("$.opnionTime").value(DEFAULT_OPNION_TIME.toString()));
+            .andExpect(jsonPath("$.opnionTime").value(DEFAULT_OPNION_TIME.toString()))
+            .andExpect(jsonPath("$.date").value(DEFAULT_DATE));
     }
 
     @Test
@@ -290,7 +298,8 @@ public class AppointmentResourceIT {
             .state(UPDATED_STATE)
             .opnion(UPDATED_OPNION)
             .applyTime(UPDATED_APPLY_TIME)
-            .opnionTime(UPDATED_OPNION_TIME);
+            .opnionTime(UPDATED_OPNION_TIME)
+            .date(UPDATED_DATE);
         AppointmentDTO appointmentDTO = appointmentMapper.toDto(updatedAppointment);
 
         restAppointmentMockMvc.perform(put("/api/appointments")
@@ -313,6 +322,7 @@ public class AppointmentResourceIT {
         assertThat(testAppointment.getOpnion()).isEqualTo(UPDATED_OPNION);
         assertThat(testAppointment.getApplyTime()).isEqualTo(UPDATED_APPLY_TIME);
         assertThat(testAppointment.getOpnionTime()).isEqualTo(UPDATED_OPNION_TIME);
+        assertThat(testAppointment.getDate()).isEqualTo(UPDATED_DATE);
     }
 
     @Test

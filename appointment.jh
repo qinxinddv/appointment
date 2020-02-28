@@ -24,6 +24,7 @@ entity Appointment(APPOINTMENT) {
     opnion String /**处理意见*/
     applyTime LocalDate /**申请时间 */
     opnionTime LocalDate /**处理时间 */
+    date String /**预约日期*/
 }
 /**是否通用枚举*/
 enum YesNoEnum {

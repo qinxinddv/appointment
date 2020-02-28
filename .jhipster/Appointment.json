@@ -57,6 +57,11 @@
             "fieldName": "opnionTime",
             "javadoc": "处理时间",
             "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "date",
+            "javadoc": "预约日期",
+            "fieldType": "String"
         }
     ],
     "relationships": [
