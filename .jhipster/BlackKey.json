@@ -10,7 +10,7 @@
     "changelogDate": "20200227092500",
     "entityTableName": "black_key",
     "dto": "mapstruct",
-    "pagination": "no",
+    "pagination": "pagination",
     "service": "serviceImpl",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,

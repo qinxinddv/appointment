@@ -2,6 +2,7 @@ package com.bank.service.dto;
 
 import java.io.Serializable;
 import java.util.Objects;
+import com.bank.domain.enumeration.BusiTypeEnum;
 
 /**
  * A DTO for the {@link com.bank.domain.AppointmentPool} entity.
@@ -18,7 +19,7 @@ public class AppointmentPoolDTO implements Serializable {
 
     private Integer leftNum;
 
-    private String type;
+    private BusiTypeEnum busiType;
 
 
     public Long getId() {
@@ -61,12 +62,12 @@ public class AppointmentPoolDTO implements Serializable {
         this.leftNum = leftNum;
     }
 
-    public String getType() {
-        return type;
+    public BusiTypeEnum getBusiType() {
+        return busiType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setBusiType(BusiTypeEnum busiType) {
+        this.busiType = busiType;
     }
 
     @Override
@@ -98,7 +99,7 @@ public class AppointmentPoolDTO implements Serializable {
             ", period='" + getPeriod() + "'" +
             ", totalNum=" + getTotalNum() +
             ", leftNum=" + getLeftNum() +
-            ", type='" + getType() + "'" +
+            ", busiType='" + getBusiType() + "'" +
             "}";
     }
 }

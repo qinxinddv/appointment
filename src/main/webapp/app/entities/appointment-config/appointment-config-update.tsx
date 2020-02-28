@@ -20,7 +20,7 @@ export const AppointmentConfigUpdate = (props: IAppointmentConfigUpdateProps) =>
   const { appointmentConfigEntity, loading, updating } = props;
 
   const handleClose = () => {
-    props.history.push('/appointment-config');
+    props.history.push('/appointment-config' + props.location.search);
   };
 
   useEffect(() => {

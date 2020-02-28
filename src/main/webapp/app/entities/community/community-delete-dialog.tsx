@@ -17,7 +17,7 @@ export const CommunityDeleteDialog = (props: ICommunityDeleteDialogProps) => {
   }, []);
 
   const handleClose = () => {
-    props.history.push('/community');
+    props.history.push('/community' + props.location.search);
   };
 
   useEffect(() => {

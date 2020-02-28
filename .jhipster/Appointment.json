@@ -47,7 +47,7 @@
     "changelogDate": "20200227092100",
     "entityTableName": "appointment",
     "dto": "mapstruct",
-    "pagination": "no",
+    "pagination": "pagination",
     "service": "serviceImpl",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,

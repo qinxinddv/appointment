@@ -2,22 +2,50 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Col, Row, Table } from 'reactstrap';
-import { Translate, ICrudGetAllAction, TextFormat } from 'react-jhipster';
+import { Translate, ICrudGetAllAction, TextFormat, getSortState, IPaginationBaseState, JhiPagination, JhiItemCount } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
 import { getEntities } from './sys-dict.reducer';
 import { ISysDict } from 'app/shared/model/sys-dict.model';
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
+import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
 
 export interface ISysDictProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
 export const SysDict = (props: ISysDictProps) => {
-  useEffect(() => {
-    props.getEntities();
-  }, []);
+  const [paginationState, setPaginationState] = useState(getSortState(props.location, ITEMS_PER_PAGE));
 
-  const { sysDictList, match, loading } = props;
+  const getAllEntities = () => {
+    props.getEntities(paginationState.activePage - 1, paginationState.itemsPerPage, `${paginationState.sort},${paginationState.order}`);
+  };
+
+  const sortEntities = () => {
+    getAllEntities();
+    props.history.push(
+      `${props.location.pathname}?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`
+    );
+  };
+
+  useEffect(() => {
+    sortEntities();
+  }, [paginationState.activePage, paginationState.order, paginationState.sort]);
+
+  const sort = p => () => {
+    setPaginationState({
+      ...paginationState,
+      order: paginationState.order === 'asc' ? 'desc' : 'asc',
+      sort: p
+    });
+  };
+
+  const handlePagination = currentPage =>
+    setPaginationState({
+      ...paginationState,
+      activePage: currentPage
+    });
+
+  const { sysDictList, match, loading, totalItems } = props;
   return (
     <div>
       <h2 id="sys-dict-heading">
@@ -33,41 +61,42 @@ export const SysDict = (props: ISysDictProps) => {
           <Table responsive>
             <thead>
               <tr>
-                <th>
-                  <Translate contentKey="global.field.id">ID</Translate>
+                <th className="hand" onClick={sort('id')}>
+                  <Translate contentKey="global.field.id">ID</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
-                  <Translate contentKey="appointmentApp.sysDict.name">Name</Translate>
+                <th className="hand" onClick={sort('name')}>
+                  <Translate contentKey="appointmentApp.sysDict.name">Name</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
-                  <Translate contentKey="appointmentApp.sysDict.type">Type</Translate>
+                <th className="hand" onClick={sort('type')}>
+                  <Translate contentKey="appointmentApp.sysDict.type">Type</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
-                  <Translate contentKey="appointmentApp.sysDict.code">Code</Translate>
+                <th className="hand" onClick={sort('code')}>
+                  <Translate contentKey="appointmentApp.sysDict.code">Code</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
-                  <Translate contentKey="appointmentApp.sysDict.value">Value</Translate>
+                <th className="hand" onClick={sort('value')}>
+                  <Translate contentKey="appointmentApp.sysDict.value">Value</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
-                  <Translate contentKey="appointmentApp.sysDict.parentId">Parent Id</Translate>
+                <th className="hand" onClick={sort('parentId')}>
+                  <Translate contentKey="appointmentApp.sysDict.parentId">Parent Id</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
-                  <Translate contentKey="appointmentApp.sysDict.desc">Desc</Translate>
+                <th className="hand" onClick={sort('desc')}>
+                  <Translate contentKey="appointmentApp.sysDict.desc">Desc</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
-                  <Translate contentKey="appointmentApp.sysDict.extend1">Extend 1</Translate>
+                <th className="hand" onClick={sort('extend1')}>
+                  <Translate contentKey="appointmentApp.sysDict.extend1">Extend 1</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
-                  <Translate contentKey="appointmentApp.sysDict.extend2">Extend 2</Translate>
+                <th className="hand" onClick={sort('extend2')}>
+                  <Translate contentKey="appointmentApp.sysDict.extend2">Extend 2</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
-                  <Translate contentKey="appointmentApp.sysDict.extend3">Extend 3</Translate>
+                <th className="hand" onClick={sort('extend3')}>
+                  <Translate contentKey="appointmentApp.sysDict.extend3">Extend 3</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
-                  <Translate contentKey="appointmentApp.sysDict.createdDate">Created Date</Translate>
+                <th className="hand" onClick={sort('createdDate')}>
+                  <Translate contentKey="appointmentApp.sysDict.createdDate">Created Date</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th>
-                  <Translate contentKey="appointmentApp.sysDict.lastModifiedDate">Last Modified Date</Translate>
+                <th className="hand" onClick={sort('lastModifiedDate')}>
+                  <Translate contentKey="appointmentApp.sysDict.lastModifiedDate">Last Modified Date</Translate>{' '}
+                  <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
               </tr>
@@ -103,13 +132,23 @@ export const SysDict = (props: ISysDictProps) => {
                           <Translate contentKey="entity.action.view">View</Translate>
                         </span>
                       </Button>
-                      <Button tag={Link} to={`${match.url}/${sysDict.id}/edit`} color="primary" size="sm">
+                      <Button
+                        tag={Link}
+                        to={`${match.url}/${sysDict.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
+                        color="primary"
+                        size="sm"
+                      >
                         <FontAwesomeIcon icon="pencil-alt" />{' '}
                         <span className="d-none d-md-inline">
                           <Translate contentKey="entity.action.edit">Edit</Translate>
                         </span>
                       </Button>
-                      <Button tag={Link} to={`${match.url}/${sysDict.id}/delete`} color="danger" size="sm">
+                      <Button
+                        tag={Link}
+                        to={`${match.url}/${sysDict.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
+                        color="danger"
+                        size="sm"
+                      >
                         <FontAwesomeIcon icon="trash" />{' '}
                         <span className="d-none d-md-inline">
                           <Translate contentKey="entity.action.delete">Delete</Translate>
@@ -129,13 +168,28 @@ export const SysDict = (props: ISysDictProps) => {
           )
         )}
       </div>
+      <div className={sysDictList && sysDictList.length > 0 ? '' : 'd-none'}>
+        <Row className="justify-content-center">
+          <JhiItemCount page={paginationState.activePage} total={totalItems} itemsPerPage={paginationState.itemsPerPage} i18nEnabled />
+        </Row>
+        <Row className="justify-content-center">
+          <JhiPagination
+            activePage={paginationState.activePage}
+            onSelect={handlePagination}
+            maxButtons={5}
+            itemsPerPage={paginationState.itemsPerPage}
+            totalItems={props.totalItems}
+          />
+        </Row>
+      </div>
     </div>
   );
 };
 
 const mapStateToProps = ({ sysDict }: IRootState) => ({
   sysDictList: sysDict.entities,
-  loading: sysDict.loading
+  loading: sysDict.loading,
+  totalItems: sysDict.totalItems
 });
 
 const mapDispatchToProps = {

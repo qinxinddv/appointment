@@ -30,6 +30,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.bank.domain.enumeration.BusiTypeEnum;
 /**
  * Integration tests for the {@link AppointmentPoolResource} REST controller.
  */
@@ -48,8 +49,8 @@ public class AppointmentPoolResourceIT {
     private static final Integer DEFAULT_LEFT_NUM = 1;
     private static final Integer UPDATED_LEFT_NUM = 2;
 
-    private static final String DEFAULT_TYPE = "AAAAAAAAAA";
-    private static final String UPDATED_TYPE = "BBBBBBBBBB";
+    private static final BusiTypeEnum DEFAULT_BUSI_TYPE = BusiTypeEnum.PERSON;
+    private static final BusiTypeEnum UPDATED_BUSI_TYPE = BusiTypeEnum.ORG;
 
     @Autowired
     private AppointmentPoolRepository appointmentPoolRepository;
@@ -103,7 +104,7 @@ public class AppointmentPoolResourceIT {
             .period(DEFAULT_PERIOD)
             .totalNum(DEFAULT_TOTAL_NUM)
             .leftNum(DEFAULT_LEFT_NUM)
-            .type(DEFAULT_TYPE);
+            .busiType(DEFAULT_BUSI_TYPE);
         return appointmentPool;
     }
     /**
@@ -118,7 +119,7 @@ public class AppointmentPoolResourceIT {
             .period(UPDATED_PERIOD)
             .totalNum(UPDATED_TOTAL_NUM)
             .leftNum(UPDATED_LEFT_NUM)
-            .type(UPDATED_TYPE);
+            .busiType(UPDATED_BUSI_TYPE);
         return appointmentPool;
     }
 
@@ -147,7 +148,7 @@ public class AppointmentPoolResourceIT {
         assertThat(testAppointmentPool.getPeriod()).isEqualTo(DEFAULT_PERIOD);
         assertThat(testAppointmentPool.getTotalNum()).isEqualTo(DEFAULT_TOTAL_NUM);
         assertThat(testAppointmentPool.getLeftNum()).isEqualTo(DEFAULT_LEFT_NUM);
-        assertThat(testAppointmentPool.getType()).isEqualTo(DEFAULT_TYPE);
+        assertThat(testAppointmentPool.getBusiType()).isEqualTo(DEFAULT_BUSI_TYPE);
     }
 
     @Test
@@ -186,7 +187,7 @@ public class AppointmentPoolResourceIT {
             .andExpect(jsonPath("$.[*].period").value(hasItem(DEFAULT_PERIOD)))
             .andExpect(jsonPath("$.[*].totalNum").value(hasItem(DEFAULT_TOTAL_NUM)))
             .andExpect(jsonPath("$.[*].leftNum").value(hasItem(DEFAULT_LEFT_NUM)))
-            .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE)));
+            .andExpect(jsonPath("$.[*].busiType").value(hasItem(DEFAULT_BUSI_TYPE.toString())));
     }
     
     @Test
@@ -204,7 +205,7 @@ public class AppointmentPoolResourceIT {
             .andExpect(jsonPath("$.period").value(DEFAULT_PERIOD))
             .andExpect(jsonPath("$.totalNum").value(DEFAULT_TOTAL_NUM))
             .andExpect(jsonPath("$.leftNum").value(DEFAULT_LEFT_NUM))
-            .andExpect(jsonPath("$.type").value(DEFAULT_TYPE));
+            .andExpect(jsonPath("$.busiType").value(DEFAULT_BUSI_TYPE.toString()));
     }
 
     @Test
@@ -232,7 +233,7 @@ public class AppointmentPoolResourceIT {
             .period(UPDATED_PERIOD)
             .totalNum(UPDATED_TOTAL_NUM)
             .leftNum(UPDATED_LEFT_NUM)
-            .type(UPDATED_TYPE);
+            .busiType(UPDATED_BUSI_TYPE);
         AppointmentPoolDTO appointmentPoolDTO = appointmentPoolMapper.toDto(updatedAppointmentPool);
 
         restAppointmentPoolMockMvc.perform(put("/api/appointment-pools")
@@ -248,7 +249,7 @@ public class AppointmentPoolResourceIT {
         assertThat(testAppointmentPool.getPeriod()).isEqualTo(UPDATED_PERIOD);
         assertThat(testAppointmentPool.getTotalNum()).isEqualTo(UPDATED_TOTAL_NUM);
         assertThat(testAppointmentPool.getLeftNum()).isEqualTo(UPDATED_LEFT_NUM);
-        assertThat(testAppointmentPool.getType()).isEqualTo(UPDATED_TYPE);
+        assertThat(testAppointmentPool.getBusiType()).isEqualTo(UPDATED_BUSI_TYPE);
     }
 
     @Test

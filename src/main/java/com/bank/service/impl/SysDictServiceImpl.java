@@ -8,13 +8,12 @@ import com.bank.service.mapper.SysDictMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing {@link SysDict}.
@@ -51,15 +50,15 @@ public class SysDictServiceImpl implements SysDictService {
     /**
      * Get all the sysDicts.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
     @Override
     @Transactional(readOnly = true)
-    public List<SysDictDTO> findAll() {
+    public Page<SysDictDTO> findAll(Pageable pageable) {
         log.debug("Request to get all SysDicts");
-        return sysDictRepository.findAll().stream()
-            .map(sysDictMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
+        return sysDictRepository.findAll(pageable)
+            .map(sysDictMapper::toDto);
     }
 
     /**

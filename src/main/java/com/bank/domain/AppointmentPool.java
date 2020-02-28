@@ -7,6 +7,8 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 
+import com.bank.domain.enumeration.BusiTypeEnum;
+
 /**
  * A AppointmentPool.
  */
@@ -33,8 +35,9 @@ public class AppointmentPool implements Serializable {
     @Column(name = "left_num")
     private Integer leftNum;
 
-    @Column(name = "type")
-    private String type;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "busi_type")
+    private BusiTypeEnum busiType;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -97,17 +100,17 @@ public class AppointmentPool implements Serializable {
         this.leftNum = leftNum;
     }
 
-    public String getType() {
-        return type;
+    public BusiTypeEnum getBusiType() {
+        return busiType;
     }
 
-    public AppointmentPool type(String type) {
-        this.type = type;
+    public AppointmentPool busiType(BusiTypeEnum busiType) {
+        this.busiType = busiType;
         return this;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setBusiType(BusiTypeEnum busiType) {
+        this.busiType = busiType;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -135,7 +138,7 @@ public class AppointmentPool implements Serializable {
             ", period='" + getPeriod() + "'" +
             ", totalNum=" + getTotalNum() +
             ", leftNum=" + getLeftNum() +
-            ", type='" + getType() + "'" +
+            ", busiType='" + getBusiType() + "'" +
             "}";
     }
 }

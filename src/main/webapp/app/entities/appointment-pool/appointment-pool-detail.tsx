@@ -51,11 +51,11 @@ export const AppointmentPoolDetail = (props: IAppointmentPoolDetailProps) => {
           </dt>
           <dd>{appointmentPoolEntity.leftNum}</dd>
           <dt>
-            <span id="type">
-              <Translate contentKey="appointmentApp.appointmentPool.type">Type</Translate>
+            <span id="busiType">
+              <Translate contentKey="appointmentApp.appointmentPool.busiType">Busi Type</Translate>
             </span>
           </dt>
-          <dd>{appointmentPoolEntity.type}</dd>
+          <dd>{appointmentPoolEntity.busiType}</dd>
         </dl>
         <Button tag={Link} to="/appointment-pool" replace color="info">
           <FontAwesomeIcon icon="arrow-left" />{' '}

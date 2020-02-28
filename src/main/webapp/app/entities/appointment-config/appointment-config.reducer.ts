@@ -21,6 +21,7 @@ const initialState = {
   entities: [] as ReadonlyArray<IAppointmentConfig>,
   entity: defaultValue,
   updating: false,
+  totalItems: 0,
   updateSuccess: false
 };
 
@@ -63,7 +64,8 @@ export default (state: AppointmentConfigState = initialState, action): Appointme
       return {
         ...state,
         loading: false,
-        entities: action.payload.data
+        entities: action.payload.data,
+        totalItems: parseInt(action.payload.headers['x-total-count'], 10)
       };
     case SUCCESS(ACTION_TYPES.FETCH_APPOINTMENTCONFIG):
       return {
@@ -99,10 +101,13 @@ const apiUrl = 'api/appointment-configs';
 
 // Actions
 
-export const getEntities: ICrudGetAllAction<IAppointmentConfig> = (page, size, sort) => ({
-  type: ACTION_TYPES.FETCH_APPOINTMENTCONFIG_LIST,
-  payload: axios.get<IAppointmentConfig>(`${apiUrl}?cacheBuster=${new Date().getTime()}`)
-});
+export const getEntities: ICrudGetAllAction<IAppointmentConfig> = (page, size, sort) => {
+  const requestUrl = `${apiUrl}${sort ? `?page=${page}&size=${size}&sort=${sort}` : ''}`;
+  return {
+    type: ACTION_TYPES.FETCH_APPOINTMENTCONFIG_LIST,
+    payload: axios.get<IAppointmentConfig>(`${requestUrl}${sort ? '&' : '?'}cacheBuster=${new Date().getTime()}`)
+  };
+};
 
 export const getEntity: ICrudGetAction<IAppointmentConfig> = id => {
   const requestUrl = `${apiUrl}/${id}`;

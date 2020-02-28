@@ -21,6 +21,7 @@ const initialState = {
   entities: [] as ReadonlyArray<IAppointmentPool>,
   entity: defaultValue,
   updating: false,
+  totalItems: 0,
   updateSuccess: false
 };
 
@@ -63,7 +64,8 @@ export default (state: AppointmentPoolState = initialState, action): Appointment
       return {
         ...state,
         loading: false,
-        entities: action.payload.data
+        entities: action.payload.data,
+        totalItems: parseInt(action.payload.headers['x-total-count'], 10)
       };
     case SUCCESS(ACTION_TYPES.FETCH_APPOINTMENTPOOL):
       return {
@@ -99,10 +101,13 @@ const apiUrl = 'api/appointment-pools';
 
 // Actions
 
-export const getEntities: ICrudGetAllAction<IAppointmentPool> = (page, size, sort) => ({
-  type: ACTION_TYPES.FETCH_APPOINTMENTPOOL_LIST,
-  payload: axios.get<IAppointmentPool>(`${apiUrl}?cacheBuster=${new Date().getTime()}`)
-});
+export const getEntities: ICrudGetAllAction<IAppointmentPool> = (page, size, sort) => {
+  const requestUrl = `${apiUrl}${sort ? `?page=${page}&size=${size}&sort=${sort}` : ''}`;
+  return {
+    type: ACTION_TYPES.FETCH_APPOINTMENTPOOL_LIST,
+    payload: axios.get<IAppointmentPool>(`${requestUrl}${sort ? '&' : '?'}cacheBuster=${new Date().getTime()}`)
+  };
+};
 
 export const getEntity: ICrudGetAction<IAppointmentPool> = id => {
   const requestUrl = `${apiUrl}/${id}`;
