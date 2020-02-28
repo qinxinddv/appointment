@@ -130,10 +130,10 @@ export const Appointment = (props: IAppointmentProps) => {
                   </td>
                   <td>{appointment.opnion}</td>
                   <td>
-                    <TextFormat type="date" value={appointment.applyTime} format={APP_LOCAL_DATE_FORMAT} />
+                    <TextFormat type="date" value={appointment.applyTime} format={APP_DATE_FORMAT} />
                   </td>
                   <td>
-                    <TextFormat type="date" value={appointment.opnionTime} format={APP_LOCAL_DATE_FORMAT} />
+                    <TextFormat type="date" value={appointment.opnionTime} format={APP_DATE_FORMAT} />
                   </td>
                   <td>{appointment.date}</td>
                   <td>{appointment.orgId ? <Link to={`org/${appointment.orgId}`}>{appointment.orgId}</Link> : ''}</td>

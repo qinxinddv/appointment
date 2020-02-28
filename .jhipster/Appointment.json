@@ -51,12 +51,12 @@
         {
             "fieldName": "applyTime",
             "javadoc": "申请时间",
-            "fieldType": "LocalDate"
+            "fieldType": "ZonedDateTime"
         },
         {
             "fieldName": "opnionTime",
             "javadoc": "处理时间",
-            "fieldType": "LocalDate"
+            "fieldType": "ZonedDateTime"
         },
         {
             "fieldName": "date",

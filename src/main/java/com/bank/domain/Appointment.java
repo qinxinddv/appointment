@@ -8,7 +8,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.ZonedDateTime;
 
 import com.bank.domain.enumeration.BusiTypeEnum;
 
@@ -105,13 +105,13 @@ public class Appointment implements Serializable {
      * 申请时间
      */
     @Column(name = "apply_time")
-    private LocalDate applyTime;
+    private ZonedDateTime applyTime;
 
     /**
      * 处理时间
      */
     @Column(name = "opnion_time")
-    private LocalDate opnionTime;
+    private ZonedDateTime opnionTime;
 
     /**
      * 预约日期
@@ -249,29 +249,29 @@ public class Appointment implements Serializable {
         this.opnion = opnion;
     }
 
-    public LocalDate getApplyTime() {
+    public ZonedDateTime getApplyTime() {
         return applyTime;
     }
 
-    public Appointment applyTime(LocalDate applyTime) {
+    public Appointment applyTime(ZonedDateTime applyTime) {
         this.applyTime = applyTime;
         return this;
     }
 
-    public void setApplyTime(LocalDate applyTime) {
+    public void setApplyTime(ZonedDateTime applyTime) {
         this.applyTime = applyTime;
     }
 
-    public LocalDate getOpnionTime() {
+    public ZonedDateTime getOpnionTime() {
         return opnionTime;
     }
 
-    public Appointment opnionTime(LocalDate opnionTime) {
+    public Appointment opnionTime(ZonedDateTime opnionTime) {
         this.opnionTime = opnionTime;
         return this;
     }
 
-    public void setOpnionTime(LocalDate opnionTime) {
+    public void setOpnionTime(ZonedDateTime opnionTime) {
         this.opnionTime = opnionTime;
     }
 

@@ -43,10 +43,10 @@
             <column name="opnion" type="varchar(255)" remarks="处理意见">
                 <constraints nullable="true" />
             </column>
-            <column name="apply_time" type="date" remarks="申请时间">
+            <column name="apply_time" type="datetime" remarks="申请时间">
                 <constraints nullable="true" />
             </column>
-            <column name="opnion_time" type="date" remarks="处理时间">
+            <column name="opnion_time" type="datetime" remarks="处理时间">
                 <constraints nullable="true" />
             </column>
             <column name="date" type="varchar(255)" remarks="预约日期">
@@ -57,6 +57,8 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="appointment" columnName="apply_time" columnDataType="datetime"/>
+        <dropDefaultValue tableName="appointment" columnName="opnion_time" columnDataType="datetime"/>
     </changeSet>
 
     <changeSet id="20200227092100-1-relations" author="jhipster">
