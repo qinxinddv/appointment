@@ -5,6 +5,7 @@ import com.bank.service.dto.OrgDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -27,6 +28,8 @@ public interface OrgService {
      * @return the list of entities.
      */
     Page<OrgDTO> findAll(Pageable pageable);
+
+    List<OrgDTO> findAll();
 
     /**
      * Get the "id" org.

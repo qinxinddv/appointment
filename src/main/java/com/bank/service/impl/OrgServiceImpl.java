@@ -13,7 +13,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing {@link Org}.
@@ -59,6 +61,12 @@ public class OrgServiceImpl implements OrgService {
         log.debug("Request to get all Orgs");
         return orgRepository.findAll(pageable)
             .map(orgMapper::toDto);
+    }
+
+    @Override
+    public List<OrgDTO> findAll() {
+        log.debug("Request to get all Orgs");
+        return orgRepository.findAll().stream().map(orgMapper::toDto).collect(Collectors.toList());
     }
 
     /**

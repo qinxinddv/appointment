@@ -1,14 +1,12 @@
 package com.bank.service.dto.custom;
 
+import com.bank.domain.enumeration.AppointStateEnum;
 import com.bank.domain.enumeration.BusiTypeEnum;
-import com.bank.domain.enumeration.YesNoEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
@@ -66,7 +64,7 @@ public class AppointmentCustomDTO implements Serializable {
      * 处理状态
      */
     @ApiModelProperty(value = "处理状态")
-    private YesNoEnum state;
+    private AppointStateEnum state;
 
     /**
      * 处理意见
@@ -194,11 +192,11 @@ public class AppointmentCustomDTO implements Serializable {
         this.busiType = busiType;
     }
 
-    public YesNoEnum getState() {
+    public AppointStateEnum getState() {
         return state;
     }
 
-    public void setState(YesNoEnum state) {
+    public void setState(AppointStateEnum state) {
         this.state = state;
     }
 

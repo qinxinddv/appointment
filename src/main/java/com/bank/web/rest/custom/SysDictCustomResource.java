@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Api(value = "/api/custom/sys-dict", tags = { "数据字典接口" })
+@Api(value = "/custom/sys-dict", tags = { "数据字典接口" })
 @RestController
-@RequestMapping("/api/custom/sys-dict")
+@RequestMapping("/custom/sys-dict")
 public class SysDictCustomResource {
     private final Logger log = LoggerFactory.getLogger(AppointmentConfigResource.class);
     @Autowired

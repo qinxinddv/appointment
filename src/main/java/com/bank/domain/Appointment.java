@@ -37,7 +37,9 @@ public class Appointment implements Serializable {
         this.timePeriodCode = applyDto.getTimePeriodCode();
         this.timePeriodValue = applyDto.getTimePeriodValue();
         this.busiType = applyDto.getBusiType();
-        this.state = YesNoEnum.NO;
+        this.state = AppointStateEnum.UNDO;
+        this.temperature = applyDto.getTemperature();
+        this.symptom = applyDto.getSymptom();
         this.applyTime = ZonedDateTime.now();
         this.date = applyDto.getDate();
         this.org = org;

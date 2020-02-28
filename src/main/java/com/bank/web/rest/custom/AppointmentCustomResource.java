@@ -4,6 +4,7 @@ import com.bank.domain.enumeration.LockEnum;
 import com.bank.service.AppointmentCustomService;
 import com.bank.service.dto.custom.AppointmentApplyDto;
 import com.bank.service.dto.custom.AppointmentCustomDTO;
+import com.bank.service.dto.custom.AppointmentOverDto;
 import com.hazelcast.core.HazelcastInstance;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -21,9 +22,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.concurrent.locks.Lock;
 
-@Api(value = "/api/custom/appointment", tags = { "预约相关接口" })
+@Api(value = "/custom/appointment", tags = { "预约相关接口" })
 @RestController
-@RequestMapping("/api/custom/appointment")
+@RequestMapping("/custom/appointment")
 public class AppointmentCustomResource {
     private final Logger log = LoggerFactory.getLogger(AppointmentCustomResource.class);
     @Autowired
@@ -45,11 +46,26 @@ public class AppointmentCustomResource {
         }finally {
             lock.unlock();
         }
-        log.info("预约申请结束，结果：{} 请求参数：{}","aaa",applyDto.toString());
+        log.info("预约申请结束, 请求参数：{}",applyDto.toString());
     }
-    @ApiOperation(value = "预约申请", notes = "预约申请", httpMethod = "GET")
+    @ApiOperation(value = "根据手机号查预约", notes = "根据手机号查预约", httpMethod = "GET")
     @GetMapping("/find-by-mobile")
     public ResponseEntity<Page<AppointmentCustomDTO>> findByMobile(String mobile, @PageableDefault(value = 10,page = 0,sort = {"applyTime"},direction = Sort.Direction.DESC) Pageable pageable){
         return ResponseEntity.ok().body(appointmentCustomService.findByMobile(mobile,pageable));
+    }
+
+    @ApiOperation(value = "根据机构等多字段查预约", notes = "根据机构等多字段查预约", httpMethod = "GET")
+    @GetMapping("/find-custom")
+    public ResponseEntity<Page<AppointmentCustomDTO>> findByOrgId(long orgId, String mobile, String idCard,String state,String date, @PageableDefault(value = 10,page = 0,sort = {"applyTime"},direction = Sort.Direction.DESC) Pageable pageable){
+        return ResponseEntity.ok().body(appointmentCustomService.customFind(orgId,mobile,idCard,state,date,pageable));
+    }
+
+    @ApiOperation(value = "预约处理状态", notes = "预约处理状态", httpMethod = "POST")
+    @PostMapping("/over")
+    public void over(@RequestBody @Valid AppointmentOverDto overDto){
+        log.info("预约处理开始，请求参数：{}",overDto.toString());
+            appointmentCustomService.over(overDto);
+
+        log.info("预约处理结束， 请求参数：{}",overDto.toString());
     }
 }

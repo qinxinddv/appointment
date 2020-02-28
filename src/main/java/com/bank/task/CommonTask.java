@@ -1,9 +1,11 @@
 package com.bank.task;
 
 import com.bank.domain.AppointmentPool;
+import com.bank.domain.enumeration.AppointStateEnum;
 import com.bank.domain.enumeration.LockEnum;
 import com.bank.repository.AppointmentConfigRepository;
 import com.bank.repository.AppointmentPoolRepository;
+import com.bank.repository.AppointmentRepository;
 import com.bank.repository.OrgRepository;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.ILock;
@@ -32,6 +34,8 @@ public class CommonTask {
     @Autowired
     private AppointmentConfigRepository appointmentConfigRepository;
     @Autowired
+    private AppointmentRepository appointmentRepository;
+    @Autowired
     private OrgRepository orgRepository;
 
     @Autowired
@@ -44,7 +48,6 @@ public class CommonTask {
         ILock lock = hazelcastInstance.getLock(LockEnum.POOL_TASK.name());
         lock.lock();
         try {
-            System.err.println("执行静态定时任务时间: " + LocalDateTime.now());
             //根据当前日期后七天，查看是否有预约池记录
             LocalDate now = LocalDate.now();
             cleanPool(now);
@@ -73,6 +76,8 @@ public class CommonTask {
         log.info("结束执行预约资源池处理任务");
     }
 
+
+
     /**
      * 删除过期数据
      */
@@ -81,5 +86,27 @@ public class CommonTask {
             log.info("删除过期数据：日期：{}", bean.getDate());
             appointmentPoolRepository.delete(bean);
         });
+    }
+
+    //更新过期的预约为已失效状态，凌晨2点执行
+    @Scheduled(cron = "0 0/2 * * * ?")
+    private void updateOverDateAppoint() {
+        log.info("开始执行更新失效预约状态处理任务");
+        ILock lock = hazelcastInstance.getLock(LockEnum.UPDATE_OVERDATE_TASK.name());
+        lock.lock();
+        try {
+            LocalDate now = LocalDate.now();
+            //修改过期预约
+            appointmentRepository.findByDateLessThanAndState(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),AppointStateEnum.UNDO).stream().forEach(appointment -> {
+                appointment.setState(AppointStateEnum.OUTTIME);
+                appointmentRepository.save(appointment);
+            });
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
+        }
+        log.info("结束执行更新失效预约状态处理任务");
     }
 }

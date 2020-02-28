@@ -1,6 +1,7 @@
 package com.bank.service.dto.custom;
 
 import com.bank.domain.enumeration.BusiTypeEnum;
+import com.bank.domain.enumeration.SymptomEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Length;
@@ -65,10 +66,27 @@ public class AppointmentApplyDto {
     private Long orgId;
 
     /**
+     * 体温
+     */
+    @ApiModelProperty(value = "体温")
+    private String temperature;
+
+    @ApiModelProperty(value = "症状")
+    private SymptomEnum symptom;
+
+    /**
      * 类型（个人、企业、司法查询）
      */
     @ApiModelProperty(value = "类型（个人、企业、司法查询）")
     private BusiTypeEnum busiType;
+
+    public String getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(String temperature) {
+        this.temperature = temperature;
+    }
 
     public String getIdCard() {
         return idCard;
@@ -142,6 +160,14 @@ public class AppointmentApplyDto {
         this.date = date;
     }
 
+    public SymptomEnum getSymptom() {
+        return symptom;
+    }
+
+    public void setSymptom(SymptomEnum symptom) {
+        this.symptom = symptom;
+    }
+
     @Override
     public String toString() {
         return "AppointmentApplyDto{" +
@@ -153,6 +179,8 @@ public class AppointmentApplyDto {
             ", timePeriodCode='" + timePeriodCode + '\'' +
             ", timePeriodValue='" + timePeriodValue + '\'' +
             ", orgId=" + orgId +
+            ", temperature='" + temperature + '\'' +
+            ", symptom=" + symptom +
             ", busiType=" + busiType +
             '}';
     }
