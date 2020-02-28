@@ -22,6 +22,8 @@
       "timePeriodCode": "Time Period Code",
       "timePeriodValue": "Time Period Value",
       "busiType": "Busi Type",
+      "state": "State",
+      "opnion": "Opnion",
       "createdDate": "Created Date",
       "lastModifiedDate": "Last Modified Date",
       "community": "Community"

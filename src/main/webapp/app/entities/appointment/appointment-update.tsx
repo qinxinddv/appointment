@@ -127,6 +127,27 @@ export const AppointmentUpdate = (props: IAppointmentUpdateProps) => {
                 </AvInput>
               </AvGroup>
               <AvGroup>
+                <Label id="stateLabel" for="appointment-state">
+                  <Translate contentKey="appointmentApp.appointment.state">State</Translate>
+                </Label>
+                <AvInput
+                  id="appointment-state"
+                  type="select"
+                  className="form-control"
+                  name="state"
+                  value={(!isNew && appointmentEntity.state) || 'YES'}
+                >
+                  <option value="YES">{translate('appointmentApp.YesNoEnum.YES')}</option>
+                  <option value="NO">{translate('appointmentApp.YesNoEnum.NO')}</option>
+                </AvInput>
+              </AvGroup>
+              <AvGroup>
+                <Label id="opnionLabel" for="appointment-opnion">
+                  <Translate contentKey="appointmentApp.appointment.opnion">Opnion</Translate>
+                </Label>
+                <AvField id="appointment-opnion" type="text" name="opnion" />
+              </AvGroup>
+              <AvGroup>
                 <Label id="createdDateLabel" for="appointment-createdDate">
                   <Translate contentKey="appointmentApp.appointment.createdDate">Created Date</Translate>
                 </Label>

@@ -27,6 +27,15 @@
             "fieldValues": "PERSON,ORG,LAW"
         },
         {
+            "fieldName": "state",
+            "fieldType": "YesNoEnum",
+            "fieldValues": "YES,NO"
+        },
+        {
+            "fieldName": "opnion",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "createdDate",
             "fieldType": "LocalDate"
         },

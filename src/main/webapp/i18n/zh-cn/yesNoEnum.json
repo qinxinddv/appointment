@@ -1,0 +1,9 @@
+{
+  "appointmentApp": {
+    "YesNoEnum": {
+      "null": "",
+      "YES": "YES",
+      "NO": "NO"
+    }
+  }
+}
