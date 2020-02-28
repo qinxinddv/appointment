@@ -20,8 +20,14 @@ entity Appointment(APPOINTMENT) {
     timePeriodCode String //时间段
     timePeriodValue String //时间段值
     busiType BusiTypeEnum //类型（个人、企业、司法查询）
+    state YesNoEnum //处理状态
+    opnion String //处理意见
     createdDate LocalDate
     lastModifiedDate LocalDate
+}
+//是否通用枚举
+enum YesNoEnum {
+	YES,NO
 }
 
 //小区表
