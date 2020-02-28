@@ -65,6 +65,10 @@ public class AppointmentPool implements Serializable {
     public AppointmentPool(){}
 
 
+    @ManyToOne
+    @JsonIgnoreProperties("appointmentPools")
+    private Org org;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -137,6 +141,19 @@ public class AppointmentPool implements Serializable {
 
     public void setBusiType(BusiTypeEnum busiType) {
         this.busiType = busiType;
+    }
+
+    public Org getOrg() {
+        return org;
+    }
+
+    public AppointmentPool org(Org org) {
+        this.org = org;
+        return this;
+    }
+
+    public void setOrg(Org org) {
+        this.org = org;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

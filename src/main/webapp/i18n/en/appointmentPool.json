@@ -21,6 +21,7 @@
       "totalNum": "Total Num",
       "leftNum": "Left Num",
       "busiType": "Busi Type",
+      "org": "Org",
       "help": {
         "date": "日期",
         "period": "时间段",

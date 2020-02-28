@@ -71,6 +71,10 @@ export const AppointmentPoolDetail = (props: IAppointmentPoolDetailProps) => {
             </UncontrolledTooltip>
           </dt>
           <dd>{appointmentPoolEntity.busiType}</dd>
+          <dt>
+            <Translate contentKey="appointmentApp.appointmentPool.org">Org</Translate>
+          </dt>
+          <dd>{appointmentPoolEntity.orgId ? appointmentPoolEntity.orgId : ''}</dd>
         </dl>
         <Button tag={Link} to="/appointment-pool" replace color="info">
           <FontAwesomeIcon icon="arrow-left" />{' '}

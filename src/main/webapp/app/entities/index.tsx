@@ -10,6 +10,7 @@ import Community from './community';
 import AppointmentConfig from './appointment-config';
 import AppointmentPool from './appointment-pool';
 import BlackKey from './black-key';
+import Org from './org';
 /* jhipster-needle-add-route-import - JHipster will add routes here */
 
 const Routes = ({ match }) => (
@@ -22,6 +23,7 @@ const Routes = ({ match }) => (
       <ErrorBoundaryRoute path={`${match.url}appointment-config`} component={AppointmentConfig} />
       <ErrorBoundaryRoute path={`${match.url}appointment-pool`} component={AppointmentPool} />
       <ErrorBoundaryRoute path={`${match.url}black-key`} component={BlackKey} />
+      <ErrorBoundaryRoute path={`${match.url}org`} component={Org} />
       {/* jhipster-needle-add-route-path - JHipster will add routes here */}
     </Switch>
   </div>

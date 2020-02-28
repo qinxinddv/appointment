@@ -6,14 +6,14 @@ import { Translate, ICrudGetAllAction, getSortState, IPaginationBaseState, JhiPa
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRootState } from 'app/shared/reducers';
-import { getEntities } from './appointment-pool.reducer';
-import { IAppointmentPool } from 'app/shared/model/appointment-pool.model';
+import { getEntities } from './org.reducer';
+import { IOrg } from 'app/shared/model/org.model';
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
 
-export interface IAppointmentPoolProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
+export interface IOrgProps extends StateProps, DispatchProps, RouteComponentProps<{ url: string }> {}
 
-export const AppointmentPool = (props: IAppointmentPoolProps) => {
+export const Org = (props: IOrgProps) => {
   const [paginationState, setPaginationState] = useState(getSortState(props.location, ITEMS_PER_PAGE));
 
   const getAllEntities = () => {
@@ -45,65 +45,47 @@ export const AppointmentPool = (props: IAppointmentPoolProps) => {
       activePage: currentPage
     });
 
-  const { appointmentPoolList, match, loading, totalItems } = props;
+  const { orgList, match, loading, totalItems } = props;
   return (
     <div>
-      <h2 id="appointment-pool-heading">
-        <Translate contentKey="appointmentApp.appointmentPool.home.title">Appointment Pools</Translate>
+      <h2 id="org-heading">
+        <Translate contentKey="appointmentApp.org.home.title">Orgs</Translate>
         <Link to={`${match.url}/new`} className="btn btn-primary float-right jh-create-entity" id="jh-create-entity">
           <FontAwesomeIcon icon="plus" />
           &nbsp;
-          <Translate contentKey="appointmentApp.appointmentPool.home.createLabel">Create new Appointment Pool</Translate>
+          <Translate contentKey="appointmentApp.org.home.createLabel">Create new Org</Translate>
         </Link>
       </h2>
       <div className="table-responsive">
-        {appointmentPoolList && appointmentPoolList.length > 0 ? (
+        {orgList && orgList.length > 0 ? (
           <Table responsive>
             <thead>
               <tr>
                 <th className="hand" onClick={sort('id')}>
                   <Translate contentKey="global.field.id">ID</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th className="hand" onClick={sort('date')}>
-                  <Translate contentKey="appointmentApp.appointmentPool.date">Date</Translate> <FontAwesomeIcon icon="sort" />
+                <th className="hand" onClick={sort('name')}>
+                  <Translate contentKey="appointmentApp.org.name">Name</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th className="hand" onClick={sort('period')}>
-                  <Translate contentKey="appointmentApp.appointmentPool.period">Period</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('totalNum')}>
-                  <Translate contentKey="appointmentApp.appointmentPool.totalNum">Total Num</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('leftNum')}>
-                  <Translate contentKey="appointmentApp.appointmentPool.leftNum">Left Num</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('busiType')}>
-                  <Translate contentKey="appointmentApp.appointmentPool.busiType">Busi Type</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th>
-                  <Translate contentKey="appointmentApp.appointmentPool.org">Org</Translate> <FontAwesomeIcon icon="sort" />
+                <th className="hand" onClick={sort('addr')}>
+                  <Translate contentKey="appointmentApp.org.addr">Addr</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
               </tr>
             </thead>
             <tbody>
-              {appointmentPoolList.map((appointmentPool, i) => (
+              {orgList.map((org, i) => (
                 <tr key={`entity-${i}`}>
                   <td>
-                    <Button tag={Link} to={`${match.url}/${appointmentPool.id}`} color="link" size="sm">
-                      {appointmentPool.id}
+                    <Button tag={Link} to={`${match.url}/${org.id}`} color="link" size="sm">
+                      {org.id}
                     </Button>
                   </td>
-                  <td>{appointmentPool.date}</td>
-                  <td>{appointmentPool.period}</td>
-                  <td>{appointmentPool.totalNum}</td>
-                  <td>{appointmentPool.leftNum}</td>
-                  <td>
-                    <Translate contentKey={`appointmentApp.BusiTypeEnum.${appointmentPool.busiType}`} />
-                  </td>
-                  <td>{appointmentPool.orgId ? <Link to={`org/${appointmentPool.orgId}`}>{appointmentPool.orgId}</Link> : ''}</td>
+                  <td>{org.name}</td>
+                  <td>{org.addr}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
-                      <Button tag={Link} to={`${match.url}/${appointmentPool.id}`} color="info" size="sm">
+                      <Button tag={Link} to={`${match.url}/${org.id}`} color="info" size="sm">
                         <FontAwesomeIcon icon="eye" />{' '}
                         <span className="d-none d-md-inline">
                           <Translate contentKey="entity.action.view">View</Translate>
@@ -111,7 +93,7 @@ export const AppointmentPool = (props: IAppointmentPoolProps) => {
                       </Button>
                       <Button
                         tag={Link}
-                        to={`${match.url}/${appointmentPool.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
+                        to={`${match.url}/${org.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
                         color="primary"
                         size="sm"
                       >
@@ -122,7 +104,7 @@ export const AppointmentPool = (props: IAppointmentPoolProps) => {
                       </Button>
                       <Button
                         tag={Link}
-                        to={`${match.url}/${appointmentPool.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
+                        to={`${match.url}/${org.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
                         color="danger"
                         size="sm"
                       >
@@ -140,12 +122,12 @@ export const AppointmentPool = (props: IAppointmentPoolProps) => {
         ) : (
           !loading && (
             <div className="alert alert-warning">
-              <Translate contentKey="appointmentApp.appointmentPool.home.notFound">No Appointment Pools found</Translate>
+              <Translate contentKey="appointmentApp.org.home.notFound">No Orgs found</Translate>
             </div>
           )
         )}
       </div>
-      <div className={appointmentPoolList && appointmentPoolList.length > 0 ? '' : 'd-none'}>
+      <div className={orgList && orgList.length > 0 ? '' : 'd-none'}>
         <Row className="justify-content-center">
           <JhiItemCount page={paginationState.activePage} total={totalItems} itemsPerPage={paginationState.itemsPerPage} i18nEnabled />
         </Row>
@@ -163,10 +145,10 @@ export const AppointmentPool = (props: IAppointmentPoolProps) => {
   );
 };
 
-const mapStateToProps = ({ appointmentPool }: IRootState) => ({
-  appointmentPoolList: appointmentPool.entities,
-  loading: appointmentPool.loading,
-  totalItems: appointmentPool.totalItems
+const mapStateToProps = ({ org }: IRootState) => ({
+  orgList: org.entities,
+  loading: org.loading,
+  totalItems: org.totalItems
 });
 
 const mapDispatchToProps = {
@@ -176,4 +158,4 @@ const mapDispatchToProps = {
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppointmentPool);
+export default connect(mapStateToProps, mapDispatchToProps)(Org);

@@ -97,7 +97,7 @@ public class Appointment implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("appointments")
-    private Community community;
+    private Org org;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -251,17 +251,17 @@ public class Appointment implements Serializable {
         this.opnionTime = opnionTime;
     }
 
-    public Community getCommunity() {
-        return community;
+    public Org getOrg() {
+        return org;
     }
 
-    public Appointment community(Community community) {
-        this.community = community;
+    public Appointment org(Org org) {
+        this.org = org;
         return this;
     }
 
-    public void setCommunity(Community community) {
-        this.community = community;
+    public void setOrg(Org org) {
+        this.org = org;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

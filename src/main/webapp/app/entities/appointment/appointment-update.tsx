@@ -7,8 +7,8 @@ import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
-import { ICommunity } from 'app/shared/model/community.model';
-import { getEntities as getCommunities } from 'app/entities/community/community.reducer';
+import { IOrg } from 'app/shared/model/org.model';
+import { getEntities as getOrgs } from 'app/entities/org/org.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './appointment.reducer';
 import { IAppointment } from 'app/shared/model/appointment.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
@@ -17,10 +17,10 @@ import { mapIdList } from 'app/shared/util/entity-utils';
 export interface IAppointmentUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export const AppointmentUpdate = (props: IAppointmentUpdateProps) => {
-  const [communityId, setCommunityId] = useState('0');
+  const [orgId, setOrgId] = useState('0');
   const [isNew, setIsNew] = useState(!props.match.params || !props.match.params.id);
 
-  const { appointmentEntity, communities, loading, updating } = props;
+  const { appointmentEntity, orgs, loading, updating } = props;
 
   const handleClose = () => {
     props.history.push('/appointment' + props.location.search);
@@ -33,7 +33,7 @@ export const AppointmentUpdate = (props: IAppointmentUpdateProps) => {
       props.getEntity(props.match.params.id);
     }
 
-    props.getCommunities();
+    props.getOrgs();
   }, []);
 
   useEffect(() => {
@@ -199,13 +199,13 @@ export const AppointmentUpdate = (props: IAppointmentUpdateProps) => {
                 </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
-                <Label for="appointment-community">
-                  <Translate contentKey="appointmentApp.appointment.community">Community</Translate>
+                <Label for="appointment-org">
+                  <Translate contentKey="appointmentApp.appointment.org">Org</Translate>
                 </Label>
-                <AvInput id="appointment-community" type="select" className="form-control" name="communityId">
+                <AvInput id="appointment-org" type="select" className="form-control" name="orgId">
                   <option value="" key="0" />
-                  {communities
-                    ? communities.map(otherEntity => (
+                  {orgs
+                    ? orgs.map(otherEntity => (
                         <option value={otherEntity.id} key={otherEntity.id}>
                           {otherEntity.id}
                         </option>
@@ -235,7 +235,7 @@ export const AppointmentUpdate = (props: IAppointmentUpdateProps) => {
 };
 
 const mapStateToProps = (storeState: IRootState) => ({
-  communities: storeState.community.entities,
+  orgs: storeState.org.entities,
   appointmentEntity: storeState.appointment.entity,
   loading: storeState.appointment.loading,
   updating: storeState.appointment.updating,
@@ -243,7 +243,7 @@ const mapStateToProps = (storeState: IRootState) => ({
 });
 
 const mapDispatchToProps = {
-  getCommunities,
+  getOrgs,
   getEntity,
   updateEntity,
   createEntity,

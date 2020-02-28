@@ -7,6 +7,7 @@ export interface IAppointmentPool {
   totalNum?: number;
   leftNum?: number;
   busiType?: BusiTypeEnum;
+  orgId?: number;
 }
 
 export const defaultValue: Readonly<IAppointmentPool> = {};

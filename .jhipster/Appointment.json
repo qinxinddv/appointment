@@ -62,9 +62,9 @@
     "relationships": [
         {
             "relationshipType": "many-to-one",
-            "otherEntityName": "community",
+            "otherEntityName": "org",
             "otherEntityRelationshipName": "appointment",
-            "relationshipName": "community",
+            "relationshipName": "org",
             "otherEntityField": "id"
         }
     ],
