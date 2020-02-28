@@ -1,0 +1,10 @@
+{
+  "appointmentApp": {
+    "SymptomEnum": {
+      "null": "",
+      "FEVER": "FEVER",
+      "COUGH": "COUGH",
+      "WEAK": "WEAK"
+    }
+  }
+}

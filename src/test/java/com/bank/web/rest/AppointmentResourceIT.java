@@ -35,8 +35,9 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.bank.domain.enumeration.SymptomEnum;
 import com.bank.domain.enumeration.BusiTypeEnum;
-import com.bank.domain.enumeration.YesNoEnum;
+import com.bank.domain.enumeration.AppointStateEnum;
 /**
  * Integration tests for the {@link AppointmentResource} REST controller.
  */
@@ -55,6 +56,12 @@ public class AppointmentResourceIT {
     private static final String DEFAULT_ADDR = "AAAAAAAAAA";
     private static final String UPDATED_ADDR = "BBBBBBBBBB";
 
+    private static final String DEFAULT_TEMPERATURE = "AAAAAAAAAA";
+    private static final String UPDATED_TEMPERATURE = "BBBBBBBBBB";
+
+    private static final SymptomEnum DEFAULT_SYMPTOM = SymptomEnum.FEVER;
+    private static final SymptomEnum UPDATED_SYMPTOM = SymptomEnum.COUGH;
+
     private static final String DEFAULT_TIME_PERIOD_CODE = "AAAAAAAAAA";
     private static final String UPDATED_TIME_PERIOD_CODE = "BBBBBBBBBB";
 
@@ -64,8 +71,8 @@ public class AppointmentResourceIT {
     private static final BusiTypeEnum DEFAULT_BUSI_TYPE = BusiTypeEnum.PERSON;
     private static final BusiTypeEnum UPDATED_BUSI_TYPE = BusiTypeEnum.ORG;
 
-    private static final YesNoEnum DEFAULT_STATE = YesNoEnum.YES;
-    private static final YesNoEnum UPDATED_STATE = YesNoEnum.NO;
+    private static final AppointStateEnum DEFAULT_STATE = AppointStateEnum.UNDO;
+    private static final AppointStateEnum UPDATED_STATE = AppointStateEnum.DO;
 
     private static final String DEFAULT_OPNION = "AAAAAAAAAA";
     private static final String UPDATED_OPNION = "BBBBBBBBBB";
@@ -131,6 +138,8 @@ public class AppointmentResourceIT {
             .name(DEFAULT_NAME)
             .mobile(DEFAULT_MOBILE)
             .addr(DEFAULT_ADDR)
+            .temperature(DEFAULT_TEMPERATURE)
+            .symptom(DEFAULT_SYMPTOM)
             .timePeriodCode(DEFAULT_TIME_PERIOD_CODE)
             .timePeriodValue(DEFAULT_TIME_PERIOD_VALUE)
             .busiType(DEFAULT_BUSI_TYPE)
@@ -153,6 +162,8 @@ public class AppointmentResourceIT {
             .name(UPDATED_NAME)
             .mobile(UPDATED_MOBILE)
             .addr(UPDATED_ADDR)
+            .temperature(UPDATED_TEMPERATURE)
+            .symptom(UPDATED_SYMPTOM)
             .timePeriodCode(UPDATED_TIME_PERIOD_CODE)
             .timePeriodValue(UPDATED_TIME_PERIOD_VALUE)
             .busiType(UPDATED_BUSI_TYPE)
@@ -189,6 +200,8 @@ public class AppointmentResourceIT {
         assertThat(testAppointment.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testAppointment.getMobile()).isEqualTo(DEFAULT_MOBILE);
         assertThat(testAppointment.getAddr()).isEqualTo(DEFAULT_ADDR);
+        assertThat(testAppointment.getTemperature()).isEqualTo(DEFAULT_TEMPERATURE);
+        assertThat(testAppointment.getSymptom()).isEqualTo(DEFAULT_SYMPTOM);
         assertThat(testAppointment.getTimePeriodCode()).isEqualTo(DEFAULT_TIME_PERIOD_CODE);
         assertThat(testAppointment.getTimePeriodValue()).isEqualTo(DEFAULT_TIME_PERIOD_VALUE);
         assertThat(testAppointment.getBusiType()).isEqualTo(DEFAULT_BUSI_TYPE);
@@ -235,6 +248,8 @@ public class AppointmentResourceIT {
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
             .andExpect(jsonPath("$.[*].mobile").value(hasItem(DEFAULT_MOBILE)))
             .andExpect(jsonPath("$.[*].addr").value(hasItem(DEFAULT_ADDR)))
+            .andExpect(jsonPath("$.[*].temperature").value(hasItem(DEFAULT_TEMPERATURE)))
+            .andExpect(jsonPath("$.[*].symptom").value(hasItem(DEFAULT_SYMPTOM.toString())))
             .andExpect(jsonPath("$.[*].timePeriodCode").value(hasItem(DEFAULT_TIME_PERIOD_CODE)))
             .andExpect(jsonPath("$.[*].timePeriodValue").value(hasItem(DEFAULT_TIME_PERIOD_VALUE)))
             .andExpect(jsonPath("$.[*].busiType").value(hasItem(DEFAULT_BUSI_TYPE.toString())))
@@ -260,6 +275,8 @@ public class AppointmentResourceIT {
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
             .andExpect(jsonPath("$.mobile").value(DEFAULT_MOBILE))
             .andExpect(jsonPath("$.addr").value(DEFAULT_ADDR))
+            .andExpect(jsonPath("$.temperature").value(DEFAULT_TEMPERATURE))
+            .andExpect(jsonPath("$.symptom").value(DEFAULT_SYMPTOM.toString()))
             .andExpect(jsonPath("$.timePeriodCode").value(DEFAULT_TIME_PERIOD_CODE))
             .andExpect(jsonPath("$.timePeriodValue").value(DEFAULT_TIME_PERIOD_VALUE))
             .andExpect(jsonPath("$.busiType").value(DEFAULT_BUSI_TYPE.toString()))
@@ -295,6 +312,8 @@ public class AppointmentResourceIT {
             .name(UPDATED_NAME)
             .mobile(UPDATED_MOBILE)
             .addr(UPDATED_ADDR)
+            .temperature(UPDATED_TEMPERATURE)
+            .symptom(UPDATED_SYMPTOM)
             .timePeriodCode(UPDATED_TIME_PERIOD_CODE)
             .timePeriodValue(UPDATED_TIME_PERIOD_VALUE)
             .busiType(UPDATED_BUSI_TYPE)
@@ -318,6 +337,8 @@ public class AppointmentResourceIT {
         assertThat(testAppointment.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testAppointment.getMobile()).isEqualTo(UPDATED_MOBILE);
         assertThat(testAppointment.getAddr()).isEqualTo(UPDATED_ADDR);
+        assertThat(testAppointment.getTemperature()).isEqualTo(UPDATED_TEMPERATURE);
+        assertThat(testAppointment.getSymptom()).isEqualTo(UPDATED_SYMPTOM);
         assertThat(testAppointment.getTimePeriodCode()).isEqualTo(UPDATED_TIME_PERIOD_CODE);
         assertThat(testAppointment.getTimePeriodValue()).isEqualTo(UPDATED_TIME_PERIOD_VALUE);
         assertThat(testAppointment.getBusiType()).isEqualTo(UPDATED_BUSI_TYPE);

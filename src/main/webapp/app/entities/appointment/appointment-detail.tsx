@@ -62,6 +62,21 @@ export const AppointmentDetail = (props: IAppointmentDetailProps) => {
           </dt>
           <dd>{appointmentEntity.addr}</dd>
           <dt>
+            <span id="temperature">
+              <Translate contentKey="appointmentApp.appointment.temperature">Temperature</Translate>
+            </span>
+            <UncontrolledTooltip target="temperature">
+              <Translate contentKey="appointmentApp.appointment.help.temperature" />
+            </UncontrolledTooltip>
+          </dt>
+          <dd>{appointmentEntity.temperature}</dd>
+          <dt>
+            <span id="symptom">
+              <Translate contentKey="appointmentApp.appointment.symptom">Symptom</Translate>
+            </span>
+          </dt>
+          <dd>{appointmentEntity.symptom}</dd>
+          <dt>
             <span id="timePeriodCode">
               <Translate contentKey="appointmentApp.appointment.timePeriodCode">Time Period Code</Translate>
             </span>

@@ -1,6 +1,7 @@
 import { Moment } from 'moment';
+import { SymptomEnum } from 'app/shared/model/enumerations/symptom-enum.model';
 import { BusiTypeEnum } from 'app/shared/model/enumerations/busi-type-enum.model';
-import { YesNoEnum } from 'app/shared/model/enumerations/yes-no-enum.model';
+import { AppointStateEnum } from 'app/shared/model/enumerations/appoint-state-enum.model';
 
 export interface IAppointment {
   id?: number;
@@ -8,10 +9,12 @@ export interface IAppointment {
   name?: string;
   mobile?: string;
   addr?: string;
+  temperature?: string;
+  symptom?: SymptomEnum;
   timePeriodCode?: string;
   timePeriodValue?: string;
   busiType?: BusiTypeEnum;
-  state?: YesNoEnum;
+  state?: AppointStateEnum;
   opnion?: string;
   applyTime?: Moment;
   opnionTime?: Moment;
