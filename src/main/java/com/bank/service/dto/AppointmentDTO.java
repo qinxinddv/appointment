@@ -82,6 +82,12 @@ public class AppointmentDTO implements Serializable {
     @ApiModelProperty(value = "处理时间")
     private LocalDate opnionTime;
 
+    /**
+     * 预约日期
+     */
+    @ApiModelProperty(value = "预约日期")
+    private String date;
+
 
     private Long orgId;
 
@@ -181,6 +187,14 @@ public class AppointmentDTO implements Serializable {
         this.opnionTime = opnionTime;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public Long getOrgId() {
         return orgId;
     }
@@ -225,6 +239,7 @@ public class AppointmentDTO implements Serializable {
             ", opnion='" + getOpnion() + "'" +
             ", applyTime='" + getApplyTime() + "'" +
             ", opnionTime='" + getOpnionTime() + "'" +
+            ", date='" + getDate() + "'" +
             ", orgId=" + getOrgId() +
             "}";
     }

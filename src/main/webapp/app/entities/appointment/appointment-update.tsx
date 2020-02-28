@@ -199,6 +199,15 @@ export const AppointmentUpdate = (props: IAppointmentUpdateProps) => {
                 </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
+                <Label id="dateLabel" for="appointment-date">
+                  <Translate contentKey="appointmentApp.appointment.date">Date</Translate>
+                </Label>
+                <AvField id="appointment-date" type="text" name="date" />
+                <UncontrolledTooltip target="dateLabel">
+                  <Translate contentKey="appointmentApp.appointment.help.date" />
+                </UncontrolledTooltip>
+              </AvGroup>
+              <AvGroup>
                 <Label for="appointment-org">
                   <Translate contentKey="appointmentApp.appointment.org">Org</Translate>
                 </Label>
