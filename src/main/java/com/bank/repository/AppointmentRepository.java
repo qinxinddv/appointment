@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
-
+    public long countByDateAndIdCardOrMobile(String date,String idCard,String mobile);
 }

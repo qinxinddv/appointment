@@ -2,6 +2,7 @@ package com.bank.repository;
 
 import com.bank.domain.AppointmentPool;
 
+import com.bank.domain.enumeration.BusiTypeEnum;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -20,4 +21,8 @@ public interface AppointmentPoolRepository extends JpaRepository<AppointmentPool
 
     //根据日期查询
     public long countByDate(String date);
+
+    public List<AppointmentPool> findByDateLessThan(String date);
+
+    public Optional<AppointmentPool> findByOrg_IdAndBusiTypeAndDateAndPeriod(long orgId, BusiTypeEnum busiTypeEnum,String date,String period);
 }
