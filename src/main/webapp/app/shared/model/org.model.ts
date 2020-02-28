@@ -5,6 +5,7 @@ export interface IOrg {
   id?: number;
   name?: string;
   addr?: string;
+  coordinate?: string;
   appointments?: IAppointment[];
   appointmentPools?: IAppointmentPool[];
 }

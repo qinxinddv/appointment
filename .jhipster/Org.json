@@ -10,6 +10,11 @@
             "fieldName": "addr",
             "javadoc": "地址",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "coordinate",
+            "javadoc": "坐标",
+            "fieldType": "String"
         }
     ],
     "relationships": [
