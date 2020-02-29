@@ -27,4 +27,6 @@ public interface AppointmentPoolRepository extends JpaRepository<AppointmentPool
     public Optional<AppointmentPool> findByOrg_IdAndBusiTypeAndDateAndPeriod(long orgId, BusiTypeEnum busiTypeEnum,String date,String period);
 
     public List<AppointmentPool> findByOrg_idAndBusiType(long orgId,BusiTypeEnum busiTypeEnum);
+
+    public List<AppointmentPool> findDistinctByOrg_IdAndBusiType(long orgId,BusiTypeEnum busiTypeEnum);
 }
