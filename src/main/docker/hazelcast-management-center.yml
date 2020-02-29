@@ -3,4 +3,4 @@ services:
   appointment-hazelcast-management-center:
     image: hazelcast/management-center:3.12.8
     ports:
-      - 8180:8080
+      - 8080:8080
