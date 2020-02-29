@@ -107,6 +107,7 @@ server:
     session:
       cookie:
         http-only: true
+    context-path: /services
 
 # Properties to be exposed on the /info management endpoint
 info:
@@ -151,5 +152,4 @@ jhipster:
 # More documentation is available at:
 # https://www.jhipster.tech/common-application-properties/
 # ===================================================================
-
 # application:
