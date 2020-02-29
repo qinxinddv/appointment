@@ -13,8 +13,4 @@ services:
   appointment-mysql:
     extends:
       file: mysql.yml
-      service: appointment-mysql
-  hazelcast-management-center:
-    extends:
-      file: hazelcast-management-center.yml
-      service: hazelcast-management-center
+      service: appointment-mysql：
