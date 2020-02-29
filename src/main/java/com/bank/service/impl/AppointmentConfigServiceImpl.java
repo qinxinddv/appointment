@@ -1,6 +1,6 @@
 package com.bank.service.impl;
 
-import com.bank.service.AppointmentConfigService;
+import com.bank.service.custom.AppointmentConfigService;
 import com.bank.domain.AppointmentConfig;
 import com.bank.repository.AppointmentConfigRepository;
 import com.bank.service.dto.AppointmentConfigDTO;

@@ -1,4 +1,4 @@
-package com.bank.service;
+package com.bank.service.custom;
 
 import com.bank.domain.Appointment;
 import com.bank.service.dto.custom.AppointmentApplyDto;

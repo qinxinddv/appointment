@@ -1,12 +1,14 @@
 package com.bank.web.rest.custom;
 
 import com.bank.domain.enumeration.LockEnum;
-import com.bank.service.AppointmentCustomService;
+import com.bank.service.custom.AppointmentCustomService;
 import com.bank.service.dto.custom.AppointmentApplyDto;
 import com.bank.service.dto.custom.AppointmentCustomDTO;
 import com.bank.service.dto.custom.AppointmentOverDto;
 import com.hazelcast.core.HazelcastInstance;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +18,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -55,6 +56,14 @@ public class AppointmentCustomResource {
     }
 
     @ApiOperation(value = "根据机构等多字段查预约", notes = "根据机构等多字段查预约", httpMethod = "GET")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "orgId", value = "机构ID", dataType = "Long",required = true),
+        @ApiImplicitParam(name = "mobile", value = "手机号", dataType = "String",required = false),
+        @ApiImplicitParam(name = "idCard", value = "身份证号", dataType = "String",required = false),
+        @ApiImplicitParam(name = "mobile", value = "手机号", dataType = "String",required = false),
+        @ApiImplicitParam(name = "state", value = "状态", dataType = "String",required = false),
+        @ApiImplicitParam(name = "date", value = "预约日期", dataType = "String",required = false)
+    })
     @GetMapping("/find-custom")
     public ResponseEntity<Page<AppointmentCustomDTO>> findByOrgId(long orgId, String mobile, String idCard,String state,String date, @PageableDefault(value = 10,page = 0,sort = {"applyTime"},direction = Sort.Direction.DESC) Pageable pageable){
         return ResponseEntity.ok().body(appointmentCustomService.customFind(orgId,mobile,idCard,state,date,pageable));

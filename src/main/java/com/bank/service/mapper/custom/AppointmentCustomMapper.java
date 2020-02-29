@@ -2,7 +2,6 @@ package com.bank.service.mapper.custom;
 
 
 import com.bank.domain.Appointment;
-import com.bank.service.AppointmentCustomService;
 import com.bank.service.dto.AppointmentDTO;
 import com.bank.service.dto.custom.AppointmentCustomDTO;
 import com.bank.service.mapper.EntityMapper;

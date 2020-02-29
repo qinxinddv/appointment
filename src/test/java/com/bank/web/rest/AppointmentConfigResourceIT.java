@@ -3,7 +3,7 @@ package com.bank.web.rest;
 import com.bank.AppointmentApp;
 import com.bank.domain.AppointmentConfig;
 import com.bank.repository.AppointmentConfigRepository;
-import com.bank.service.AppointmentConfigService;
+import com.bank.service.custom.AppointmentConfigService;
 import com.bank.service.dto.AppointmentConfigDTO;
 import com.bank.service.mapper.AppointmentConfigMapper;
 import com.bank.web.rest.errors.ExceptionTranslator;
@@ -175,7 +175,7 @@ public class AppointmentConfigResourceIT {
             .andExpect(jsonPath("$.[*].num").value(hasItem(DEFAULT_NUM)))
             .andExpect(jsonPath("$.[*].busiType").value(hasItem(DEFAULT_BUSI_TYPE.toString())));
     }
-    
+
     @Test
     @Transactional
     public void getAppointmentConfig() throws Exception {
