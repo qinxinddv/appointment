@@ -42,7 +42,7 @@ public class CommonTask {
     private AppointmentPoolRepository appointmentPoolRepository;
 
     //预约资源池定时器,凌晨1点执行
-    @Scheduled(cron = "0/59 * * * * ?")
+    @Scheduled(cron = "0 0/5 * * * ?")
     private void poolProcess() {
         log.info("开始执行预约资源池处理任务");
         ILock lock = hazelcastInstance.getLock(LockEnum.POOL_TASK.name());
@@ -52,10 +52,10 @@ public class CommonTask {
             LocalDate now = LocalDate.now();
             cleanPool(now);
             orgRepository.findAll().stream().forEach(org -> {
-                log.info("机构：{}",org);
+                log.debug("机构：{}",org);
                 for (int i = 0; i < DAYS; i++) {
                     String dateStr = now.plusDays(i).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                    log.info("日期：{}", dateStr);
+                    log.debug("日期：{}", dateStr);
                     if (appointmentPoolRepository.countByDateAndOrg_Id(dateStr,org.getId()) > 0) {
                         continue;
                     }
@@ -63,7 +63,7 @@ public class CommonTask {
 
                         AppointmentPool pool = new AppointmentPool(dateStr, appointmentConfig.getPeriod(), appointmentConfig.getNum(), appointmentConfig.getBusiType(),org);
                         appointmentPoolRepository.save(pool);
-                        log.info("初始化预约池成功，日期:{},类型：{}", dateStr, appointmentConfig.getBusiType());
+                        log.debug("初始化预约池成功，日期:{},类型：{}", dateStr, appointmentConfig.getBusiType());
                     });
                 }
             });
