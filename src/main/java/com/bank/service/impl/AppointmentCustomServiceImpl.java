@@ -143,7 +143,7 @@ public class AppointmentCustomServiceImpl implements AppointmentCustomService {
     public void checkBlack(String addr) {
         blackKeyRepository.findAll().stream().forEach(blackKey -> {
             if (addr.indexOf(blackKey.getKey()) != -1) {
-                throw new BusinessException("因疫情原因，请您延后查询征信报告");
+                throw new BusinessException("因疫情原因，建议您登录征信中心官网查询");
             }
         });
     }
