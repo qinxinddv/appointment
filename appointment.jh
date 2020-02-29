@@ -18,7 +18,7 @@ entity Appointment(APPOINTMENT) {
     mobile String /**手机号*/
     addr String /**家庭地址 */
     temperature String /**体温 */
-    symptom SymptomEnum
+    symptom String /**症状*/
     timePeriodCode String /**时间段*/
     timePeriodValue String /**时间段值*/
     busiType BusiTypeEnum /**类型（个人、企业、司法查询）*/
@@ -27,6 +27,8 @@ entity Appointment(APPOINTMENT) {
     applyTime ZonedDateTime /**申请时间 */
     opnionTime ZonedDateTime /**处理时间 */
     date String /**预约日期*/
+    latitude String /**纬度*/
+    longitude String /**经度*/
 }
 /**是否通用枚举*/
 enum YesNoEnum {
@@ -38,19 +40,14 @@ enum AppointStateEnum {
     DO, 
     OUTTIME 
 }
-/**症状（发烧,咳嗽,乏力）*/
-enum SymptomEnum {
-	FEVER,
-    COUGH,
-    WEAK 
-}
 
 
 /**机构表 */
 entity Org(ORG) {
 	name String /**机构名称 */
     addr String /**地址 */
-    coordinate String /**坐标 */
+    latitude String /**纬度*/
+    longitude String /**经度*/
 }
 /**业务类型*/
 enum BusiTypeEnum {
@@ -59,7 +56,7 @@ enum BusiTypeEnum {
 
 /**锁*/
 enum LockEnum {
- 	APPOINTMENT,POOL_TASK
+ 	APPOINTMENT,POOL_TASK,UPDATE_OVERDATE_TASK
 }
 
 /**预约配置表*/
