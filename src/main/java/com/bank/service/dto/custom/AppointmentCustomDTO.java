@@ -101,8 +101,11 @@ public class AppointmentCustomDTO implements Serializable {
     @ApiModelProperty(value = "营业网点地址")
     private String orgAddr;
 
-    @ApiModelProperty(value = "营业网点坐标")
-    private String orgCoordinate;
+    @ApiModelProperty(value = "营业网点坐标-纬度")
+    private String latitude;
+
+    @ApiModelProperty(value = "营业网点坐标-经度")
+    private String longitude;
 
     public String getOrgName() {
         return orgName;
@@ -120,12 +123,20 @@ public class AppointmentCustomDTO implements Serializable {
         this.orgAddr = orgAddr;
     }
 
-    public String getOrgCoordinate() {
-        return orgCoordinate;
+    public String getLatitude() {
+        return latitude;
     }
 
-    public void setOrgCoordinate(String orgCoordinate) {
-        this.orgCoordinate = orgCoordinate;
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public Long getId() {

@@ -72,7 +72,19 @@ public class AppointmentApplyDto {
     private String temperature;
 
     @ApiModelProperty(value = "症状")
-    private SymptomEnum symptom;
+    private String symptom;
+
+    /**
+     * 纬度
+     */
+    @ApiModelProperty(value = "纬度")
+    private String latitude;
+
+    /**
+     * 经度
+     */
+    @ApiModelProperty(value = "经度")
+    private String longitude;
 
     /**
      * 类型（个人、企业、司法查询）
@@ -160,12 +172,28 @@ public class AppointmentApplyDto {
         this.date = date;
     }
 
-    public SymptomEnum getSymptom() {
+    public String getSymptom() {
         return symptom;
     }
 
-    public void setSymptom(SymptomEnum symptom) {
+    public void setSymptom(String symptom) {
         this.symptom = symptom;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     @Override
@@ -180,7 +208,9 @@ public class AppointmentApplyDto {
             ", timePeriodValue='" + timePeriodValue + '\'' +
             ", orgId=" + orgId +
             ", temperature='" + temperature + '\'' +
-            ", symptom=" + symptom +
+            ", symptom='" + symptom + '\'' +
+            ", latitude='" + latitude + '\'' +
+            ", longitude='" + longitude + '\'' +
             ", busiType=" + busiType +
             '}';
     }

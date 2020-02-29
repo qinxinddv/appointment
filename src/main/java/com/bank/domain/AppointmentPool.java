@@ -19,6 +19,16 @@ import com.bank.domain.enumeration.BusiTypeEnum;
 public class AppointmentPool implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    public AppointmentPool(String date, String period, Integer totalNum, BusiTypeEnum type,Org org) {
+        this.date = date;
+        this.period = period;
+        this.totalNum = totalNum;
+        this.busiType = type;
+        this.leftNum = totalNum;
+        this.org = org;
+    }
+
+    public AppointmentPool(){}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

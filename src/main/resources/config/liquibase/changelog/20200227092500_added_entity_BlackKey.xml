@@ -36,9 +36,9 @@
           This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
           Spring Boot configuration key.
     -->
-    <changeSet id="20200227092500-1-data" author="jhipster" context="faker">
+    <changeSet id="20200227092500-1-data" author="jhipster">
         <loadData
-                  file="config/liquibase/fake-data/black_key.csv"
+                  file="config/liquibase/data/black_key.csv"
                   separator=";"
                   tableName="black_key">
             <column name="id" type="numeric"/>

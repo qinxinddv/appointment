@@ -20,7 +20,8 @@ public interface AppointmentCustomMapper extends EntityMapper<AppointmentCustomD
         @Mapping(source = "org.id", target = "orgId"),
         @Mapping(source = "org.name", target = "orgName"),
         @Mapping(source = "org.addr", target = "orgAddr"),
-        @Mapping(source = "org.coordinate", target = "orgCoordinate")})
+        @Mapping(source = "org.latitude", target = "latitude"),
+        @Mapping(source = "org.longitude", target = "longitude")})
     AppointmentCustomDTO toDto(Appointment appointment);
 
     @Mapping(source = "orgId", target = "org")

@@ -1,5 +1,6 @@
 package com.bank.domain;
 
+import com.bank.service.dto.custom.AppointmentApplyDto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -22,7 +23,26 @@ import com.bank.domain.enumeration.AppointStateEnum;
 public class Appointment implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    public Appointment() {
+    }
 
+    public Appointment(AppointmentApplyDto applyDto, Org org) {
+        this.idCard = applyDto.getIdCard();
+        this.name = applyDto.getName();
+        this.mobile = applyDto.getMobile();
+        this.addr = applyDto.getAddr();
+        this.timePeriodCode = applyDto.getTimePeriodCode();
+        this.timePeriodValue = applyDto.getTimePeriodValue();
+        this.busiType = applyDto.getBusiType();
+        this.state = AppointStateEnum.UNDO;
+        this.temperature = applyDto.getTemperature();
+        this.symptom = applyDto.getSymptom();
+        this.applyTime = ZonedDateTime.now();
+        this.date = applyDto.getDate();
+        this.org = org;
+        this.latitude = applyDto.getLatitude();
+        this.longitude = applyDto.getLongitude();
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
