@@ -94,12 +94,21 @@ export const OrgUpdate = (props: IOrgUpdateProps) => {
                 </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
-                <Label id="coordinateLabel" for="org-coordinate">
-                  <Translate contentKey="appointmentApp.org.coordinate">Coordinate</Translate>
+                <Label id="latitudeLabel" for="org-latitude">
+                  <Translate contentKey="appointmentApp.org.latitude">Latitude</Translate>
                 </Label>
-                <AvField id="org-coordinate" type="text" name="coordinate" />
-                <UncontrolledTooltip target="coordinateLabel">
-                  <Translate contentKey="appointmentApp.org.help.coordinate" />
+                <AvField id="org-latitude" type="text" name="latitude" />
+                <UncontrolledTooltip target="latitudeLabel">
+                  <Translate contentKey="appointmentApp.org.help.latitude" />
+                </UncontrolledTooltip>
+              </AvGroup>
+              <AvGroup>
+                <Label id="longitudeLabel" for="org-longitude">
+                  <Translate contentKey="appointmentApp.org.longitude">Longitude</Translate>
+                </Label>
+                <AvField id="org-longitude" type="text" name="longitude" />
+                <UncontrolledTooltip target="longitudeLabel">
+                  <Translate contentKey="appointmentApp.org.help.longitude" />
                 </UncontrolledTooltip>
               </AvGroup>
               <Button tag={Link} id="cancel-save" to="/org" replace color="info">

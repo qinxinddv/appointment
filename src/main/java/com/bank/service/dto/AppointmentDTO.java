@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.time.ZonedDateTime;
 import java.io.Serializable;
 import java.util.Objects;
-import com.bank.domain.enumeration.SymptomEnum;
 import com.bank.domain.enumeration.BusiTypeEnum;
 import com.bank.domain.enumeration.AppointStateEnum;
 
@@ -47,7 +46,11 @@ public class AppointmentDTO implements Serializable {
     @ApiModelProperty(value = "体温")
     private String temperature;
 
-    private SymptomEnum symptom;
+    /**
+     * 症状
+     */
+    @ApiModelProperty(value = "症状")
+    private String symptom;
 
     /**
      * 时间段
@@ -96,6 +99,18 @@ public class AppointmentDTO implements Serializable {
      */
     @ApiModelProperty(value = "预约日期")
     private String date;
+
+    /**
+     * 纬度
+     */
+    @ApiModelProperty(value = "纬度")
+    private String latitude;
+
+    /**
+     * 经度
+     */
+    @ApiModelProperty(value = "经度")
+    private String longitude;
 
 
     private Long orgId;
@@ -148,11 +163,11 @@ public class AppointmentDTO implements Serializable {
         this.temperature = temperature;
     }
 
-    public SymptomEnum getSymptom() {
+    public String getSymptom() {
         return symptom;
     }
 
-    public void setSymptom(SymptomEnum symptom) {
+    public void setSymptom(String symptom) {
         this.symptom = symptom;
     }
 
@@ -220,6 +235,22 @@ public class AppointmentDTO implements Serializable {
         this.date = date;
     }
 
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
     public Long getOrgId() {
         return orgId;
     }
@@ -267,6 +298,8 @@ public class AppointmentDTO implements Serializable {
             ", applyTime='" + getApplyTime() + "'" +
             ", opnionTime='" + getOpnionTime() + "'" +
             ", date='" + getDate() + "'" +
+            ", latitude='" + getLatitude() + "'" +
+            ", longitude='" + getLongitude() + "'" +
             ", orgId=" + getOrgId() +
             "}";
     }

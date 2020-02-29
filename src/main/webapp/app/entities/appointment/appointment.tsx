@@ -108,6 +108,12 @@ export const Appointment = (props: IAppointmentProps) => {
                 <th className="hand" onClick={sort('date')}>
                   <Translate contentKey="appointmentApp.appointment.date">Date</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('latitude')}>
+                  <Translate contentKey="appointmentApp.appointment.latitude">Latitude</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('longitude')}>
+                  <Translate contentKey="appointmentApp.appointment.longitude">Longitude</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
                 <th>
                   <Translate contentKey="appointmentApp.appointment.org">Org</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
@@ -127,9 +133,7 @@ export const Appointment = (props: IAppointmentProps) => {
                   <td>{appointment.mobile}</td>
                   <td>{appointment.addr}</td>
                   <td>{appointment.temperature}</td>
-                  <td>
-                    <Translate contentKey={`appointmentApp.SymptomEnum.${appointment.symptom}`} />
-                  </td>
+                  <td>{appointment.symptom}</td>
                   <td>{appointment.timePeriodCode}</td>
                   <td>{appointment.timePeriodValue}</td>
                   <td>
@@ -146,6 +150,8 @@ export const Appointment = (props: IAppointmentProps) => {
                     <TextFormat type="date" value={appointment.opnionTime} format={APP_DATE_FORMAT} />
                   </td>
                   <td>{appointment.date}</td>
+                  <td>{appointment.latitude}</td>
+                  <td>{appointment.longitude}</td>
                   <td>{appointment.orgId ? <Link to={`org/${appointment.orgId}`}>{appointment.orgId}</Link> : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">

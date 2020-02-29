@@ -28,8 +28,8 @@
         },
         {
             "fieldName": "symptom",
-            "fieldType": "SymptomEnum",
-            "fieldValues": "FEVER,COUGH,WEAK"
+            "javadoc": "症状",
+            "fieldType": "String"
         },
         {
             "fieldName": "timePeriodCode",
@@ -71,6 +71,16 @@
         {
             "fieldName": "date",
             "javadoc": "预约日期",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "latitude",
+            "javadoc": "纬度",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "longitude",
+            "javadoc": "经度",
             "fieldType": "String"
         }
     ],

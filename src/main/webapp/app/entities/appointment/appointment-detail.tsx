@@ -74,6 +74,9 @@ export const AppointmentDetail = (props: IAppointmentDetailProps) => {
             <span id="symptom">
               <Translate contentKey="appointmentApp.appointment.symptom">Symptom</Translate>
             </span>
+            <UncontrolledTooltip target="symptom">
+              <Translate contentKey="appointmentApp.appointment.help.symptom" />
+            </UncontrolledTooltip>
           </dt>
           <dd>{appointmentEntity.symptom}</dd>
           <dt>
@@ -152,6 +155,24 @@ export const AppointmentDetail = (props: IAppointmentDetailProps) => {
             </UncontrolledTooltip>
           </dt>
           <dd>{appointmentEntity.date}</dd>
+          <dt>
+            <span id="latitude">
+              <Translate contentKey="appointmentApp.appointment.latitude">Latitude</Translate>
+            </span>
+            <UncontrolledTooltip target="latitude">
+              <Translate contentKey="appointmentApp.appointment.help.latitude" />
+            </UncontrolledTooltip>
+          </dt>
+          <dd>{appointmentEntity.latitude}</dd>
+          <dt>
+            <span id="longitude">
+              <Translate contentKey="appointmentApp.appointment.longitude">Longitude</Translate>
+            </span>
+            <UncontrolledTooltip target="longitude">
+              <Translate contentKey="appointmentApp.appointment.help.longitude" />
+            </UncontrolledTooltip>
+          </dt>
+          <dd>{appointmentEntity.longitude}</dd>
           <dt>
             <Translate contentKey="appointmentApp.appointment.org">Org</Translate>
           </dt>

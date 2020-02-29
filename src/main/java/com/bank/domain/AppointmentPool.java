@@ -55,18 +55,6 @@ public class AppointmentPool implements Serializable {
     @Column(name = "busi_type")
     private BusiTypeEnum busiType;
 
-    public AppointmentPool(String date, String period, Integer totalNum, BusiTypeEnum type,Org org) {
-        this.date = date;
-        this.period = period;
-        this.totalNum = totalNum;
-        this.busiType = type;
-        this.leftNum = totalNum;
-        this.org = org;
-    }
-
-    public AppointmentPool(){}
-
-
     @ManyToOne
     @JsonIgnoreProperties("appointmentPools")
     private Org org;

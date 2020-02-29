@@ -1,6 +1,5 @@
 package com.bank.domain;
 
-import com.bank.service.dto.custom.AppointmentApplyDto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -9,8 +8,6 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.ZonedDateTime;
-
-import com.bank.domain.enumeration.SymptomEnum;
 
 import com.bank.domain.enumeration.BusiTypeEnum;
 
@@ -25,25 +22,6 @@ import com.bank.domain.enumeration.AppointStateEnum;
 public class Appointment implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    public Appointment() {
-    }
-
-    public Appointment(AppointmentApplyDto applyDto, Org org) {
-        this.idCard = applyDto.getIdCard();
-        this.name = applyDto.getName();
-        this.mobile = applyDto.getMobile();
-        this.addr = applyDto.getAddr();
-        this.timePeriodCode = applyDto.getTimePeriodCode();
-        this.timePeriodValue = applyDto.getTimePeriodValue();
-        this.busiType = applyDto.getBusiType();
-        this.state = AppointStateEnum.UNDO;
-        this.temperature = applyDto.getTemperature();
-        this.symptom = applyDto.getSymptom();
-        this.applyTime = ZonedDateTime.now();
-        this.date = applyDto.getDate();
-        this.org = org;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -79,9 +57,11 @@ public class Appointment implements Serializable {
     @Column(name = "temperature")
     private String temperature;
 
-    @Enumerated(EnumType.STRING)
+    /**
+     * 症状
+     */
     @Column(name = "symptom")
-    private SymptomEnum symptom;
+    private String symptom;
 
     /**
      * 时间段
@@ -132,6 +112,18 @@ public class Appointment implements Serializable {
      */
     @Column(name = "date")
     private String date;
+
+    /**
+     * 纬度
+     */
+    @Column(name = "latitude")
+    private String latitude;
+
+    /**
+     * 经度
+     */
+    @Column(name = "longitude")
+    private String longitude;
 
     @ManyToOne
     @JsonIgnoreProperties("appointments")
@@ -211,16 +203,16 @@ public class Appointment implements Serializable {
         this.temperature = temperature;
     }
 
-    public SymptomEnum getSymptom() {
+    public String getSymptom() {
         return symptom;
     }
 
-    public Appointment symptom(SymptomEnum symptom) {
+    public Appointment symptom(String symptom) {
         this.symptom = symptom;
         return this;
     }
 
-    public void setSymptom(SymptomEnum symptom) {
+    public void setSymptom(String symptom) {
         this.symptom = symptom;
     }
 
@@ -328,6 +320,32 @@ public class Appointment implements Serializable {
         this.date = date;
     }
 
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public Appointment latitude(String latitude) {
+        this.latitude = latitude;
+        return this;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public Appointment longitude(String longitude) {
+        this.longitude = longitude;
+        return this;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
     public Org getOrg() {
         return org;
     }
@@ -376,6 +394,8 @@ public class Appointment implements Serializable {
             ", applyTime='" + getApplyTime() + "'" +
             ", opnionTime='" + getOpnionTime() + "'" +
             ", date='" + getDate() + "'" +
+            ", latitude='" + getLatitude() + "'" +
+            ", longitude='" + getLongitude() + "'" +
             "}";
     }
 }

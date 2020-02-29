@@ -36,10 +36,16 @@ public class Org implements Serializable {
     private String addr;
 
     /**
-     * 坐标
+     * 纬度
      */
-    @Column(name = "coordinate")
-    private String coordinate;
+    @Column(name = "latitude")
+    private String latitude;
+
+    /**
+     * 经度
+     */
+    @Column(name = "longitude")
+    private String longitude;
 
     @OneToMany(mappedBy = "org")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -84,17 +90,30 @@ public class Org implements Serializable {
         this.addr = addr;
     }
 
-    public String getCoordinate() {
-        return coordinate;
+    public String getLatitude() {
+        return latitude;
     }
 
-    public Org coordinate(String coordinate) {
-        this.coordinate = coordinate;
+    public Org latitude(String latitude) {
+        this.latitude = latitude;
         return this;
     }
 
-    public void setCoordinate(String coordinate) {
-        this.coordinate = coordinate;
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public Org longitude(String longitude) {
+        this.longitude = longitude;
+        return this;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public Set<Appointment> getAppointments() {
@@ -170,7 +189,8 @@ public class Org implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", addr='" + getAddr() + "'" +
-            ", coordinate='" + getCoordinate() + "'" +
+            ", latitude='" + getLatitude() + "'" +
+            ", longitude='" + getLongitude() + "'" +
             "}";
     }
 }

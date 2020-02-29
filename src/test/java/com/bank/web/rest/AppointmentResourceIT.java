@@ -35,7 +35,6 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.bank.domain.enumeration.SymptomEnum;
 import com.bank.domain.enumeration.BusiTypeEnum;
 import com.bank.domain.enumeration.AppointStateEnum;
 /**
@@ -59,8 +58,8 @@ public class AppointmentResourceIT {
     private static final String DEFAULT_TEMPERATURE = "AAAAAAAAAA";
     private static final String UPDATED_TEMPERATURE = "BBBBBBBBBB";
 
-    private static final SymptomEnum DEFAULT_SYMPTOM = SymptomEnum.FEVER;
-    private static final SymptomEnum UPDATED_SYMPTOM = SymptomEnum.COUGH;
+    private static final String DEFAULT_SYMPTOM = "AAAAAAAAAA";
+    private static final String UPDATED_SYMPTOM = "BBBBBBBBBB";
 
     private static final String DEFAULT_TIME_PERIOD_CODE = "AAAAAAAAAA";
     private static final String UPDATED_TIME_PERIOD_CODE = "BBBBBBBBBB";
@@ -85,6 +84,12 @@ public class AppointmentResourceIT {
 
     private static final String DEFAULT_DATE = "AAAAAAAAAA";
     private static final String UPDATED_DATE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_LATITUDE = "AAAAAAAAAA";
+    private static final String UPDATED_LATITUDE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_LONGITUDE = "AAAAAAAAAA";
+    private static final String UPDATED_LONGITUDE = "BBBBBBBBBB";
 
     @Autowired
     private AppointmentRepository appointmentRepository;
@@ -147,7 +152,9 @@ public class AppointmentResourceIT {
             .opnion(DEFAULT_OPNION)
             .applyTime(DEFAULT_APPLY_TIME)
             .opnionTime(DEFAULT_OPNION_TIME)
-            .date(DEFAULT_DATE);
+            .date(DEFAULT_DATE)
+            .latitude(DEFAULT_LATITUDE)
+            .longitude(DEFAULT_LONGITUDE);
         return appointment;
     }
     /**
@@ -171,7 +178,9 @@ public class AppointmentResourceIT {
             .opnion(UPDATED_OPNION)
             .applyTime(UPDATED_APPLY_TIME)
             .opnionTime(UPDATED_OPNION_TIME)
-            .date(UPDATED_DATE);
+            .date(UPDATED_DATE)
+            .latitude(UPDATED_LATITUDE)
+            .longitude(UPDATED_LONGITUDE);
         return appointment;
     }
 
@@ -210,6 +219,8 @@ public class AppointmentResourceIT {
         assertThat(testAppointment.getApplyTime()).isEqualTo(DEFAULT_APPLY_TIME);
         assertThat(testAppointment.getOpnionTime()).isEqualTo(DEFAULT_OPNION_TIME);
         assertThat(testAppointment.getDate()).isEqualTo(DEFAULT_DATE);
+        assertThat(testAppointment.getLatitude()).isEqualTo(DEFAULT_LATITUDE);
+        assertThat(testAppointment.getLongitude()).isEqualTo(DEFAULT_LONGITUDE);
     }
 
     @Test
@@ -249,7 +260,7 @@ public class AppointmentResourceIT {
             .andExpect(jsonPath("$.[*].mobile").value(hasItem(DEFAULT_MOBILE)))
             .andExpect(jsonPath("$.[*].addr").value(hasItem(DEFAULT_ADDR)))
             .andExpect(jsonPath("$.[*].temperature").value(hasItem(DEFAULT_TEMPERATURE)))
-            .andExpect(jsonPath("$.[*].symptom").value(hasItem(DEFAULT_SYMPTOM.toString())))
+            .andExpect(jsonPath("$.[*].symptom").value(hasItem(DEFAULT_SYMPTOM)))
             .andExpect(jsonPath("$.[*].timePeriodCode").value(hasItem(DEFAULT_TIME_PERIOD_CODE)))
             .andExpect(jsonPath("$.[*].timePeriodValue").value(hasItem(DEFAULT_TIME_PERIOD_VALUE)))
             .andExpect(jsonPath("$.[*].busiType").value(hasItem(DEFAULT_BUSI_TYPE.toString())))
@@ -257,7 +268,9 @@ public class AppointmentResourceIT {
             .andExpect(jsonPath("$.[*].opnion").value(hasItem(DEFAULT_OPNION)))
             .andExpect(jsonPath("$.[*].applyTime").value(hasItem(sameInstant(DEFAULT_APPLY_TIME))))
             .andExpect(jsonPath("$.[*].opnionTime").value(hasItem(sameInstant(DEFAULT_OPNION_TIME))))
-            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE)));
+            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE)))
+            .andExpect(jsonPath("$.[*].latitude").value(hasItem(DEFAULT_LATITUDE)))
+            .andExpect(jsonPath("$.[*].longitude").value(hasItem(DEFAULT_LONGITUDE)));
     }
     
     @Test
@@ -276,7 +289,7 @@ public class AppointmentResourceIT {
             .andExpect(jsonPath("$.mobile").value(DEFAULT_MOBILE))
             .andExpect(jsonPath("$.addr").value(DEFAULT_ADDR))
             .andExpect(jsonPath("$.temperature").value(DEFAULT_TEMPERATURE))
-            .andExpect(jsonPath("$.symptom").value(DEFAULT_SYMPTOM.toString()))
+            .andExpect(jsonPath("$.symptom").value(DEFAULT_SYMPTOM))
             .andExpect(jsonPath("$.timePeriodCode").value(DEFAULT_TIME_PERIOD_CODE))
             .andExpect(jsonPath("$.timePeriodValue").value(DEFAULT_TIME_PERIOD_VALUE))
             .andExpect(jsonPath("$.busiType").value(DEFAULT_BUSI_TYPE.toString()))
@@ -284,7 +297,9 @@ public class AppointmentResourceIT {
             .andExpect(jsonPath("$.opnion").value(DEFAULT_OPNION))
             .andExpect(jsonPath("$.applyTime").value(sameInstant(DEFAULT_APPLY_TIME)))
             .andExpect(jsonPath("$.opnionTime").value(sameInstant(DEFAULT_OPNION_TIME)))
-            .andExpect(jsonPath("$.date").value(DEFAULT_DATE));
+            .andExpect(jsonPath("$.date").value(DEFAULT_DATE))
+            .andExpect(jsonPath("$.latitude").value(DEFAULT_LATITUDE))
+            .andExpect(jsonPath("$.longitude").value(DEFAULT_LONGITUDE));
     }
 
     @Test
@@ -321,7 +336,9 @@ public class AppointmentResourceIT {
             .opnion(UPDATED_OPNION)
             .applyTime(UPDATED_APPLY_TIME)
             .opnionTime(UPDATED_OPNION_TIME)
-            .date(UPDATED_DATE);
+            .date(UPDATED_DATE)
+            .latitude(UPDATED_LATITUDE)
+            .longitude(UPDATED_LONGITUDE);
         AppointmentDTO appointmentDTO = appointmentMapper.toDto(updatedAppointment);
 
         restAppointmentMockMvc.perform(put("/api/appointments")
@@ -347,6 +364,8 @@ public class AppointmentResourceIT {
         assertThat(testAppointment.getApplyTime()).isEqualTo(UPDATED_APPLY_TIME);
         assertThat(testAppointment.getOpnionTime()).isEqualTo(UPDATED_OPNION_TIME);
         assertThat(testAppointment.getDate()).isEqualTo(UPDATED_DATE);
+        assertThat(testAppointment.getLatitude()).isEqualTo(UPDATED_LATITUDE);
+        assertThat(testAppointment.getLongitude()).isEqualTo(UPDATED_LONGITUDE);
     }
 
     @Test

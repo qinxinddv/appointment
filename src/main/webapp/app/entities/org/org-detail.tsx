@@ -44,14 +44,23 @@ export const OrgDetail = (props: IOrgDetailProps) => {
           </dt>
           <dd>{orgEntity.addr}</dd>
           <dt>
-            <span id="coordinate">
-              <Translate contentKey="appointmentApp.org.coordinate">Coordinate</Translate>
+            <span id="latitude">
+              <Translate contentKey="appointmentApp.org.latitude">Latitude</Translate>
             </span>
-            <UncontrolledTooltip target="coordinate">
-              <Translate contentKey="appointmentApp.org.help.coordinate" />
+            <UncontrolledTooltip target="latitude">
+              <Translate contentKey="appointmentApp.org.help.latitude" />
             </UncontrolledTooltip>
           </dt>
-          <dd>{orgEntity.coordinate}</dd>
+          <dd>{orgEntity.latitude}</dd>
+          <dt>
+            <span id="longitude">
+              <Translate contentKey="appointmentApp.org.longitude">Longitude</Translate>
+            </span>
+            <UncontrolledTooltip target="longitude">
+              <Translate contentKey="appointmentApp.org.help.longitude" />
+            </UncontrolledTooltip>
+          </dt>
+          <dd>{orgEntity.longitude}</dd>
         </dl>
         <Button tag={Link} to="/org" replace color="info">
           <FontAwesomeIcon icon="arrow-left" />{' '}
