@@ -12,8 +12,13 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "coordinate",
-            "javadoc": "坐标",
+            "fieldName": "latitude",
+            "javadoc": "纬度",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "longitude",
+            "javadoc": "经度",
             "fieldType": "String"
         }
     ],

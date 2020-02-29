@@ -132,17 +132,10 @@ export const AppointmentUpdate = (props: IAppointmentUpdateProps) => {
                 <Label id="symptomLabel" for="appointment-symptom">
                   <Translate contentKey="appointmentApp.appointment.symptom">Symptom</Translate>
                 </Label>
-                <AvInput
-                  id="appointment-symptom"
-                  type="select"
-                  className="form-control"
-                  name="symptom"
-                  value={(!isNew && appointmentEntity.symptom) || 'FEVER'}
-                >
-                  <option value="FEVER">{translate('appointmentApp.SymptomEnum.FEVER')}</option>
-                  <option value="COUGH">{translate('appointmentApp.SymptomEnum.COUGH')}</option>
-                  <option value="WEAK">{translate('appointmentApp.SymptomEnum.WEAK')}</option>
-                </AvInput>
+                <AvField id="appointment-symptom" type="text" name="symptom" />
+                <UncontrolledTooltip target="symptomLabel">
+                  <Translate contentKey="appointmentApp.appointment.help.symptom" />
+                </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>
                 <Label id="timePeriodCodeLabel" for="appointment-timePeriodCode">
@@ -248,6 +241,24 @@ export const AppointmentUpdate = (props: IAppointmentUpdateProps) => {
                 <AvField id="appointment-date" type="text" name="date" />
                 <UncontrolledTooltip target="dateLabel">
                   <Translate contentKey="appointmentApp.appointment.help.date" />
+                </UncontrolledTooltip>
+              </AvGroup>
+              <AvGroup>
+                <Label id="latitudeLabel" for="appointment-latitude">
+                  <Translate contentKey="appointmentApp.appointment.latitude">Latitude</Translate>
+                </Label>
+                <AvField id="appointment-latitude" type="text" name="latitude" />
+                <UncontrolledTooltip target="latitudeLabel">
+                  <Translate contentKey="appointmentApp.appointment.help.latitude" />
+                </UncontrolledTooltip>
+              </AvGroup>
+              <AvGroup>
+                <Label id="longitudeLabel" for="appointment-longitude">
+                  <Translate contentKey="appointmentApp.appointment.longitude">Longitude</Translate>
+                </Label>
+                <AvField id="appointment-longitude" type="text" name="longitude" />
+                <UncontrolledTooltip target="longitudeLabel">
+                  <Translate contentKey="appointmentApp.appointment.help.longitude" />
                 </UncontrolledTooltip>
               </AvGroup>
               <AvGroup>

@@ -26,10 +26,16 @@ public class OrgDTO implements Serializable {
     private String addr;
 
     /**
-     * 坐标
+     * 纬度
      */
-    @ApiModelProperty(value = "坐标")
-    private String coordinate;
+    @ApiModelProperty(value = "纬度")
+    private String latitude;
+
+    /**
+     * 经度
+     */
+    @ApiModelProperty(value = "经度")
+    private String longitude;
 
 
     public Long getId() {
@@ -56,12 +62,20 @@ public class OrgDTO implements Serializable {
         this.addr = addr;
     }
 
-    public String getCoordinate() {
-        return coordinate;
+    public String getLatitude() {
+        return latitude;
     }
 
-    public void setCoordinate(String coordinate) {
-        this.coordinate = coordinate;
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     @Override
@@ -91,7 +105,8 @@ public class OrgDTO implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", addr='" + getAddr() + "'" +
-            ", coordinate='" + getCoordinate() + "'" +
+            ", latitude='" + getLatitude() + "'" +
+            ", longitude='" + getLongitude() + "'" +
             "}";
     }
 }

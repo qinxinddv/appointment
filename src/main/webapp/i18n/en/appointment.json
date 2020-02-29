@@ -30,6 +30,8 @@
       "applyTime": "Apply Time",
       "opnionTime": "Opnion Time",
       "date": "Date",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
       "org": "Org",
       "help": {
         "idCard": "身份证号",
@@ -37,6 +39,7 @@
         "mobile": "手机号",
         "addr": "家庭地址",
         "temperature": "体温",
+        "symptom": "症状",
         "timePeriodCode": "时间段",
         "timePeriodValue": "时间段值",
         "busiType": "类型（个人、企业、司法查询）",
@@ -44,7 +47,9 @@
         "opnion": "处理意见",
         "applyTime": "申请时间",
         "opnionTime": "处理时间",
-        "date": "预约日期"
+        "date": "预约日期",
+        "latitude": "纬度",
+        "longitude": "经度"
       }
     }
   }

@@ -4,7 +4,6 @@ import com.bank.service.SysDictService;
 import com.bank.domain.SysDict;
 import com.bank.repository.SysDictRepository;
 import com.bank.service.dto.SysDictDTO;
-import com.bank.service.dto.custom.SysDictTreeNodeDto;
 import com.bank.service.mapper.SysDictMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.Optional;
 
 /**
  * Service Implementation for managing {@link SysDict}.
@@ -85,47 +84,5 @@ public class SysDictServiceImpl implements SysDictService {
     public void delete(Long id) {
         log.debug("Request to delete SysDict : {}", id);
         sysDictRepository.deleteById(id);
-    }
-
-    @Override
-    public List<SysDictTreeNodeDto> findDistinctByType(String type) {
-        List<SysDict> sysDictList = sysDictRepository.findDistinctByType(type);
-        List<SysDictTreeNodeDto> sysDictTreeNodeDtos = new ArrayList<>();
-        for (SysDict sysDict : sysDictList) {
-            SysDictTreeNodeDto sysDictTreeNodeDto = new SysDictTreeNodeDto();
-            sysDictTreeNodeDto.setName(sysDict.getName());
-            sysDictTreeNodeDto.setValue(sysDict.getValue());
-            sysDictTreeNodeDto.setCode(sysDict.getCode());
-            sysDictTreeNodeDto.setParentId(sysDict.getParentId());
-            sysDictTreeNodeDto.setId(sysDict.getId());
-            sysDictTreeNodeDto.setDesc(sysDict.getDesc());
-            sysDictTreeNodeDto.setExtend1(sysDict.getExtend1());
-            sysDictTreeNodeDto.setExtend2(sysDict.getExtend2());
-            sysDictTreeNodeDto.setExtend3(sysDict.getExtend3());
-            sysDictTreeNodeDtos.add(sysDictTreeNodeDto);
-        }
-        return sysDictTreeNodeDtos.isEmpty() ? sysDictTreeNodeDtos : this.getTree(sysDictTreeNodeDtos);
-    }
-
-    private List<SysDictTreeNodeDto> getTree(List<SysDictTreeNodeDto> list) {
-        Map<Long, SysDictTreeNodeDto> dtoMap = new HashMap<>();
-        for (SysDictTreeNodeDto node : list) {
-            dtoMap.put(node.getId(), node);
-        }
-        List<SysDictTreeNodeDto> resultList = new ArrayList<>();
-        for (Map.Entry<Long, SysDictTreeNodeDto> entry : dtoMap.entrySet()) {
-            SysDictTreeNodeDto node = entry.getValue();
-            if (node.getParentId() == 0) {
-                // 如果是顶层节点，直接添加到结果集合中
-                resultList.add(node);
-            } else {
-                // 如果不是顶层节点，找其父节点，并且添加到父节点的子节点集合中
-                SysDictTreeNodeDto sysDictTreeNodeDto = dtoMap.get(node.getParentId());
-                if (sysDictTreeNodeDto != null) {
-                    sysDictTreeNodeDto.getChildren().add(node);
-                }
-            }
-        }
-        return resultList;
     }
 }
