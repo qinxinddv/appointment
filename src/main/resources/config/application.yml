@@ -107,8 +107,6 @@ server:
     session:
       cookie:
         http-only: true
-    context-path: /services
-
 # Properties to be exposed on the /info management endpoint
 info:
   # Comma separated list of profiles that will trigger the ribbon to show
