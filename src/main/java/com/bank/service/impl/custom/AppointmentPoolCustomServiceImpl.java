@@ -39,7 +39,7 @@ public class AppointmentPoolCustomServiceImpl implements AppointmentPoolCustomSe
     }
 
     @Override
-    public Set<DateDto> findByOrgIdAndBusiTypeDistinctDate(long orgId, BusiTypeEnum type) {
-        return appointmentPoolRepository.findDistinctByOrg_IdAndBusiType(orgId,type).stream().map(bean -> {return new DateDto(bean.getDate());}).collect(Collectors.toSet());
+    public List<DateDto> findByOrgIdAndBusiTypeDistinctDate(long orgId, BusiTypeEnum type) {
+        return appointmentPoolRepository.findDistinctByOrg_IdAndBusiType(orgId,type).stream().map(s -> {return new DateDto(s);}).collect(Collectors.toList());
     }
 }

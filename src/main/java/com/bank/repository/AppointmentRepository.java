@@ -16,7 +16,8 @@ import java.util.List;
 @SuppressWarnings("unused")
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> ,JpaSpecificationExecutor{
-    public long countByDateAndIdCardOrMobile(String date,String idCard,String mobile);
+    public long countByDateAndIdCard(String date,String idCard);
+    public long countByDateAndMobile(String date,String mobile);
     public Page<Appointment> findByMobile(String mobile, Pageable pageable);
     public Page<Appointment> findByOrg_Id(long orgId, Pageable pageable);
     public List<Appointment> findByDateLessThanAndState(String date, AppointStateEnum appointStateEnum);

@@ -12,5 +12,5 @@ import java.util.Set;
 public interface AppointmentPoolCustomService {
     public List<AppointmentPoolDTO> findByOrgIdAndBusiType(long orgId, BusiTypeEnum type);
     public AppointmentPoolDTO findByOrgIdAndBusiTypeAndDateAndPeriod(long orgId, BusiTypeEnum type,String date,String period);
-    public Set<DateDto> findByOrgIdAndBusiTypeDistinctDate(long orgId, BusiTypeEnum type);
+    public List<DateDto> findByOrgIdAndBusiTypeDistinctDate(long orgId, BusiTypeEnum type);
 }

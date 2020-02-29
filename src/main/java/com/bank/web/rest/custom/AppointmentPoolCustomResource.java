@@ -13,9 +13,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Api(value = "/custom/appointment-pool", tags = { "预约资源池相关接口" })
 @RestController
@@ -46,8 +48,9 @@ public class AppointmentPoolCustomResource {
         @ApiImplicitParam(name = "busiTypeEnum", value = "业务类型", dataType = "String",required = true)
     })
     @GetMapping("/find-by-org-and-busi-distinct-date")
-    public Set<DateDto> findDateArray(long orgId, BusiTypeEnum busiTypeEnum){
-        return appointmentPoolCustomService.findByOrgIdAndBusiTypeDistinctDate(orgId,busiTypeEnum);
+    public List<DateDto> findDateArray(long orgId, BusiTypeEnum busiTypeEnum){
+        List<DateDto> list = appointmentPoolCustomService.findByOrgIdAndBusiTypeDistinctDate(orgId,busiTypeEnum);
+        return list;
     }
 
 }

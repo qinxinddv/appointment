@@ -75,7 +75,7 @@ public class AppointmentCustomServiceImpl implements AppointmentCustomService {
     @Override
     public void check(AppointmentApplyDto applyDto) {
         //校验身份证号或手机号统一业务类型下，是否重复预约
-        if (appointmentRepository.countByDateAndIdCardOrMobile(applyDto.getDate(), applyDto.getIdCard(), applyDto.getMobile()) > 0) {
+        if ((appointmentRepository.countByDateAndIdCard(applyDto.getDate(), applyDto.getIdCard()) + appointmentRepository.countByDateAndMobile(applyDto.getDate(),applyDto.getMobile())) > 0) {
             throw new BusinessException("不能重复预约");
         }
         //黑名单验证

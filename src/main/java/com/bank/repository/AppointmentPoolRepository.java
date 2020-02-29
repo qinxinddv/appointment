@@ -28,5 +28,6 @@ public interface AppointmentPoolRepository extends JpaRepository<AppointmentPool
 
     public List<AppointmentPool> findByOrg_idAndBusiType(long orgId,BusiTypeEnum busiTypeEnum);
 
-    public List<AppointmentPool> findDistinctByOrg_IdAndBusiType(long orgId,BusiTypeEnum busiTypeEnum);
+    @Query("select distinct a.date from AppointmentPool a,Org o where o.id=?1 and a.busiType=?2 order by a.date")
+    public List<String> findDistinctByOrg_IdAndBusiType(long orgId,BusiTypeEnum busiTypeEnum);
 }
