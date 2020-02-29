@@ -2,5 +2,7 @@ version: '2'
 services:
   appointment-hazelcast-management-center:
     image: hazelcast/management-center:3.12.8
+    environment:
+      - TZ="Asia/Shanghai"
     ports:
       - 8080:8080
