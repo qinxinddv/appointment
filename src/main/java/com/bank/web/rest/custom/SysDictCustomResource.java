@@ -6,6 +6,7 @@ import com.bank.web.rest.AppointmentConfigResource;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class SysDictCustomResource {
     private SysDictService sysDictService;
 
     @GetMapping("/sys-dicts-by-type/{type}")
+    @ApiOperation(value = "根据类型查字典", notes = "根据类型查字典", httpMethod = "GET")
     @ApiImplicitParams({
         @ApiImplicitParam(name = "type", value = "字典数据类型", dataType = "String")
     })
