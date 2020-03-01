@@ -8,6 +8,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
 import com.bank.domain.enumeration.BusiTypeEnum;
@@ -37,7 +38,7 @@ public class Appointment implements Serializable {
         this.state = AppointStateEnum.UNDO;
         this.temperature = applyDto.getTemperature();
         this.symptom = applyDto.getSymptom();
-        this.applyTime = ZonedDateTime.now();
+        this.applyTime = LocalDateTime.now();
         this.date = applyDto.getDate();
         this.org = org;
         this.latitude = applyDto.getLatitude();
@@ -124,13 +125,13 @@ public class Appointment implements Serializable {
      * 申请时间
      */
     @Column(name = "apply_time")
-    private ZonedDateTime applyTime;
+    private LocalDateTime applyTime;
 
     /**
      * 处理时间
      */
     @Column(name = "opnion_time")
-    private ZonedDateTime opnionTime;
+    private LocalDateTime opnionTime;
 
     /**
      * 预约日期
@@ -314,29 +315,29 @@ public class Appointment implements Serializable {
         this.opnion = opnion;
     }
 
-    public ZonedDateTime getApplyTime() {
+    public LocalDateTime getApplyTime() {
         return applyTime;
     }
 
-    public Appointment applyTime(ZonedDateTime applyTime) {
+    public Appointment applyTime(LocalDateTime applyTime) {
         this.applyTime = applyTime;
         return this;
     }
 
-    public void setApplyTime(ZonedDateTime applyTime) {
+    public void setApplyTime(LocalDateTime applyTime) {
         this.applyTime = applyTime;
     }
 
-    public ZonedDateTime getOpnionTime() {
+    public LocalDateTime getOpnionTime() {
         return opnionTime;
     }
 
-    public Appointment opnionTime(ZonedDateTime opnionTime) {
+    public Appointment opnionTime(LocalDateTime opnionTime) {
         this.opnionTime = opnionTime;
         return this;
     }
 
-    public void setOpnionTime(ZonedDateTime opnionTime) {
+    public void setOpnionTime(LocalDateTime opnionTime) {
         this.opnionTime = opnionTime;
     }
 
