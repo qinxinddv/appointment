@@ -33,7 +33,7 @@ spring:
       enabled: false
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://152.136.182.213:3306/appointment?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+    url: jdbc:mysql://appointment-mysql:3306/appointment?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
     username: root
     password:
     hikari:
@@ -123,7 +123,7 @@ jhipster:
       management-center: # Full reference is available at: http://docs.hazelcast.org/docs/management-center/3.9/manual/html/Deploying_and_Starting.html
         enabled: true
         update-interval: 3
-        url: http://152.136.182.213:8080/hazelcast-mancenter
+        url: http://appointment-hazelcast-management-center:8080/hazelcast-mancenter
   security:
     remember-me:
       # security key (this key should be unique for your application, and kept secret)
