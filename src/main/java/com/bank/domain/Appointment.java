@@ -10,6 +10,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
+import java.util.Date;
 
 import com.bank.domain.enumeration.BusiTypeEnum;
 
@@ -38,7 +39,7 @@ public class Appointment implements Serializable {
         this.state = AppointStateEnum.UNDO;
         this.temperature = applyDto.getTemperature();
         this.symptom = applyDto.getSymptom();
-        this.applyTime = LocalDateTime.now();
+        this.applyTime = new Date();
         this.date = applyDto.getDate();
         this.org = org;
         this.latitude = applyDto.getLatitude();
@@ -125,13 +126,13 @@ public class Appointment implements Serializable {
      * 申请时间
      */
     @Column(name = "apply_time")
-    private LocalDateTime applyTime;
+    private Date applyTime;
 
     /**
      * 处理时间
      */
     @Column(name = "opnion_time")
-    private LocalDateTime opnionTime;
+    private Date opnionTime;
 
     /**
      * 预约日期
@@ -315,29 +316,29 @@ public class Appointment implements Serializable {
         this.opnion = opnion;
     }
 
-    public LocalDateTime getApplyTime() {
+    public Date getApplyTime() {
         return applyTime;
     }
 
-    public Appointment applyTime(LocalDateTime applyTime) {
+    public Appointment applyTime(Date applyTime) {
         this.applyTime = applyTime;
         return this;
     }
 
-    public void setApplyTime(LocalDateTime applyTime) {
+    public void setApplyTime(Date applyTime) {
         this.applyTime = applyTime;
     }
 
-    public LocalDateTime getOpnionTime() {
+    public Date getOpnionTime() {
         return opnionTime;
     }
 
-    public Appointment opnionTime(LocalDateTime opnionTime) {
+    public Appointment opnionTime(Date opnionTime) {
         this.opnionTime = opnionTime;
         return this;
     }
 
-    public void setOpnionTime(LocalDateTime opnionTime) {
+    public void setOpnionTime(Date opnionTime) {
         this.opnionTime = opnionTime;
     }
 

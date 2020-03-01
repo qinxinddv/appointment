@@ -23,6 +23,7 @@ import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
 import java.time.*;
+import java.util.Date;
 import java.util.List;
 
 import static com.bank.web.rest.TestUtil.sameInstant;
@@ -73,11 +74,11 @@ public class AppointmentResourceIT {
     private static final String DEFAULT_OPNION = "AAAAAAAAAA";
     private static final String UPDATED_OPNION = "BBBBBBBBBB";
 
-    private static final LocalDateTime DEFAULT_APPLY_TIME = LocalDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final LocalDateTime UPDATED_APPLY_TIME = LocalDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final Date DEFAULT_APPLY_TIME = new Date();
+    private static final Date UPDATED_APPLY_TIME = new Date();
 
-    private static final LocalDateTime DEFAULT_OPNION_TIME = LocalDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final LocalDateTime UPDATED_OPNION_TIME = LocalDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final Date DEFAULT_OPNION_TIME = new Date();
+    private static final Date UPDATED_OPNION_TIME = new Date();
 
     private static final String DEFAULT_DATE = "AAAAAAAAAA";
     private static final String UPDATED_DATE = "BBBBBBBBBB";

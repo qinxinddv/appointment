@@ -28,6 +28,7 @@ import javax.persistence.criteria.Root;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 @Service
 @Transactional
@@ -92,7 +93,7 @@ public class AppointmentCustomServiceImpl implements AppointmentCustomService {
         Appointment appointment = appointmentRepository.findById(overDto.getId()).orElseThrow(() -> new RuntimeException("未查到预约"));
         appointment.setState(AppointStateEnum.DO);
         appointment.setOpnion(overDto.getOpnion());
-        appointment.setOpnionTime(LocalDateTime.now());
+        appointment.setOpnionTime(new Date());
         appointmentRepository.save(appointment);
     }
 
