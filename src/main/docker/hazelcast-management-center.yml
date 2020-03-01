@@ -2,6 +2,8 @@ version: '2'
 services:
   appointment-hazelcast-management-center:
     image: hazelcast/management-center:3.12.8
+    volumes:
+      - /data/hazelcast:/data
     environment:
       - TZ=Asia/Shanghai
     ports:

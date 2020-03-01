@@ -3,10 +3,11 @@ services:
   appointment-mysql:
     image: mysql:8.0.19
     volumes:
-      - ~/volumes/jhipster/appointment/mysql/:/var/lib/mysql/
+      - /data/mysql/:/var/lib/mysql/
     environment:
       - MYSQL_USER=root
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_PASSWORD=app@123456
+      - MYSQL_ALLOW_EMPTY_PASSWORD=no
       - MYSQL_DATABASE=appointment
       - TZ=Asia/Shanghai
     ports:

@@ -9,6 +9,8 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://appointment-mysql:3306/appointment?useUnicode=true&characterEncoding=utf8&useSSL=false&createDatabaseIfNotExist=true
       - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
       - TZ=Asia/Shanghai
+    volumes:
+      - /tmp:/tmp
     ports:
       - 443:443
   appointment-mysql:
