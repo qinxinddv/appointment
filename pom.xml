@@ -584,7 +584,7 @@
                     <version>${jib-maven-plugin.version}</version>
                     <configuration>
                         <from>
-                            <image>adoptopenjdk:11-jre-hotspot</image>
+                            <image>adoptopenjdk:8-jre-hotspot</image>
                         </from>
                         <to>
                             <image>appointment:latest</image>
