@@ -1,5 +1,6 @@
 package com.bank.web.rest.custom;
 
+import com.bank.domain.enumeration.AppointStateEnum;
 import com.bank.domain.enumeration.LockEnum;
 import com.bank.service.custom.AppointmentCustomService;
 import com.bank.service.dto.custom.AppointmentApplyDto;
@@ -66,7 +67,7 @@ public class AppointmentCustomResource {
         @ApiImplicitParam(name = "date", value = "预约日期", dataType = "String",required = false)
     })
     @GetMapping("/find-custom")
-    public ResponseEntity<Page<AppointmentCustomDTO>> findByOrgId(String openId,Long orgId, String mobile, String idCard,String state,String date, @PageableDefault(value = 10,page = 0,sort = {"applyTime"},direction = Sort.Direction.DESC) Pageable pageable){
+    public ResponseEntity<Page<AppointmentCustomDTO>> findByOrgId(String openId, Long orgId, String mobile, String idCard, AppointStateEnum state, String date, @PageableDefault(value = 10,page = 0,sort = {"applyTime"},direction = Sort.Direction.DESC) Pageable pageable){
         return ResponseEntity.ok().body(appointmentCustomService.customFind(openId,orgId,mobile,idCard,state,date,pageable));
     }
 

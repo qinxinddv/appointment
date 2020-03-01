@@ -1,6 +1,7 @@
 package com.bank.service.custom;
 
 import com.bank.domain.Appointment;
+import com.bank.domain.enumeration.AppointStateEnum;
 import com.bank.service.dto.custom.AppointmentApplyDto;
 import com.bank.service.dto.custom.AppointmentCustomDTO;
 import com.bank.service.dto.custom.AppointmentOverDto;
@@ -13,5 +14,5 @@ public interface AppointmentCustomService {
     public void over(AppointmentOverDto overDto);
     public Page<AppointmentCustomDTO> findByMobile(String mobile, Pageable pageable);
     public Page<AppointmentCustomDTO> findByOrgId(long orgId, Pageable pageable);
-    public Page<AppointmentCustomDTO> customFind(String openId,Long orgId, String mobile, String idCard,String state,String date, Pageable pageable);
+    public Page<AppointmentCustomDTO> customFind(String openId, Long orgId, String mobile, String idCard, AppointStateEnum state, String date, Pageable pageable);
 }
