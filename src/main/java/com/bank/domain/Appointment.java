@@ -42,11 +42,16 @@ public class Appointment implements Serializable {
         this.org = org;
         this.latitude = applyDto.getLatitude();
         this.longitude = applyDto.getLongitude();
+        this.openId = applyDto.getOpenId();
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    /**
+     * 微信账户唯一编号
+     */
+    @Column(name = "open_id")
+    private String openId;
     /**
      * 身份证号
      */
@@ -148,6 +153,14 @@ public class Appointment implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("appointments")
     private Org org;
+
+    public String getOpenId() {
+        return openId;
+    }
+
+    public void setOpenId(String openId) {
+        this.openId = openId;
+    }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {

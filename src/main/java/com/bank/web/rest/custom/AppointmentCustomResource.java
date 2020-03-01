@@ -55,9 +55,10 @@ public class AppointmentCustomResource {
         return ResponseEntity.ok().body(appointmentCustomService.findByMobile(mobile,pageable));
     }
 
-    @ApiOperation(value = "根据机构等多字段查预约", notes = "根据机构等多字段查预约", httpMethod = "GET")
+    @ApiOperation(value = "根据OpenId机构等多字段查预约", notes = "根据OpenId机构等多字段查预约", httpMethod = "GET")
     @ApiImplicitParams({
-        @ApiImplicitParam(name = "orgId", value = "机构ID", dataType = "Long",required = true),
+        @ApiImplicitParam(name = "openId", value = "机构ID", dataType = "String",required = false),
+        @ApiImplicitParam(name = "orgId", value = "机构ID", dataType = "Long",required = false),
         @ApiImplicitParam(name = "mobile", value = "手机号", dataType = "String",required = false),
         @ApiImplicitParam(name = "idCard", value = "身份证号", dataType = "String",required = false),
         @ApiImplicitParam(name = "mobile", value = "手机号", dataType = "String",required = false),
@@ -65,8 +66,8 @@ public class AppointmentCustomResource {
         @ApiImplicitParam(name = "date", value = "预约日期", dataType = "String",required = false)
     })
     @GetMapping("/find-custom")
-    public ResponseEntity<Page<AppointmentCustomDTO>> findByOrgId(long orgId, String mobile, String idCard,String state,String date, @PageableDefault(value = 10,page = 0,sort = {"applyTime"},direction = Sort.Direction.DESC) Pageable pageable){
-        return ResponseEntity.ok().body(appointmentCustomService.customFind(orgId,mobile,idCard,state,date,pageable));
+    public ResponseEntity<Page<AppointmentCustomDTO>> findByOrgId(String openId,Long orgId, String mobile, String idCard,String state,String date, @PageableDefault(value = 10,page = 0,sort = {"applyTime"},direction = Sort.Direction.DESC) Pageable pageable){
+        return ResponseEntity.ok().body(appointmentCustomService.customFind(openId,orgId,mobile,idCard,state,date,pageable));
     }
 
     @ApiOperation(value = "预约处理状态", notes = "预约处理状态", httpMethod = "POST")

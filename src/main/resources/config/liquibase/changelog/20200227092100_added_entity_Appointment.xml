@@ -19,6 +19,9 @@
             <column name="id_card" type="varchar(255)" remarks="身份证号">
                 <constraints nullable="true" />
             </column>
+            <column name="open_id" type="varchar(255)" remarks="微信账户唯一编号">
+                <constraints nullable="false" />
+            </column>
             <column name="name" type="varchar(255)" remarks="姓名">
                 <constraints nullable="true" />
             </column>

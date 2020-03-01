@@ -106,13 +106,18 @@ public class AppointmentCustomServiceImpl implements AppointmentCustomService {
     }
 
     @Override
-    public Page<AppointmentCustomDTO> customFind(long orgId, String mobile, String idCard,String state,String date, Pageable pageable) {
+    public Page<AppointmentCustomDTO> customFind(String openId,Long orgId, String mobile, String idCard,String state,String date, Pageable pageable) {
         return appointmentRepository.findAll(new Specification() {
             @Override
             public Predicate toPredicate(Root root, CriteriaQuery criteriaQuery, CriteriaBuilder cb) {
                 //创建条件集合
                 ArrayList<Predicate> list = new ArrayList<>();
-                list.add((Predicate) cb.equal(root.get("org").get("id"), orgId));
+                if(orgId != null){
+                    list.add((Predicate) cb.equal(root.get("org").get("id"), orgId));
+                }
+                if(StringUtils.isNotBlank(openId)){
+                    list.add((Predicate) cb.equal(root.get("openId"), openId));
+                }
                 if(StringUtils.isNotBlank(mobile)){
                     list.add((Predicate) cb.equal(root.get("mobile"), mobile));
                 }

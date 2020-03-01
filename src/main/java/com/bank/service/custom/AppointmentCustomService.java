@@ -13,5 +13,5 @@ public interface AppointmentCustomService {
     public void over(AppointmentOverDto overDto);
     public Page<AppointmentCustomDTO> findByMobile(String mobile, Pageable pageable);
     public Page<AppointmentCustomDTO> findByOrgId(long orgId, Pageable pageable);
-    public Page<AppointmentCustomDTO> customFind(long orgId, String mobile, String idCard,String state,String date, Pageable pageable);
+    public Page<AppointmentCustomDTO> customFind(String openId,Long orgId, String mobile, String idCard,String state,String date, Pageable pageable);
 }

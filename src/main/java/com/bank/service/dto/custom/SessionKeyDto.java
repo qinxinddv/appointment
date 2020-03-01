@@ -1,17 +1,23 @@
 package com.bank.service.dto.custom;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 
+@ApiModel(description = "微信登陆返回实体")
 public class SessionKeyDto implements Serializable {
     private static final long serialVersionUID = 1L;
     @JsonIgnoreProperties(ignoreUnknown=true)
     private String session_key;
+
     @JsonIgnoreProperties(ignoreUnknown=true)
     private String openid;
+
     @JsonIgnoreProperties(ignoreUnknown=true)
     private String errcode;
+
     @JsonIgnoreProperties(ignoreUnknown=true)
     private String errmsg;
 

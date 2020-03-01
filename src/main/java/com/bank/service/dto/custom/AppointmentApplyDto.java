@@ -15,6 +15,10 @@ import javax.validation.constraints.Pattern;
 public class AppointmentApplyDto {
 
     @NotBlank
+    @ApiModelProperty(value = "微信账户唯一编号")
+    private String openId;
+
+    @NotBlank
     @ApiModelProperty(value = "预约日期")
     private String date;
     /**
@@ -196,10 +200,15 @@ public class AppointmentApplyDto {
         this.longitude = longitude;
     }
 
+    public String getOpenId() {
+        return openId;
+    }
+
     @Override
     public String toString() {
         return "AppointmentApplyDto{" +
-            "date='" + date + '\'' +
+            "openId='" + openId + '\'' +
+            ", date='" + date + '\'' +
             ", idCard='" + idCard + '\'' +
             ", name='" + name + '\'' +
             ", mobile='" + mobile + '\'' +
@@ -214,4 +223,9 @@ public class AppointmentApplyDto {
             ", busiType=" + busiType +
             '}';
     }
+
+    public void setOpenId(String openId) {
+        this.openId = openId;
+    }
+
 }

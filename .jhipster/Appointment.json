@@ -1,6 +1,11 @@
 {
     "name": "Appointment",
     "fields": [
+    		{
+            "fieldName": "openId",
+            "javadoc": "微信账户唯一ID",
+            "fieldType": "String"
+        },
         {
             "fieldName": "idCard",
             "javadoc": "身份证号",
