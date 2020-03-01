@@ -12,6 +12,7 @@ import org.springframework.format.support.FormattingConversionService;
 import org.springframework.http.MediaType;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.List;
@@ -75,16 +76,16 @@ public final class TestUtil {
      */
     public static class ZonedDateTimeMatcher extends TypeSafeDiagnosingMatcher<String> {
 
-        private final ZonedDateTime date;
+        private final LocalDateTime date;
 
-        public ZonedDateTimeMatcher(ZonedDateTime date) {
+        public ZonedDateTimeMatcher(LocalDateTime date) {
             this.date = date;
         }
 
         @Override
         protected boolean matchesSafely(String item, Description mismatchDescription) {
             try {
-                if (!date.isEqual(ZonedDateTime.parse(item))) {
+                if (!date.isEqual(LocalDateTime.parse(item))) {
                     mismatchDescription.appendText("was ").appendValue(item);
                     return false;
                 }
@@ -108,7 +109,7 @@ public final class TestUtil {
      *
      * @param date the reference datetime against which the examined string is checked.
      */
-    public static ZonedDateTimeMatcher sameInstant(ZonedDateTime date) {
+    public static ZonedDateTimeMatcher sameInstant(LocalDateTime date) {
         return new ZonedDateTimeMatcher(date);
     }
 
