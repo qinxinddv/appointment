@@ -3,14 +3,14 @@ services:
   appointment-app:
     image: appointment
     environment:
-      - _JAVA_OPTIONS=-Xmx1024m -Xms512m
+      - _JAVA_OPTIONS=-Xmx1024m -Xms512m -Dfile.encoding=UTF8 -Duser.timezone=GMT+08
       - SPRING_PROFILES_ACTIVE=prod,swagger
       - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
       - SPRING_DATASOURCE_URL=jdbc:mysql://appointment-mysql:3306/appointment?useUnicode=true&characterEncoding=utf8&useSSL=false&createDatabaseIfNotExist=true
       - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
-      - TZ=Asia/Shanghai
     volumes:
       - /tmp:/tmp
+      - /etc/localtime:/etc/localtime
     ports:
       - 443:443
   appointment-mysql:

@@ -4,7 +4,6 @@ services:
     image: hazelcast/management-center:3.12.8
     volumes:
       - /data/hazelcast:/data
-    environment:
-      - TZ=Asia/Shanghai
+      - /etc/localtime:/etc/localtime
     ports:
       - 8080:8080
