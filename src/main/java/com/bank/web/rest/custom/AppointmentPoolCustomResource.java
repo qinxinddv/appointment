@@ -33,7 +33,7 @@ public class AppointmentPoolCustomResource {
 
     @ApiOperation(value = "根据机构和业务类型,日期、时间段查询", notes = "根据机构和业务类型,日期、时间段查询", httpMethod = "GET")
     @ApiImplicitParams({
-        @ApiImplicitParam(name = "orgId", value = "机构ID", dataType = "Long",required = true),
+        @ApiImplicitParam(name = "orgId", value = "机构ID", dataType = "int",example = "1",required = true),
         @ApiImplicitParam(name = "busiTypeEnum", value = "业务类型", dataType = "String",required = true),
         @ApiImplicitParam(name = "date", value = "日期", dataType = "String",required = true),
         @ApiImplicitParam(name = "period", value = "时间段", dataType = "String",required = true)
@@ -44,7 +44,7 @@ public class AppointmentPoolCustomResource {
     }
     @ApiOperation(value = "根据机构和业务类型查询日期数组", notes = "根据机构和业务类型查询日期数组", httpMethod = "GET")
     @ApiImplicitParams({
-        @ApiImplicitParam(name = "orgId", value = "机构ID", dataType = "Long",required = true),
+        @ApiImplicitParam(name = "orgId", value = "机构ID", dataType = "int",example = "1",required = true),
         @ApiImplicitParam(name = "busiTypeEnum", value = "业务类型", dataType = "String",required = true)
     })
     @GetMapping("/find-by-org-and-busi-distinct-date")

@@ -59,7 +59,7 @@ public class AppointmentCustomResource {
     @ApiOperation(value = "根据OpenId机构等多字段查预约", notes = "根据OpenId机构等多字段查预约", httpMethod = "GET")
     @ApiImplicitParams({
         @ApiImplicitParam(name = "openId", value = "机构ID", dataType = "String",required = false),
-        @ApiImplicitParam(name = "orgId", value = "机构ID", dataType = "Long",required = false),
+        @ApiImplicitParam(name = "orgId", value = "机构ID", dataType = "int",example = "1",required = false),
         @ApiImplicitParam(name = "mobile", value = "手机号", dataType = "String",required = false),
         @ApiImplicitParam(name = "idCard", value = "身份证号", dataType = "String",required = false),
         @ApiImplicitParam(name = "mobile", value = "手机号", dataType = "String",required = false),
