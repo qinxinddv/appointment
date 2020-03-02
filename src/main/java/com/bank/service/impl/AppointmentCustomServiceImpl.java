@@ -26,6 +26,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 @Service
@@ -92,6 +93,7 @@ public class AppointmentCustomServiceImpl implements AppointmentCustomService {
         appointment.setState(AppointStateEnum.DO);
         appointment.setOpnion(overDto.getOpnion());
         appointment.setOpnionTime(ZonedDateTime.now());
+        log.info("结束时间：{}",appointment.getOpnionTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         appointmentRepository.save(appointment);
     }
 
