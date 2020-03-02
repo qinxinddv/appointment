@@ -8,9 +8,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
-import java.util.Date;
 
 import com.bank.domain.enumeration.BusiTypeEnum;
 
@@ -39,7 +37,7 @@ public class Appointment implements Serializable {
         this.state = AppointStateEnum.UNDO;
         this.temperature = applyDto.getTemperature();
         this.symptom = applyDto.getSymptom();
-        this.applyTime = new Date();
+        this.applyTime = ZonedDateTime.now();
         this.date = applyDto.getDate();
         this.org = org;
         this.latitude = applyDto.getLatitude();
@@ -126,13 +124,13 @@ public class Appointment implements Serializable {
      * 申请时间
      */
     @Column(name = "apply_time")
-    private Date applyTime;
+    private ZonedDateTime applyTime;
 
     /**
      * 处理时间
      */
     @Column(name = "opnion_time")
-    private Date opnionTime;
+    private ZonedDateTime opnionTime;
 
     /**
      * 预约日期
@@ -316,29 +314,29 @@ public class Appointment implements Serializable {
         this.opnion = opnion;
     }
 
-    public Date getApplyTime() {
+    public ZonedDateTime getApplyTime() {
         return applyTime;
     }
 
-    public Appointment applyTime(Date applyTime) {
+    public Appointment applyTime(ZonedDateTime applyTime) {
         this.applyTime = applyTime;
         return this;
     }
 
-    public void setApplyTime(Date applyTime) {
+    public void setApplyTime(ZonedDateTime applyTime) {
         this.applyTime = applyTime;
     }
 
-    public Date getOpnionTime() {
+    public ZonedDateTime getOpnionTime() {
         return opnionTime;
     }
 
-    public Appointment opnionTime(Date opnionTime) {
+    public Appointment opnionTime(ZonedDateTime opnionTime) {
         this.opnionTime = opnionTime;
         return this;
     }
 
-    public void setOpnionTime(Date opnionTime) {
+    public void setOpnionTime(ZonedDateTime opnionTime) {
         this.opnionTime = opnionTime;
     }
 
