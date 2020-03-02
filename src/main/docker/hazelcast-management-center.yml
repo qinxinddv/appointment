@@ -2,6 +2,9 @@ version: '2'
 services:
   appointment-hazelcast-management-center:
     image: hazelcast/management-center:3.12.8
+    environment:
+      - JAVA_OPTS=%JAVA_OPTS -Dfile.encoding=UTF8 -Duser.timezone=GMT+08
+      - TZ=Asia/Shanghai
     volumes:
       - /data/hazelcast:/data
       - /etc/localtime:/etc/localtime
