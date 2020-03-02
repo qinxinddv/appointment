@@ -25,11 +25,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 @Service
 @Transactional
@@ -60,8 +57,6 @@ public class AppointmentCustomServiceImpl implements AppointmentCustomService {
             throw new BusinessException("已约满");
         }
         Appointment appointment = new Appointment(applyDto, pool.getOrg());
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        log.info("申请时间，{},{}",appointment.getApplyTime(),formatter.format(appointment.getApplyTime()));
         appointmentRepository.save(appointment);
         log.info("创建预约申请成功，{}", appointment);
         //修改预约池剩余数量
@@ -96,7 +91,7 @@ public class AppointmentCustomServiceImpl implements AppointmentCustomService {
         Appointment appointment = appointmentRepository.findById(overDto.getId()).orElseThrow(() -> new RuntimeException("未查到预约"));
         appointment.setState(AppointStateEnum.DO);
         appointment.setOpnion(overDto.getOpnion());
-        appointment.setOpnionTime(new Date());
+        appointment.setOpnionTime(ZonedDateTime.now());
         appointmentRepository.save(appointment);
     }
 

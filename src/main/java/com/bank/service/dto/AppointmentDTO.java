@@ -2,11 +2,8 @@ package com.bank.service.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Objects;
 import com.bank.domain.enumeration.BusiTypeEnum;
 import com.bank.domain.enumeration.AppointStateEnum;
@@ -89,13 +86,13 @@ public class AppointmentDTO implements Serializable {
      * 申请时间
      */
     @ApiModelProperty(value = "申请时间")
-    private Date applyTime;
+    private ZonedDateTime applyTime;
 
     /**
      * 处理时间
      */
     @ApiModelProperty(value = "处理时间")
-    private Date opnionTime;
+    private ZonedDateTime opnionTime;
 
     /**
      * 预约日期
@@ -214,19 +211,19 @@ public class AppointmentDTO implements Serializable {
         this.opnion = opnion;
     }
 
-    public Date getApplyTime() {
+    public ZonedDateTime getApplyTime() {
         return applyTime;
     }
 
-    public void setApplyTime(Date applyTime) {
+    public void setApplyTime(ZonedDateTime applyTime) {
         this.applyTime = applyTime;
     }
 
-    public Date getOpnionTime() {
+    public ZonedDateTime getOpnionTime() {
         return opnionTime;
     }
 
-    public void setOpnionTime(Date opnionTime) {
+    public void setOpnionTime(ZonedDateTime opnionTime) {
         this.opnionTime = opnionTime;
     }
 

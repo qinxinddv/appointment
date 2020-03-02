@@ -22,8 +22,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
-import java.time.*;
-import java.util.Date;
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.ZoneOffset;
+import java.time.ZoneId;
 import java.util.List;
 
 import static com.bank.web.rest.TestUtil.sameInstant;
@@ -74,11 +76,11 @@ public class AppointmentResourceIT {
     private static final String DEFAULT_OPNION = "AAAAAAAAAA";
     private static final String UPDATED_OPNION = "BBBBBBBBBB";
 
-    private static final Date DEFAULT_APPLY_TIME = new Date();
-    private static final Date UPDATED_APPLY_TIME = new Date();
+    private static final ZonedDateTime DEFAULT_APPLY_TIME = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_APPLY_TIME = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final Date DEFAULT_OPNION_TIME = new Date();
-    private static final Date UPDATED_OPNION_TIME = new Date();
+    private static final ZonedDateTime DEFAULT_OPNION_TIME = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_OPNION_TIME = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     private static final String DEFAULT_DATE = "AAAAAAAAAA";
     private static final String UPDATED_DATE = "BBBBBBBBBB";
@@ -270,7 +272,7 @@ public class AppointmentResourceIT {
             .andExpect(jsonPath("$.[*].latitude").value(hasItem(DEFAULT_LATITUDE)))
             .andExpect(jsonPath("$.[*].longitude").value(hasItem(DEFAULT_LONGITUDE)));
     }
-
+    
     @Test
     @Transactional
     public void getAppointment() throws Exception {

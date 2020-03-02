@@ -7,7 +7,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
@@ -78,14 +77,14 @@ public class AppointmentCustomDTO implements Serializable {
      */
     @ApiModelProperty(value = "申请时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime applyTime;
+    private ZonedDateTime applyTime;
 
     /**
      * 处理时间
      */
     @ApiModelProperty(value = "处理时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime opnionTime;
+    private ZonedDateTime opnionTime;
 
     /**
      * 预约日期
@@ -220,19 +219,19 @@ public class AppointmentCustomDTO implements Serializable {
         this.opnion = opnion;
     }
 
-    public LocalDateTime getApplyTime() {
+    public ZonedDateTime getApplyTime() {
         return applyTime;
     }
 
-    public void setApplyTime(LocalDateTime applyTime) {
+    public void setApplyTime(ZonedDateTime applyTime) {
         this.applyTime = applyTime;
     }
 
-    public LocalDateTime getOpnionTime() {
+    public ZonedDateTime getOpnionTime() {
         return opnionTime;
     }
 
-    public void setOpnionTime(LocalDateTime opnionTime) {
+    public void setOpnionTime(ZonedDateTime opnionTime) {
         this.opnionTime = opnionTime;
     }
 
