@@ -1,5 +1,7 @@
 package com.bank.task;
 
+import com.bank.config.Constants;
+import com.bank.domain.Appointment;
 import com.bank.domain.AppointmentPool;
 import com.bank.domain.enumeration.AppointStateEnum;
 import com.bank.domain.enumeration.LockEnum;
@@ -44,7 +46,7 @@ public class CommonTask {
     //预约资源池定时器,凌晨1点执行
     @Scheduled(cron = "0 0/5 * * * ?")
     private void poolProcess() {
-        log.info("开始执行预约资源池处理任务");
+        log.debug("开始执行预约资源池处理任务");
         ILock lock = hazelcastInstance.getLock(LockEnum.POOL_TASK.name());
         lock.lock();
         try {
@@ -73,7 +75,7 @@ public class CommonTask {
         } finally {
             lock.unlock();
         }
-        log.info("结束执行预约资源池处理任务");
+        log.debug("结束执行预约资源池处理任务");
     }
 
 
@@ -83,15 +85,21 @@ public class CommonTask {
      */
     private void cleanPool(LocalDate now) {
         appointmentPoolRepository.findByDateLessThan(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))).stream().forEach(bean -> {
-            log.info("删除过期数据：日期：{}", bean.getDate());
+            log.debug("删除过期数据：日期：{}", bean.getDate());
             appointmentPoolRepository.delete(bean);
         });
     }
-
-    //更新过期的预约为已失效状态，凌晨2点执行
-    @Scheduled(cron = "0 0/2 * * * ?")
+    //清除已完成和已失效的数据
+    @Scheduled(cron = "0 0 2 * * ?")
+    private void clearAppointment() {
+        log.debug("开始清除已完成和超时的数据");
+        appointmentRepository.deleteByStateIn(new AppointStateEnum[]{AppointStateEnum.OUTTIME,AppointStateEnum.DO});
+        log.debug("结束清除已完成和超时的数据");
+    }
+    //更新过期的预约为已失效状态，凌晨1点执行
+    @Scheduled(cron = "0 0 1 * * ?")
     private void updateOverDateAppoint() {
-        log.info("开始执行更新失效预约状态处理任务");
+        log.debug("开始执行更新失效预约状态处理任务");
         ILock lock = hazelcastInstance.getLock(LockEnum.UPDATE_OVERDATE_TASK.name());
         lock.lock();
         try {
@@ -107,6 +115,6 @@ public class CommonTask {
         } finally {
             lock.unlock();
         }
-        log.info("结束执行更新失效预约状态处理任务");
+        log.debug("结束执行更新失效预约状态处理任务");
     }
 }
